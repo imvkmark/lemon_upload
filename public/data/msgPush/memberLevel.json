@@ -1,0 +1,13 @@
+[{
+  "memberlevel_id": "1",
+  "memberlevel_name": "普通会员"
+},{
+  "memberlevel_id": "2",
+  "memberlevel_name": "高级会员"
+},{
+  "memberlevel_id": "3",
+  "memberlevel_name": "钻石会员"
+},{
+  "memberlevel_id": "4",
+  "memberlevel_name": "金钻会员"
+}]

@@ -1,0 +1,28 @@
+@charset "utf-8";
+// 模拟网站的css 样式嵌入
+@import "./variables";
+// reset
+$link-color: #007FCA;
+$link-hover-color: #F60;
+$font-color: #555;
+
+// layout
+@import "./component/layout/grid";
+// reset
+@import "./component/init";
+@import "./component/doc";
+// site
+@import "./component/site/list";
+@import "./component/site/title";
+
+@import "./component/default/variables";
+@import "./component/mixin";
+@import "./component/default/normalize";
+@import "./component/default/scaffolding";
+@import "./component/default/forms";
+@import "./component/default/buttons";
+@import "./component/default/js";
+@import "./component/default/tables";
+@import "./component/default/type";
+@import "./component/default/ajax";
+@import "./component/default/article";

@@ -1,0 +1,255 @@
+@charset "utf-8";
+@import "../variables";
+//上传按钮
+.con-upload-context {
+	line-height: 30px;
+	height: 30px;
+	a.upload-but {
+		background: url("#{$sl-image-plugin}mod_multiUpload/uploadpic.jpg") no-repeat 0px -30px;
+		width: 120px;
+		height: 30px;
+		border: none;
+		cursor: pointer;
+		display: inline-block;
+		&:hover {
+			background: url("#{$sl-image-plugin}mod_multiUpload/uploadpic.jpg") no-repeat 0 0;
+		}
+	}
+	p { color: red; padding-left: 12px; }
+}
+//图片展示框
+.con-upload-photo {
+	margin-bottom: 20px;
+	.con-upload-photo-fie {
+		width: 560px;
+		padding: 0 8px 0 17px;
+		border: solid 1px #CCC;
+		border-radius: 6px;
+		legend {
+			color: #888;
+		}
+	}
+
+	.tupian-upload {
+		width: 540px;
+		margin-top: 15px;
+		*margin-bottom: 17px;
+	}
+	.imgbox {
+		display: inline;
+		float: left;
+		font-size: 12px;
+		position: relative;
+		margin: 0 10px 19px;
+		a.item_close {
+			background: url("#{$sl-image-plugin}mod_multiUpload/image_upload.png") no-repeat scroll -100px -182px;
+			display: block;
+			height: 14px;
+			overflow: hidden;
+			position: absolute;
+			right: -6px;
+			text-indent: -9999px;
+			top: -6px;
+			width: 14px;
+		}
+		a.item_close:hover {
+			background-position: -100px -200px;
+			text-decoration: none;
+		}
+
+		.w_upload {
+			position: relative;
+			top: -1px;
+		}
+
+		a.set_fm:hover {
+			background-position: -18px -26px;
+		}
+		a.scroll_l:hover {
+			background-position: 0px -26px;
+		}
+		a.scroll_r:hover {
+			background-position: -77px -26px;
+		}
+
+		.scroll_l, .scroll_r {
+			display: inline-block;
+			float: left;
+			height: 25px;
+			width: 17px;
+		}
+
+		.set_fm {
+			display: inline-block;
+			float: left;
+			height: 25px;
+			margin: 0 1px;
+			overflow: hidden;
+			width: 58px;
+		}
+
+		.item_box .photo {
+			padding: 6px;
+			border: solid 1px #D3D3D3;
+			border-bottom: none;
+			margin: 0;
+			background: #F6F6F6;
+			width: 100px;
+			height: 80px;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.item_box .photo img {
+			display: block;
+			max-width: 100px;
+			max-height: 80px;
+			margin: 0 auto;
+			vertical-align: middle;
+		}
+		.miaoshu-wenzi {
+			width: 114px;
+			border: solid 1px #D3D3D3;
+			height: 19px;
+			padding: 0 5px !important;
+			text-align: center;
+		}
+	}
+	.btn-set-fm {
+		position: absolute;
+		top: 64px;
+		width: 94px;
+		left: 10px;
+		background: none repeat scroll 0 0 #333;
+		opacity: 0.7;
+		text-align: center;
+		height: 18px;
+		line-height: 18px;
+		cursor: pointer;
+		span {
+			color: #FFF;
+		}
+	}
+}
+//兼容
+.uc-main {
+	.con-upload-photo-fie {
+		width: 540px;
+		padding: 0 5px 0 5px;
+	}
+	legend {
+		width: auto;
+		padding: 0 10px;
+		border-bottom: none;
+		font-size: 12px;
+		margin-bottom: 10px;
+	}
+}
+fieldset.blue {
+	border: 1px solid #DCE3ED;
+	padding: 10px;
+	color: #049;
+	a {
+		color: #049;
+	}
+	legend {
+		width: auto;
+		padding: 3px 8px;
+		font-weight: 700;
+		color: #347ADD;
+		background: none;
+		border: none;
+		font-size: 18px;
+	}
+}
+/* -- SWFUpload Object Styles ------------------------------- */
+.multi_upload_content {
+	.swfupload {
+		vertical-align: top;
+	}
+
+	#btupload, .addnew, .sel_img {
+		float: left;
+		margin-right: 10px;
+		width: 75px;
+		line-height: 26px;
+		font-weight: 700;
+		color: #FFF;
+		padding: 1px 0;
+		cursor: pointer;
+	}
+
+	#btupload {
+		background: url('#{$sl-image-plugin}mod_multiUpload/swfBnt.png') no-repeat;
+		vertical-align: middle;
+		border: none;
+		cursor: pointer;
+	}
+
+	.addnew {
+		background: url('#{$sl-image-plugin}mod_multiUpload/swfBnt.png') left bottom no-repeat;
+	}
+	/*附件列表样式*/
+	.attachment-list {
+		overflow: hidden;
+		margin-left: 0;
+		padding-left: 0;
+		li {
+			width: 25%;
+			*width: 24.99%;
+			overflow: hidden;
+			padding: 10px 0;
+			float: left;
+		}
+		.img-wrap {
+			width: 104px;
+			height: 94px;
+			overflow: hidden;
+			margin: auto;
+			text-align: center;
+			background: #FFF;
+			border: none;
+			position: relative;
+			a {
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				*display: block;
+				border: 1px solid #EEE;
+				width: 101px;
+				height: 91px;
+				*font-size: 67px;
+				&:hover, &.on {
+					border-color: #D0DEF1;
+					background: #F3F6FA;
+				}
+				&.off .icon {
+					background: url('#{$sl-image-plugin}mod_multiUpload/off.png') no-repeat;
+					height: 17px;
+					bottom: 5px;
+					*bottom: 3px;
+					right: 3px;
+					z-index: 100;
+					position: absolute;
+					overflow: hidden;
+					width: 98px;
+				}
+				&.on .icon {
+					background: url('#{$sl-image-plugin}mod_multiUpload/msg_bg.png') no-repeat left -249px;
+					width: 16px;
+					height: 18px;
+					bottom: 4px;
+					*bottom: 2px;
+					right: 3px;
+					z-index: 100;
+					position: absolute;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+}
+
+
+
+

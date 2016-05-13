@@ -1,0 +1,17 @@
+@import "../variables";
+// --------------- size
+@mixin size-s {
+  font-size: $s-font-size;
+  line-height: $s-line-height;
+  height: $s-height;
+}
+@mixin size-m {
+  font-size: $m-font-size;
+  line-height: $m-line-height;
+  height: $m-height;
+}
+@mixin size-l {
+  font-size: $l-font-size;
+  line-height: $l-line-height;
+  height: $l-height;
+}

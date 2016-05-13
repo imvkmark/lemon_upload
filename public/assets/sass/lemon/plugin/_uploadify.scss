@@ -1,0 +1,92 @@
+@charset "utf-8";
+@import "../variables";
+.sj-uploadify-thumb{
+  position: relative;
+  .uploadify{
+    float: left;
+    margin-right: 8px;
+  }
+  .uploadify-queue{
+    position: absolute;
+    left: 95px;
+    top: 0;
+  }
+  .uploadify-queue-item{
+    margin-bottom: 5px;
+    margin-top: 0;
+    padding: 0 10px;
+  }
+  .uploadify-preview{
+    background: url('#{$sl-image-plugin}uploadify/fileview_preview.png') 0 0 no-repeat;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    top: 2px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+/*
+  Uploadify
+  Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+  Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
+*/
+
+.uploadify {
+  position: relative;
+}
+.uploadify-button {
+  background: #3977CB center top no-repeat;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border: 1px solid #6599E0;
+  color: #FFF;
+  font: bold 12px Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.uploadify:hover .uploadify-button {
+  background: #6599E0 center bottom;
+  border: 1px solid #3977CB;
+}
+.uploadify-button.disabled {
+  background-color: #D0D0D0;
+  color: #808080;
+}
+.uploadify-queue {
+  margin-bottom: 0;
+}
+.uploadify-queue-item {
+  background-color: #F5F5F5;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font: 11px Verdana, Geneva, sans-serif;
+  margin-top: 5px;
+  max-width: 350px;
+  padding: 10px;
+}
+.uploadify-error {
+  background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+  background: url('#{$sl-image-plugin}uploadify/uploadify-cancel.png') 0 0 no-repeat;
+  float: right;
+  height:	16px;
+  text-indent: -9999px;
+  width: 16px;
+}
+.uploadify-queue-item.completed {
+  background-color: #E5E5E5;
+}
+.uploadify-progress {
+  background-color: #E5E5E5;
+  margin-top: 10px;
+  width: 100%;
+}
+.uploadify-progress-bar {
+  background-color: #0099FF;
+  height: 3px;
+  width: 1px;
+}

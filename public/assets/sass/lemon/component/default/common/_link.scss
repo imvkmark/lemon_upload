@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* 链接样式 [(Mark Zhao) 2015/2/23]
+------------------------------------------------------ */
+@import "compass/css3";
+.link-tips {
+  color: #FFF !important;
+  background-color: #F60;
+  padding: 2px 4px;
+  margin: 0 4px;
+  border: 1px solid #F30;
+  @include border-radius(4px);
+  &:link, &:active {
+    color: #FFF;
+  }
+  &:hover {
+    color: #eee !important;
+  }
+}

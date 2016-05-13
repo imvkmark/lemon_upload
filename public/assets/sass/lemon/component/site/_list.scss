@@ -1,0 +1,321 @@
+@charset "utf-8";
+@import "../../variables";
+@import "../mixin";
+$list-numRank-font: 'fzzdh';
+//fzzdh - 方正正大黑;
+
+.list {
+	padding: 5px 10px;
+	margin: 0;
+	li {
+		list-style: none;
+		overflow: hidden;
+	}
+}
+.list-s {
+	@extend .list;
+	li {
+		@include size-list($font-size-base, $font-size-base * $line-height-base, $font-size-base * $line-height-base);
+	}
+}
+.list-m {
+	@extend .list;
+	li {
+		@include size-list($font-size-medium, $font-size-medium * $line-height-base, $font-size-medium * $line-height-base);
+	}
+}
+.list-l {
+	@extend .list;
+	li {
+		@include size-list($font-size-large, $font-size-large * $line-height-base, $font-size-large * $line-height-base);
+	}
+}
+.list-mix {
+	@extend .list;
+	.mix {
+		height: 100px;
+	}
+	.mix-img {
+		border: 1px solid lighten($link-color, 30%);
+		padding: 3px;
+		display: block;
+		float: left;
+		margin-right: 10px;
+		&:hover {
+			border: 1px solid $link-hover-color;
+			img {
+				//                border:1px solid lighten($color-link, 20%);
+			}
+		}
+		img {
+			width: 120px;
+			height: 85px;
+			border: 1px solid #EEE;
+			display: block;
+		}
+	}
+
+	.mix-title {
+		line-height: 25px;
+		height: 25px;
+		font-weight: bold;
+		overflow: hidden;
+		display: block;
+	}
+	.mix-desc {
+		line-height: 18px;
+		font-size: 12px;
+		height: 54px;
+		overflow: hidden;
+		display: block;
+		color: #9D9C9C;
+	}
+}
+.list-greyDot {
+	@extend .list;
+	padding-left: 5px;
+	li {
+		padding-left: 20px;
+		background: url('#{$sl-image-lemon}site/bg-list-greyDot.jpg') no-repeat 10px center;
+	}
+}
+.list-roseDot {
+	@extend .list;
+	padding-left: 5px;
+	li {
+		padding-left: 20px;
+		background: url('#{$sl-image-lemon}site/bg-list-roseDot.jpg') no-repeat 10px center;
+	}
+}
+.list-numRank-s {
+	@extend .list;
+	padding-left: 5px;
+	background: url('#{$sl-image-lemon}site/bg-list-numRank-#{$list-numRank-font}.jpg') no-repeat 5px 7px;
+	li {
+		@include size-list($font-size-base, $font-size-base * $line-height-base, $font-size-base * $line-height-base);
+		padding-left: 20px;
+	}
+}
+.list-numRank-m {
+	@extend .list;
+	padding-left: 5px;
+	background: url('#{$sl-image-lemon}site/bg-list-numRank-#{$list-numRank-font}.jpg') no-repeat 5px -341px;
+	li {
+		@include size-list($font-size-medium, $font-size-medium * $line-height-base, $font-size-medium * $line-height-base);
+		padding-left: 20px;
+	}
+}
+//分类
+.list-filter {
+	border-bottom: 1px solid #CCC;
+	.filter-section {
+		background: #F1F1F1;
+		border-left: 1px solid #CCC;
+	}
+	.filter-list {
+		overflow: hidden;
+		width: 600px;
+		background: white;
+		border-right: 1px solid #DDD;
+		border-left: 1px solid #DDD;
+		border-top: 1px solid #DDD;
+		padding-left: 10px;
+		line-height: 35px;
+		ul {
+			margin: 10px;
+			padding-bottom: 10px;
+		}
+		.withtime a {
+			width: 305px;
+		}
+		.pages {
+			margin: 10px;
+		}
+		.address {
+			margin: 0;
+			padding-bottom: 10px;
+		}
+		li {
+			height: 35px;
+			line-height: 35px;
+			color: #06529A;
+			float: left;
+			margin-left: 11px;
+			white-space: nowrap;
+			display: block;
+			a {
+				color: #175D99;
+				text-decoration: none;
+				&:hover {
+					color: #333;
+				}
+			}
+			&.current a, &.selected a {
+				font-size: 12px;
+				font-weight: bold;
+				background: none;
+				color: #F60;
+			}
+		}
+	}
+	.filter-hd {
+		overflow: hidden;
+		margin-top: 0;
+		padding-right: 10px;
+		color: #444;
+		background: #EFEFEF;
+		width: 85px;
+		height: 35px;
+		line-height: 35px;
+		text-align: right;
+		font-size: 14px;
+		border-top: 1px solid #CCC;
+	}
+}
+//列表
+.list-detail {
+	padding-top: 10px;
+	.list-item {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.detail-img-wrapper {
+		float: left;
+		display: block;
+		width: 136px;
+		height: 102px;
+		img {
+			width: 136px;
+		}
+	}
+	.detail-content {
+		float: left;
+		margin-left: 15px;
+		position: relative;
+		width: 530px;
+		.content-title {
+			width: 530px;
+			line-height: 36px;
+			height: 36px;
+			color: #175D99;
+			font-size: 14px;
+			overflow: hidden;
+			display: block;
+			&:hover {
+				color: #E8611F;
+			}
+		}
+		.content-intro {
+			line-height: 22px;
+			p {
+				color: #666;
+			}
+			.fr {
+				width: 100px;
+			}
+			.validity {
+				font-weight: bold;
+				color: #F60;
+				font-size: 14px;
+			}
+			b, i {
+				font-weight: normal;
+				font-style: normal;
+			}
+			.intro-icon {
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0 3px;
+				*display: inline;
+				*zoom: 1;
+				background: url("#{$sl-image-lemon}screen/icon_list.png") 0 0 #FFF no-repeat;
+				*background: url("#{$sl-image-lemon}screen/icon_list.gif") 0 0 #FFF no-repeat;
+			}
+			.company-address {
+				background-position: 0 -73px;
+				padding-left: 15px;
+				height: 22px;
+				max-width: 280px;
+				overflow: hidden;
+			}
+			.company-name {
+				color: #F60;
+				margin-right: 5px;
+				max-width: 200px;
+				_width: 200px;
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				height: 26px;
+				line-height: 26px;
+				overflow: hidden;
+				vertical-align: middle;
+			}
+			.company_Level6 {
+				width: 37px;
+				height: 19px;
+				background-position: -126px 0;
+			}
+			.company_Level31 {
+				width: 37px;
+				height: 19px;
+				background-position: -174px 0;
+			}
+			.company_Level41 {
+				width: 37px;
+				height: 19px;
+				background-position: -222px 0;
+			}
+			.company_Level36 {
+				width: 37px;
+				height: 19px;
+				background-position: -268px 0;
+			}
+			.vcompany {
+				padding-left: 26px;
+				background-position: 0 -48px;
+				color: #999;
+			}
+			.bond {
+				width: 18px;
+				height: 18px;
+				background-position: 0 -22px;
+			}
+			.vphone {
+				width: 10px;
+				height: 16px;
+				background-position: -38px 0;
+			}
+			.vphone-fail {
+				width: 10px;
+				height: 16px;
+				background-position: -59px 0;
+			}
+			.vperson {
+				width: 11px;
+				height: 14px;
+				background-position: 0 0;
+			}
+			.vperson-fail {
+				width: 11px;
+				height: 14px;
+				background-position: -19px 0;
+			}
+			.vemail {
+				width: 15px;
+				height: 12px;
+				background-position: -78px 0;
+			}
+			.vemail-fail {
+				width: 15px;
+				height: 12px;
+				background-position: -100px 0;
+			}
+		}
+		.content-chat {
+			position: absolute;
+			top: 40px;
+			right: 0;
+		}
+	}
+}

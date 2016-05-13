@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+#J_tip {
+  top: 25px;
+  left: 50%;
+  line-height: 29px;
+  position: fixed;
+  max-width: 500px;
+}
+.lt-ie7 {
+  #J_tip {
+    _position:absolute;
+    _right:20px;
+    _top: unquote( 'expression( eval(document.documentElement.scrollTop) + 25)' );
+  }
+}
+
+#J_tipContent {
+  padding: 10px 15px;
+  background: #FFF;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  &.error {
+    color: #fff;
+    border-color: #e76262;
+    background: #ea7a7a;
+  }
+  &.notice {
+    color: #fff;
+    border-color: #d08e24;
+    background: #ffae2c;
+  }
+  &.success {
+    color: #fff;
+    border-color: #49b68d;
+    background: #6cc4a3;
+  }
+}

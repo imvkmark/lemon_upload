@@ -1,0 +1,207 @@
+@charset "utf-8";
+@import "./variables";
+.header {
+  .branding {
+    position: relative;
+    margin: 0 auto;
+    height: 125px;
+    *zoom: 1;
+    *z-index: 50;
+  }
+  .logo {
+    float: left;
+    display: block;
+    _display: inline;
+    width: 108px;
+    height: 54px;
+    margin-top: 21px;
+    text-indent: -500px;
+    overflow: hidden;
+    background: url('#{$game-images}logo.png') no-repeat 0 0;
+  }
+  h3 {
+    height: 86px;
+    line-height: 86px;
+    padding-left: 120px;
+    margin: 0;
+  }
+}
+.header-index {
+  .branding {
+    position: relative;
+    margin: 0 auto;
+    height: 40px;
+  }
+  .right-side {
+    line-height: 40px;
+  }
+}
+.index-body {
+  height: 1092px;
+  background: url('#{$game-images}bg.jpg') top center;
+  .layout-main {
+    position: relative;
+    .exec, .home_cp, .order, .create {
+      position: absolute;
+      border: none;
+      height: 115px;
+      width: 210px;
+    }
+    .exec {
+      top: 488px;
+      left: 10px;
+    }
+    .order {
+      top: 626px;
+      left: 10px;
+    }
+    .home_cp {
+      top: 488px;
+      right: 10px;
+    }
+    .create {
+      top: 626px;
+      right: 10px;
+    }
+  }
+}
+.login-body {
+  .login-form {
+    width: 270px;
+    h2 {
+      font-weight: 400;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+  .oauth-wrapper {
+    margin-top: 20px;
+    .title-wrapper {
+      position: relative;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #CCC;
+      width: 100%;
+      height: 0;
+      overflow: visible;
+    }
+    .title {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      margin-left: -75px;
+      width: 150px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      background: #FFF;
+    }
+  }
+  .oauth {
+    padding-left: 130px;
+  }
+  .oauth-link {
+    font-size: 12px;
+    display: block;
+    color: #999;
+  }
+  .oauth-wrapper .oauth-link,
+  .oauth-wrapper .oauth-link:hover,
+  .oauth-wrapper .oauth-link-alipay,
+  .oauth-wrapper .oauth-link-alipay:hover,
+  .oauth-wrapper .oauth-link-tuan800,
+  .oauth-wrapper .oauth-link-tuan800:hover,
+  .oauth-wrapper .oauth-link-weibo,
+  .oauth-wrapper .oauth-link-weibo:hover,
+  .oauth-sprite {
+    background-image: url('#{$game-images}oauth.png');
+    background-repeat: no-repeat
+  }
+  .oauth-link {
+    float: left;
+    margin-right: 20px;
+    width: 18px;
+    height: 18px;
+    background-position: 0 -40px;
+    &:hover {
+      background-position: 0 -60px
+    }
+  }
+  .oauth-link-alipay {
+    background-position: 0 0;
+    &:hover {
+      background-position: 0 -20px
+    }
+  }
+  .oauth-link-weibo {
+    background-position: 0 -120px;
+    &:hover {
+      background-position: 0 -140px
+    }
+  }
+  .oauth-link-tuan800 {
+    background-position: 0 -80px;
+    &:hover {
+      background-position: 0 -100px
+    }
+  }
+}
+.login-info {
+  div.login-info-nav {
+    margin-bottom: 20px;
+    padding: 12px 0;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    ul {
+      float: left;
+      width: 594px;
+      color: #EEE
+    }
+    li {
+      float: left;
+      margin: 5px 0;
+      padding: 0 16px;
+      line-height: 14px;
+      border-right: 1px solid #EEE;
+      a {
+        color: #999
+      }
+      .first {
+        padding-left: 0
+      }
+      .last {
+        border-right: none
+      }
+    }
+  }
+
+  .copyright {
+    padding: 30px 0 10px;
+    clear: both;
+    color: #999;
+    text-align: center;
+    font-size: 12px;
+    font-family: initial;
+  }
+}
+@import "landing/register";
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  .pace-progress {
+    background: #29D;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+  }
+}
+.pace-inactive {
+  display: none;
+}

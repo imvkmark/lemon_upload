@@ -1,0 +1,87 @@
+.sj-plugin_qq a {
+	text-decoration: none;
+}
+.sj-plugin_qq ul {
+	list-style: none;
+	padding-left:0;
+}
+.sj-plugin_qq {
+	position: fixed;
+	right: 0;
+	top: 20%;
+	z-index: 100;
+	_position: absolute;
+	_top: expression(eval(document.documentElement.scrollTop+100));
+}
+.sj-plugin_qq .kefu-open {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 138px;
+	padding: 46px 0 0 0;
+	background: url(../images/lemon/seajs/plugin/qq/kefu_icon.png) no-repeat -46px 0;
+	_background-image: url(../images/lemon/seajs/plugin/qq/kefu_icon.gif);
+	overflow: hidden;
+}
+.sj-plugin_qq .kefu-open .close {
+	display: block;
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	right: 0;
+	top: 0;
+	text-indent: -9999px;
+}
+.sj-plugin_qq .kefu-open div {
+	padding-bottom: 5px;
+	width: 134px;
+}
+.sj-plugin_qq .kefu-open ul {
+	background: #939393;
+}
+.sj-plugin_qq .kefu-open li {
+	height: 32px;
+	line-height: 32px;
+	padding: 0 15px 2px;
+}
+.sj-plugin_qq .kefu-open li a {
+	color: #fff;
+	display: block;
+	position: relative;
+	zoom: 1;
+	padding-left: 35px;
+}
+.sj-plugin_qq .kefu-open li a:hover {
+	text-decoration: none;
+}
+.sj-plugin_qq .kefu-open li a i {
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+	top: 6px;
+	width: 21px;
+	height: 21px;
+	background: url(../images/lemon/seajs/plugin/qq/kefu_icon.png) no-repeat 9999px 9999px;
+	_background-image: url(../images/lemon/seajs/plugin/qq/kefu_icon.gif);
+}
+.sj-plugin_qq .kefu-open li a i.qq {
+	background-position: -86px -56px;
+}
+.sj-plugin_qq .kefu-open li a i.online {
+	background-position: -56px -56px;
+}
+.sj-plugin_qq .kefu-open li a i.txt {
+	background-position: -56px -86px;
+}
+.sj-plugin_qq .kefu-close {
+	position: absolute;
+	top: 5px;
+	right: 0;
+	width: 0;
+	height: 127px;
+	padding: 0;
+	background: url(../images/lemon/seajs/plugin/qq/kefu_icon.png) no-repeat 0 0;
+	_background-image: url(../images/lemon/seajs/plugin/qq/kefu_icon.gif);
+	cursor: pointer;
+	overflow: hidden;
+}

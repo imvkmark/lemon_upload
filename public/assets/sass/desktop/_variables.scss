@@ -1,0 +1,53 @@
+@charset "utf-8";
+@import "../lemon/variables";
+/**
+ * 变量
+ * @author : Mark
+ */
+/* reset lemon style [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+$link-color: #007fca;
+$link-hover-color: #F60;
+$font-color: #555;
+
+/* color [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+// title
+$color-title: #09C;
+// error
+$error-color: red;
+$error-border-color: #FF3300;
+$error-bg-color: #FFF0F0;
+
+// success
+$success-color: #2F3330;
+$success-border-color: #3DA55A;
+$success-bg-color: #8CD9A1;
+
+// input
+$input-color: #555;
+$input-hover-color: #33464F;
+$input-border-color: #ABADB3 #E2E3EA #E2E3EA #ABADB3;
+$input-borderHover-color: #71cbef;
+$input-borderReadonly-color: #EEE #F5F5F5 #F5F5F5 #EEE;
+$input-bgReadonly-color: #fff;
+// readonly
+
+// style
+$shadow-input: 0 0 5px rgba(82, 168, 236, 0.5);
+$shadow-pagination: 0 0 3px rgba(204, 204, 204, 0.5);
+
+// bg use #{$bgBar}
+$bgBar: $sl-image-desktop + 'bgBar.png';
+$bgForm: $sl-image-desktop +'bgForm.png';
+$bgSky: $sl-image-desktop +'bgSky.gif';
+$bgFormOnoff: $sl-image-desktop +'bgFormOnoff.png';
+$bgSkyLogo: $sl-image-desktop +'bgSkyLogo.png';
+$bgSkyLeft: $sl-image-desktop +'bgSkyLeft.png';
+$bgSkyBody: $sl-image-desktop +'bgSkyBody.png';
+$bgSkyButtonGif: $sl-image-desktop +'bgSkyButton.gif';
+$bgSkyPrompt: $sl-image-desktop +'bgSkyPrompt.gif';
+$bgSkyButtonPng: $sl-image-desktop +'bgSkyButton.png';
+
+
+

@@ -1,0 +1,86 @@
+/*
+ * jquery.tocify.css 1.8.0
+ * Author: @gregfranko
+ */
+
+/* The Table of Contents container element */
+@import "compass/css3/border-radius";
+.tocify {
+  max-height: 90%;
+  overflow: auto;
+  @include border-radius(6px);
+}
+/* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
+.tocify ul, .tocify li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 30px;
+}
+/* Top level header elements */
+.tocify-header {
+  text-indent: 10px;
+}
+/* Top level subheader elements.  These are the first nested items underneath a header element. */
+.tocify-subheader {
+  text-indent: 20px;
+  display: none;
+}
+/* Makes the font smaller for all subheader elements. */
+.tocify-subheader li {
+  font-size: 12px;
+}
+/* Further indents second level subheader elements. */
+.tocify-subheader .tocify-subheader {
+  text-indent: 30px;
+}
+/* Further indents third level subheader elements. You can continue this pattern if you have more nested elements. */
+.tocify-subheader .tocify-subheader .tocify-subheader {
+  text-indent: 40px;
+}
+/* Twitter Bootstrap Override Style */
+.nav-list > li > a, .nav-list .nav-header {
+  margin: 0;
+}
+/* Twitter Bootstrap Override Style */
+.nav-list > li > a {
+  padding: 5px;
+}
+.tocify .nav > li > a {
+  padding: 4px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #767676
+}
+.tocify .nav > li > a:focus, .tocify .nav > li > a:hover {
+  padding-left: 19px;
+  color: #563D7C;
+  text-decoration: none;
+  background-color: transparent;
+  border-left: 1px solid #563D7C
+}
+.tocify .nav > .active:focus > a, .tocify .nav > .active:hover > a, .tocify .nav > .active > a {
+  padding-left: 18px;
+  font-weight: 700;
+  color: #563D7C;
+  background-color: transparent;
+  border-left: 2px solid #563D7C
+}
+.tocify .nav .nav {
+  padding-bottom: 10px
+}
+.tocify .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 30px;
+  font-size: 12px;
+  font-weight: 400
+}
+.tocify .nav .nav > li > a:focus, .tocify .nav .nav > li > a:hover {
+  padding-left: 29px
+}
+.tocify .nav .nav > .active:focus > a, .tocify .nav .nav > .active:hover > a, .tocify .nav .nav > .active > a {
+  padding-left: 28px;
+  font-weight: 500
+}

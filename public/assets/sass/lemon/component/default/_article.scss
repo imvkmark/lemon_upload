@@ -1,0 +1,157 @@
+@charset "utf-8";
+@import "variables";
+
+/* 内容展示页元素式样 */
+.article {
+  overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 1px solid #CCC;
+  h1 {
+    height: 40px;
+    overflow: hidden;
+    text-align: center;
+    color: #000;
+    font: bold 24px/40px Arial, simsun, Georgia, serif;
+  }
+}
+
+.article-info {
+  width: 100%;
+  border-bottom: 1px #ccc solid;
+  margin-bottom: 10px;
+  font: 12px/30px Arial, simsun, Georgia, serif;
+  text-align: center;
+  color: #666;
+}
+
+.article-img-wrap {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.article-body {
+  margin-bottom: 10px;
+  font: 14px/27px Arial, simsun, Georgia, serif;
+  word-break: break-all;
+  word-wrap: break-word;
+  table {
+    text-indent: 0;
+  }
+}
+
+.article-bot {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.article-nav {
+  font-size: 14px;
+  line-height: 1.8em;
+  width: 390px;
+  overflow: hidden;
+}
+
+.article-relative {
+  width: 620px;
+  margin: 10px auto;
+}
+
+.article-relnews {
+  width: 305px;
+  padding-right: 20px;
+  border-right: 1px dotted #CCC;
+  li {
+    width: 300px;
+  }
+  a {
+    display: block;
+    float: left;
+    width: 210px;
+    overflow: hidden;
+  }
+  span {
+    display: block;
+    float: right;
+    width: 70px;
+    overflow: hidden;
+    color: #666;
+  }
+}
+
+.article-relreccm {
+  width: 265px;
+  overflow: hidden;
+  padding: 0 10px;
+  li {
+    width: 265px;
+  }
+}
+
+/*文章内分页*/
+.article-pages {
+  margin: 20px auto;
+  text-align: center;
+  a {
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    &:hover {
+      border-color: #F60;
+      text-decoration: none;
+    }
+    &.current {
+      border: none;
+      font-weight: bold;
+      color: #F60;
+    }
+    &.disabled {
+      color: #CCC;
+      cursor: not-allowed;
+      &:hover {
+        color: #CCC;
+        text-decoration: none;
+        border-color: #CCC;
+      }
+    }
+  }
+}
+
+.article-subpage {
+  border: 1px solid #DDDDDD;
+  margin-bottom: 20px;
+  h3 {
+    background: #fafbfc;
+    border-bottom: 1px solid #DDD;
+    height: 30px;
+    overflow: hidden;
+    font: bold 14px/30px arial;
+    padding-left: 10px;
+  }
+  ul {
+    display: block;
+    width: 590px;
+    overflow: hidden;
+    padding: 10px;
+    line-height: 25px;
+    li {
+      float: left;
+      display: inline;
+      width: 270px;
+      border-right: 1px dashed #CCC;
+      padding: 0 10px;
+      &.event {
+        border: none;
+      }
+    }
+  }
+  li.current a {
+    color: #d60000;
+    &:hover {
+      color: #d60000;
+    }
+  }
+}

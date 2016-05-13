@@ -1,0 +1,309 @@
+@charset "utf-8";
+
+.xchart {
+  .line {
+    stroke-width: 3px;
+    fill: none;
+  }
+  .fill {
+    stroke-width: 0;
+  }
+  circle {
+    stroke: #FFF;
+    stroke-width: 3px;
+  }
+  .axis {
+    .domain {
+      fill: none;
+    }
+    .tick line {
+      stroke: #EEE;
+      stroke-width: 1px;
+    }
+    text {
+      font-family: Helvetica,Arial,Verdana,sans-serif;
+      fill: #666;
+      font-size: 12px;
+    }
+  }
+  .color0 {
+    .line {
+      stroke: #3880aa;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #3880aa;
+    }
+    .fill {
+      fill: rgba(56, 128, 170, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #89bbd8;
+      }
+      rect {
+        fill: #89bbd8;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #89bbd8;
+      }
+    }
+  }
+  .color1 {
+    .line {
+      stroke: #4da944;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #4da944;
+    }
+    .fill {
+      fill: rgba(77, 169, 68, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #9dd597;
+      }
+      rect {
+        fill: #9dd597;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #9dd597;
+      }
+    }
+  }
+  .color2 {
+    .line {
+      stroke: #f26522;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #f26522;
+    }
+    .fill {
+      fill: rgba(242, 101, 34, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #f9b99a;
+      }
+      rect {
+        fill: #f9b99a;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #f9b99a;
+      }
+    }
+  }
+  .color3 {
+    .line {
+      stroke: #c6080d;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #c6080d;
+    }
+    .fill {
+      fill: rgba(198, 8, 13, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #f8555a;
+      }
+      rect {
+        fill: #f8555a;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #f8555a;
+      }
+    }
+  }
+  .color4 {
+    .line {
+      stroke: #672d8b;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #672d8b;
+    }
+    .fill {
+      fill: rgba(103, 45, 139, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #a869ce;
+      }
+      rect {
+        fill: #a869ce;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #a869ce;
+      }
+    }
+  }
+  .color5 {
+    .line {
+      stroke: #ce1797;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #ce1797;
+    }
+    .fill {
+      fill: rgba(206, 23, 151, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #f075cb;
+      }
+      rect {
+        fill: #f075cb;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #f075cb;
+      }
+    }
+  }
+  .color6 {
+    .line {
+      stroke: #d9ce00;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #d9ce00;
+    }
+    .fill {
+      fill: rgba(217, 206, 0, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #fff75a;
+      }
+      rect {
+        fill: #fff75a;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #fff75a;
+      }
+    }
+  }
+  .color7 {
+    .line {
+      stroke: #754c24;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #754c24;
+    }
+    .fill {
+      fill: rgba(117, 76, 36, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #c98c50;
+      }
+      rect {
+        fill: #c98c50;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #c98c50;
+      }
+    }
+  }
+  .color8 {
+    .line {
+      stroke: #2eb9b4;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #2eb9b4;
+    }
+    .fill {
+      fill: rgba(46, 185, 180, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #86e1de;
+      }
+      rect {
+        fill: #86e1de;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #86e1de;
+      }
+    }
+  }
+  .color9 {
+    .line {
+      stroke: #0e2e42;
+      .fill {
+        pointer-events: none;
+      }
+    }
+    rect, circle {
+      fill: #0e2e42;
+    }
+    .fill {
+      fill: rgba(14, 46, 66, 0.1);
+    }
+    &.comp {
+      .line {
+        stroke: #2477ab;
+      }
+      rect {
+        fill: #2477ab;
+      }
+      .fill {
+        display: none;
+      }
+      circle, .pointer {
+        fill: #2477ab;
+      }
+    }
+  }
+}

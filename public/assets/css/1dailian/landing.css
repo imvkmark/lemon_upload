@@ -1,0 +1,219 @@
+.header .branding {
+  position: relative;
+  margin: 0 auto;
+  height: 125px;
+  *zoom: 1;
+  *z-index: 50;
+}
+.header .logo {
+  float: left;
+  display: block;
+  _display: inline;
+  width: 108px;
+  height: 54px;
+  margin-top: 21px;
+  text-indent: -500px;
+  overflow: hidden;
+  background: url("../../css_images/1dailian/logo.png") no-repeat 0 0;
+}
+.header h3 {
+  height: 86px;
+  line-height: 86px;
+  padding-left: 120px;
+  margin: 0;
+}
+
+.header-index .branding {
+  position: relative;
+  margin: 0 auto;
+  height: 40px;
+}
+.header-index .right-side {
+  line-height: 40px;
+}
+
+.index-body {
+  height: 1092px;
+  background: url("../../css_images/1dailian/bg.jpg") top center;
+}
+.index-body .layout-main {
+  position: relative;
+}
+.index-body .layout-main .exec, .index-body .layout-main .home_cp, .index-body .layout-main .order, .index-body .layout-main .create {
+  position: absolute;
+  border: none;
+  height: 115px;
+  width: 210px;
+}
+.index-body .layout-main .exec {
+  top: 488px;
+  left: 10px;
+}
+.index-body .layout-main .order {
+  top: 626px;
+  left: 10px;
+}
+.index-body .layout-main .home_cp {
+  top: 488px;
+  right: 10px;
+}
+.index-body .layout-main .create {
+  top: 626px;
+  right: 10px;
+}
+
+.login-body .login-form {
+  width: 270px;
+}
+.login-body .login-form h2 {
+  font-weight: 400;
+  color: #666;
+  font-size: 14px;
+}
+.login-body .oauth-wrapper {
+  margin-top: 20px;
+}
+.login-body .oauth-wrapper .title-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #CCC;
+  width: 100%;
+  height: 0;
+  overflow: visible;
+}
+.login-body .oauth-wrapper .title {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -75px;
+  width: 150px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  background: #FFF;
+}
+.login-body .oauth {
+  padding-left: 130px;
+}
+.login-body .oauth-link {
+  font-size: 12px;
+  display: block;
+  color: #999;
+}
+.login-body .oauth-wrapper .oauth-link,
+.login-body .oauth-wrapper .oauth-link:hover,
+.login-body .oauth-wrapper .oauth-link-alipay,
+.login-body .oauth-wrapper .oauth-link-alipay:hover,
+.login-body .oauth-wrapper .oauth-link-tuan800,
+.login-body .oauth-wrapper .oauth-link-tuan800:hover,
+.login-body .oauth-wrapper .oauth-link-weibo,
+.login-body .oauth-wrapper .oauth-link-weibo:hover,
+.login-body .oauth-sprite {
+  background-image: url("../../css_images/1dailian/oauth.png");
+  background-repeat: no-repeat;
+}
+.login-body .oauth-link {
+  float: left;
+  margin-right: 20px;
+  width: 18px;
+  height: 18px;
+  background-position: 0 -40px;
+}
+.login-body .oauth-link:hover {
+  background-position: 0 -60px;
+}
+.login-body .oauth-link-alipay {
+  background-position: 0 0;
+}
+.login-body .oauth-link-alipay:hover {
+  background-position: 0 -20px;
+}
+.login-body .oauth-link-weibo {
+  background-position: 0 -120px;
+}
+.login-body .oauth-link-weibo:hover {
+  background-position: 0 -140px;
+}
+.login-body .oauth-link-tuan800 {
+  background-position: 0 -80px;
+}
+.login-body .oauth-link-tuan800:hover {
+  background-position: 0 -100px;
+}
+
+.login-info div.login-info-nav {
+  margin-bottom: 20px;
+  padding: 12px 0;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
+}
+.login-info div.login-info-nav ul {
+  float: left;
+  width: 594px;
+  color: #EEE;
+}
+.login-info div.login-info-nav li {
+  float: left;
+  margin: 5px 0;
+  padding: 0 16px;
+  line-height: 14px;
+  border-right: 1px solid #EEE;
+}
+.login-info div.login-info-nav li a {
+  color: #999;
+}
+.login-info div.login-info-nav li .first {
+  padding-left: 0;
+}
+.login-info div.login-info-nav li .last {
+  border-right: none;
+}
+.login-info .copyright {
+  padding: 30px 0 10px;
+  clear: both;
+  color: #999;
+  text-align: center;
+  font-size: 12px;
+  font-family: initial;
+}
+
+.register-header {
+  border-bottom: 2px solid #2bb8aa;
+}
+
+.register-body .register-form {
+  padding-left: 250px;
+}
+.register-body .register-form h2 {
+  font-weight: 400;
+  color: #666;
+  font-size: 14px;
+  line-height: 50px;
+  height: 50px;
+}
+.register-body .form-register label {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.pace .pace-progress {
+  background: #29D;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.pace-inactive {
+  display: none;
+}

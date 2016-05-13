@@ -1,0 +1,78 @@
+/* 分页 [(Mark Zhao) 2015/1/28]
+------------------------------------------------------ */
+.pages{
+  margin:15px auto 0;
+  font-size: 12px;
+  text-align: center;
+  span, a{
+    padding: 3px 5px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  a{
+    color:#111;
+    text-decoration: none;
+    &:hover{
+      color:#f04100;
+    }
+  }
+  span{
+    border:none;
+  }
+  input{
+    display: inline-block;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #ECECEC;
+    border-top: 1px solid #CCC;
+    width: 32px;
+    color: black;
+    text-align: center;
+  }
+  button{
+    height: 25px;
+    width: 53px;
+    border: none;
+    background-image: url(images/default/common.gif);
+    background-position: -270px -175px;
+  }
+  .navigation, .disabled, .previous{
+    background-image: url(images/default/common.gif);
+  }
+  .navigation {
+    border: none;
+    background-repeat:no-repeat;
+    width: 43px;
+  }
+  .previous{
+    background-position: -106px -76px;
+    padding-left:12px;
+  }
+  .next{
+    background-position: -106px -99px;
+    padding-right:12px;
+  }
+  .disabled {
+    background-position-x: -46px;
+    color:#CCC;
+    cursor:not-allowed;
+    &:hover{
+      color:#CCC;
+    }
+  }
+  .omit{
+    border: none;
+    padding: 0 ;
+  }
+  .current{
+    color:#f60;
+    font-size: 12px;
+    font-weight: bold;
+    border-color: #f60;
+  }
+  .pages-total{
+    border: none;
+  }
+}

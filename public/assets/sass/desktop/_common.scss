@@ -1,0 +1,183 @@
+@charset "utf-8";
+@import "variables";
+/**
+ * 公共样式
+ * @author : Mark
+ */
+@import "compass/css3";
+
+/* page [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+.page {
+  padding: 9px 20px 20px;
+  text-align: left;
+}
+.page-fixed{
+  padding: 70px 20px 20px;
+}
+.page-dialog{
+  padding: 0;
+}
+
+/* bar [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+.bar{
+  background: white url($bgBar) repeat-x center bottom;
+  padding: 8px 0;
+  margin: 0 20px;
+}
+
+.bar-fixed {
+  @extend .bar;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width:98%;
+}
+
+
+/* title [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+
+// div.title-bar>h3
+// 为了里边能够放 tab 而放置的浮动
+.title-bar{
+  line-height: 20px;
+  margin-bottom: 0 !important;
+  clear: both;
+  overflow: hidden;
+  _padding-bottom: 10px;
+  h3 {
+    float: left;
+    color: $color-title;
+    font-size: 15px;
+    margin: 18px 20px 10px 0;
+    line-height: 18px;
+  }
+}
+
+/* tab 样式 [(Mark Zhao)2014/9/10]
+------------------------------------------------------ */
+.tab-base {
+  float: left;
+  overflow: hidden;
+  padding-top: 16px;
+  li {
+    float: left;
+    margin-left: 3px;
+  }
+  a {
+    font-weight: 700;
+    line-height: 20px;
+    background: white url($bgSky) no-repeat -1px -200px;
+    height: 20px;
+    float: left;
+    padding-left: 8px;
+    margin-right: 2px;
+    cursor: pointer;
+    &:hover {
+      color: #09C;
+      background-position: -1px -220px;
+    }
+    span {
+      color: #555;
+      background: url($bgSky) no-repeat 9999px 9999px;
+      float: left;
+      padding-right: 9px;
+    }
+    &:hover span {
+      background-position: 100% -220px;
+    }
+    &.current, &:hover.current {
+      background-position: -1px -240px;
+      cursor: default;
+    }
+    &.current span, &:hover.current span {
+      color: #FFF;
+      background-position: 100% -240px;
+    }
+  }
+}
+.tab-subinfo{
+  padding: 5px 10px;
+}
+
+// tab 分组
+.tab-group {
+  float: right;
+  overflow: hidden;
+  padding-top: 23px;
+  li {
+    float: left;
+    margin-left: 3px;
+  }
+  a {
+    font-weight: 700;
+    line-height: 22px;
+    height: 22px;
+    float: left;
+    padding-left: 8px;
+    margin-right: 2px;
+    cursor: pointer;
+    background: #CBE9F3;
+    border:1px solid #CBE9F3;
+    border-bottom: 0;
+    @include border-radius(3px 3px 0 0);
+    &:hover {
+      border:1px solid #68D7FC;
+      border-bottom: 0;
+      color: #09C;
+    }
+    span {
+      color: #777;
+      float: left;
+      padding-right: 9px;
+    }
+    &.current, &:hover.current {
+      border:1px solid #68D7FC;
+      cursor: default;
+      border-bottom: 0;
+    }
+    &.current span, &:hover.current span {
+      color: #333;
+    }
+  }
+}
+
+.preview_content{
+  border:1px solid #ccc;
+  @include border-radius(3px);
+  padding:5px ;
+  .emoji{
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.green{
+  color: #1ab394;
+}
+.grey{
+  color: #ccc;
+}
+.blue{
+  color: #337ab7;
+}
+.red{
+  color: red;
+}
+
+.center-block{
+	padding:35px 20px;
+	&.flash-success{
+		color: shade(#0f0, 15);
+	}
+	&.flash-danger{
+		color: shade(#f00, 15);
+	}
+	p{
+		font-size : 16px;
+		text-align : center;
+	}
+}

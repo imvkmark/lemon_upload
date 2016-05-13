@@ -1,0 +1,51 @@
+@charset "utf-8";
+/**
+ * 柠檬框架的定义文件
+ */
+
+// font
+$font-family: "Arial", "Goudy Old Style", "Palatino", "Book Antiqua", Georgia, "微软雅黑";
+$font-alt-family: "Warnock Pro", "Goudy Old Style", "Palatino", "Book Antiqua", Georgia, serif;
+$font-size: 12px;
+
+$font-size-base: 12px !default;
+$font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-medium: ceil(($font-size-base * 1.15)) !default; // ~14px
+$font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
+$font-size-xs: ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$line-height-base: 1.428571429 !default; // 20/14
+
+// ------ color
+$font-color: #333;
+$link-color: #777;
+$link-hover-color: #F72952;
+
+$error-color: #8A1F11;
+$error-bg-color: #FBE3E4;
+$error-border-color: #FBC2C4;
+$error-link-color: #8A1F11;
+
+$notice-color: #514721;
+$notice-bg-color: #FFF6BF;
+$notice-border-color: #FFD324;
+$notice-link-color: #514721;
+
+$success-color: #264409;
+$success-bg-color: #E6EFC2;
+$success-border-color: #C6D880;
+$success-link-color: #264409;
+
+// 1022 px
+//fixed width on 1022px -- start
+$blueprint-grid-columns: 24;
+$blueprint-grid-width: 33px;
+$blueprint-grid-margin: 10px;
+
+// sour lemon framework
+$sl-image-plugin: '../../css_images/lemon/plugin/';
+$sl-image-lemon: '../../css_images/lemon/';
+$sl-image-lemon-metronic: '../../../../css_images/lemon/metronic/';
+$sl-image-lemon-metronic-layout: '../../../../../../css_images/lemon/metronic/';
+$sl-image-desktop: '../../css_images/desktop/';
+$sl-fonts: '../../fonts/';

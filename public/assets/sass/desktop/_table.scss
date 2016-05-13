@@ -1,0 +1,269 @@
+@charset "utf-8";
+/**
+ * 表格
+ * @author : Mark
+ */
+@import "variables";
+/* 表格 [(Mark Zhao)2014/9/10]
+------------------------------------------------------ */
+.table {
+  clear: both;
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  .sep {
+    padding: 0 8px;
+    display: inline-block;
+  }
+  &.table-search {
+    margin: 12px 0 6px 4px;
+  }
+  &.table-narrow {
+    td, th {
+      padding: 3px !important;
+      line-height: 21px;
+    }
+  }
+  &.table-half {
+    width: 48%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  th, td {
+    padding: 6px !important;
+    height: 26px;
+    border: none !important;
+    font: 12px "Microsoft Yahei", "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "Simsun", sans-serif;
+  }
+  td.search-head {
+    label, input, select {
+      margin-right: 10px;
+    }
+    em {
+      display: inline-block;
+      margin-right: 10px;
+      font-variant: normal;
+    }
+  }
+  thead th, .thead th {
+    font-size: 13px;
+    color: #333;
+    white-space: nowrap;
+    border-top: solid 1px #DEEFFB !important;
+  }
+  .thead-space th {
+    font-weight: 600;
+    color: #329ED1;
+    background-color: #F3FBFE;
+  }
+  .thead-ship th {
+    border-bottom: 1px solid #BBDBF1;
+  }
+  .thead-narrow th {
+    padding: 3px !important;
+    line-height: 21px;
+    color: #333;
+  }
+  .thead-center {
+    text-align: center;
+    th, td {
+      text-align: center;
+    }
+  }
+  .thead-header {
+    border-top: 1px dotted #DEEFFB;
+    font-weight: 700;
+    td, th {
+      border-top: 1px dotted #DEEFFB;
+      font-weight: 700;
+    }
+  }
+}
+tr {
+  &.noborder {
+    border-bottom: 0;
+    border-top: 0;
+    td {
+      border-bottom: 0;
+      border-top: 0;
+    }
+  }
+  /*用户信息*/
+  &.member {
+    div.im span {
+      float: left;
+      a {
+        line-height: 999px;
+        background: url($bgSky) no-repeat;
+        display: block;
+        width: 16px;
+        height: 16px;
+        float: left;
+        padding: 3px;
+        margin-right: 2px;
+        overflow: hidden;
+        cursor: pointer;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        /*Firefox\Chrome\Safari\IE9\元素圆角效果*/
+        &:hover {
+          color: #000;
+          background-color: #FFF;
+          cursor: pointer;
+          -moz-box-shadow: 0 0 5px rgba(82, 168, 236, 0.5);
+          -webkit-box-shadow: 0 0 5px rgba(82, 168, 236, 0.5);
+          box-shadow: 0 0 5px rgba(82, 168, 236, 0.5);
+        }
+      }
+      &.email a {
+        background-position: 0px -630px;
+      }
+      &.qq a {
+        background-position: -30px -630px;
+      }
+      &.wangwang a {
+        background-position: -60px -630px;
+      }
+      &.msn a {
+        background-position: -90px -630px;
+      }
+      &.email a.yes {
+        background-position: -120px -630px;
+      }
+      &.qq a.yes {
+        background-position: -150px -630px;
+      }
+      &.wangwang a.yes {
+        background-position: -180px -630px;
+      }
+      &.msn a.yes {
+        background-position: -210px -630px;
+      }
+    }
+    .name {
+      margin-bottom: 3px;
+      color: #09C;
+      strong {
+        color: #333;
+        font-weight: 700;
+        margin-right: 12px;
+      }
+    }
+    .small {
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 4px;
+    }
+  }
+  &.nohover td {
+    background: #FFF !important;
+  }
+  &.important strong {
+    color: #F60;
+  }
+  &.border td {
+    border-top: 1px solid #DDEFF5;
+  }
+  //  暂无数据， 用于搜索结果
+  &.no_data td {
+    font-size: 14px;
+    line-height: 120px;
+    color: #09C;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+//   td
+td {
+  &.team a {
+    padding-right: 20px;
+    padding-left: 15px;
+    line-height: 16px !important;
+    height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    /*
+    @import "compass/utilities/sprites";
+    $icons: sprite-map("desktop/team/*.png");
+    background: $icons no-repeat;
+    &.tqq { background-position: sprite-position($icons, tqq, 100%); }
+    &.qzone { background-position: sprite-position($icons, qzone, 100%); }
+    &.weibo { background-position: sprite-position($icons, weibo, 100%); }
+    */
+  }
+  &.handler span {
+    display: block;
+    width: 140px;
+    text-align: left;
+    margin: 0 auto;
+  }
+  &.tips {
+    line-height: 20px;
+    color: #999;
+    &:hover {
+      color: #333;
+    }
+  }
+  &.form-ele {
+    width: 306px;
+    overflow: auto;
+  }
+}
+// 顶部的操作提示框
+table.prompt {
+  th {
+    //    cursor: n-resize;
+    cursor: pointer;
+  }
+  td {
+    border-top: 1px solid #DEEFFB;
+  }
+  div {
+    background: url($bgSkyPrompt) no-repeat 0px -30px;
+    float: left;
+    padding-left: 24px;
+  }
+  .ac {
+    background-position: 0px 2px;
+  }
+  .title {
+    h5 {
+      float: left;
+    }
+    span {
+      &.up {
+        border-color: #09C #F3FBFE #F3FBFE #F3FBFE;
+        margin: 9px 0 0 10px;
+      }
+      border-width: 4px;
+      border-color: #F3FBFE #F3FBFE #09C #F3FBFE;
+      border-style: solid;
+      width: 0;
+      height: 0;
+      margin: 5px 0 0 10px;
+      line-height: 0;
+      float: left;
+    }
+  }
+  .nobg .title span {
+    &.up {
+      border-color: #09C #FFF #FFF #FFF;
+      margin: 9px 0 0 10px;
+    }
+    border-width: 4px;
+    border-color: #FFF #FFF #09C #FFF;
+    width: 0;
+    height: 0;
+    margin: 5px 0 0 10px;
+    line-height: 0;
+    float: left;
+  }
+  ul li {
+    line-height: 26px;
+    color: #888;
+    background: url($bgSky) no-repeat -628px -888px;
+    padding-left: 24px;
+  }
+}

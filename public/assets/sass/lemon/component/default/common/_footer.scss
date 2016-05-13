@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* footer [(Mark Zhao) 2015/1/15]
+------------------------------------------------------ */
+.footer {
+  width: 100%;
+  border-top: 4px #06529a solid;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  color: #666;
+  p{
+    margin-top: 15px;
+  }
+  .footer-nav{
+    a {
+      padding: 0 10px;
+    }
+    color: #06529a;
+  }
+  .icon {
+    height: 50px;
+  }
+}

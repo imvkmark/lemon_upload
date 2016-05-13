@@ -1,0 +1,569 @@
+@charset "utf-8";
+@import "../lemon/variables";
+@import "variables";
+@import "compass/css3";
+
+/**
+ * 表单项目
+ * @author : Mark
+ */
+/* common [(Mark Zhao)2014/9/10]
+------------------------------------------------------ */
+input, textarea, select, button {
+  color: $input-color;
+  font: 12px "Microsoft Yahei", "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "Simsun", sans-serif;
+  background: #fff;
+  outline: none;
+}
+textarea, select, .file-text {
+  color: $input-color;
+  background: #FAFAFA none repeat scroll 0 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $input-border-color;
+  padding: 2px 4px;
+  @include border-radius(4px);
+  resize: none;
+}
+
+/* input [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+input {
+  &.medium {
+    width: 250px;
+  }
+  &.small {
+    margin-right: 10px;
+    width: 110px;
+  }
+  &.min {
+    width: 50px;
+  }
+  &[type=text], &[type=password], &.text, &.password {
+    color: $input-color;
+    margin-right: 5px;
+    background: #FAFAFA none repeat scroll 0 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $input-border-color;
+    padding: 2px 4px;
+    resize: none;
+    @include border-radius(4px);
+    line-height: 20px;
+    display: inline-block;
+//    height: 24px;
+//    height: 20px;
+    cursor: text;
+    /*禁止调节元素的尺寸*/
+    &:focus, &:hover, &:active {
+      color: $input-hover-color;
+      background-color: #fff;
+      border: 1px solid $input-border-color;
+      @include box-shadow($shadow-input);
+    }
+  }
+  &.readonly {
+    background: $input-bgReadonly-color;
+    border-color: $input-borderReadonly-color;
+  }
+  &.datetime {
+    background: #FAFAFA url($bgForm) no-repeat -5px -6px;
+    padding-left: 25px;
+    width: 122px;
+  }
+  &.date {
+    background: url($bgForm) no-repeat -5px -6px;
+    padding-left: 25px;
+    width: 70px;
+  }
+  &.error, &.alert {
+    background-color: $error-bg-color;
+    border: 1px dotted $error-border-color;
+  }
+}
+
+/* textarea [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+textarea {
+  margin-right: 10px;
+  height: 120px;
+  width: 360px;
+  padding: 2px 4px;
+  line-height: 20px;
+  &:hover, &:focus, &:active {
+    color: $input-hover-color;
+    border: 1px solid $input-borderHover-color;
+    @include box-shadow($shadow-input);
+  }
+
+  // size
+  &.small {
+    width: 130px;
+    height: 60px;
+  }
+
+  // status
+  &.readonly {
+    border-color: $input-borderReadonly-color;
+    &:focus, &:hover {
+      @include box-shadow(none);
+    }
+  }
+  &.error {
+    background-color: $error-bg-color;
+    border: 1px dotted $error-border-color;
+  }
+  &.editable {
+    cursor: text;
+  }
+}
+
+/* select [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+select {
+  margin-right: 10px;
+  &.medium {
+    width: 256px;
+  }
+  .small {
+    width: 123px;
+  }
+  .min {
+    width: 78px;
+  }
+}
+
+/* 标签, 用户验证和错误显示 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+label {
+  &.validation {
+    background: url($bgForm) no-repeat scroll -10px -47px;
+    padding-left: 16px;
+  }
+  &.strong{
+    font-weight: 700;
+  }
+  &.place{
+    padding-left: 16px;
+  }
+  &.error, &.alert {
+    margin: 0 0 0 5px;
+    font-style: normal;
+    font-weight: normal;
+    color: $error-color;
+    background: $error-bg-color url($bgForm) no-repeat no-repeat -7px -113px;
+    padding: 4px 6px 4px 24px;
+    border: 1px solid $error-border-color;
+  }
+  &.valid {
+    font-weight: normal;
+    color: #390;
+    background: transparent url($bgForm) no-repeat -10px -78px;
+    float: none;
+    padding-left: 18px;
+    margin-left: 5px;
+    border: none;
+    height: 10px;
+  }
+}
+
+/* 元素分组 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+fieldset {
+  margin-bottom: 1em;
+  &.w {
+    background: none repeat scroll 0 0 #FEFEFE;
+    padding: 0.5em;
+    border: 1px dashed #E7E7E7;
+  }
+  &.d {
+    background: none repeat scroll 0 0 #FFFAE3;
+    padding: 0.5em;
+    border: 1px dashed #F1E38B;
+    legend {
+      color: #C8712A;
+    }
+  }
+  legend {
+    color: #666;
+    background-color: transparent;
+    padding-left: 10px;
+    span {
+      padding-right: 10px;
+    }
+  }
+}
+
+
+/* button / link like button  [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+a,button {
+  border:none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  &.btn {
+    font-size: 14px;
+    color: #555;
+    font-weight: 700;
+    line-height: 18px;
+    background: transparent url($bgSky) no-repeat scroll 0 -280px;
+    display: inline-block;
+    height: 38px;
+    padding-left: 15px;
+    margin-right: 6px;
+    cursor: pointer;
+    &:hover {
+      background-position: 0 -318px;
+      span {
+        color: #1AA3D1;
+        background-position: 100% -318px;
+      }
+    }
+    &:active {
+      background-position: 0 -356px;
+      span {
+        color: #63C7ED;
+        background-position: 100% -356px;
+      }
+    }
+    span {
+      background: white url($bgSky) no-repeat scroll 100% -280px;
+      display: inline-block;
+      height: 18px;
+      padding: 10px 15px 10px 0;
+    }
+  }
+  &.btn-search {
+    color: #555;
+    line-height: 28px;
+    background: transparent url($bgSky) no-repeat scroll -130px -450px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    &:hover {
+      background-position: -160px -450px;
+    }
+    &:active {
+      background-position: -190px -450px;
+    }
+    span{
+      display: none;
+    }
+  }
+  &.btn-small {
+    font-weight: 700;
+    color: #333;
+    line-height: 16px;
+    background: transparent url($bgSky) no-repeat scroll 0 -801px;
+    display: inline-block;
+    height: 27px;
+    padding-left: 7px;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+    &:hover {
+      background-position: 0 -831px;
+      span {
+        color: #1AA3D1;
+        background-position: 100% -831px;
+      }
+    }
+    &:active {
+      background-position: 0 -860px;
+      span {
+        color: #63C7ED;
+        background-position: 100% -860px;
+      }
+    }
+    span {
+      background: white url($bgSky) no-repeat scroll 100% -801px;
+      display: inline-block;
+      height: 16px;
+      padding: 5px 7px 6px 0;
+    }
+  }
+
+  &.btn-add {
+    background: url($bgSky) no-repeat scroll 0px -720px;
+    float: left;
+    padding-left: 24px;
+    height: 16px;
+    span {
+      font-weight: 700;
+      color: #09C;
+    }
+    &:hover span {
+      text-decoration: underline;
+    }
+  }
+
+  &.btn-add-nofloat {
+    background: url($bgSky) no-repeat scroll 0px -720px;
+    display: inline-block;
+    padding-left: 24px;
+    height: 16px;
+    span {
+      font-weight: 700;
+      color: #09C;
+    }
+    &:hover span {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* 单选/多选排列 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.form-element {
+  overflow: auto;
+  .radio {
+    margin-top: -2px !important;
+    *margin-top: 0 !important;
+    *margin-top: -2px;
+  }
+  li {
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .nofloat {
+    clear: both;
+    li {
+      span.radio {
+        line-height: 25px;
+        width: 100px;
+        float: left;
+      }
+      select {
+        width: 156px;
+      }
+      &.left {
+        float: left;
+      }
+      float: none;
+      margin: 5px 0;
+      overflow: visible;
+    }
+  }
+  @import "compass/utilities/general/clearfix";
+  .check-list {
+    li {
+      @include clearfix;
+      input {
+        float: left;
+      }
+      label {
+        line-height: 20px;
+        height: 20px;
+        display: block;
+        float: left;
+      }
+    }
+  }
+  // area select
+  .ele-region {
+    select {
+      width: 120px;
+    }
+  }
+}
+
+/* input image upload 图像上传 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.file-element {
+  .file-box {
+    position: relative;
+    width: 256px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+  .file-text {
+    width: 187px;
+    line-height: 19px;
+    height: 19px;
+    margin: 0 2px 0 0;
+    float: left;
+    display: inline;
+  }
+  .file-button, input.file-button:focus {
+    background: url($bgSky) no-repeat -50px -450px;
+    display: inline;
+    width: 57px;
+    height: 25px;
+    float: left;
+    border: 0;
+  }
+  .file-file {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 25px;
+    width: 256px;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .file-show {
+    float: right;
+    margin-right: 10px;
+    cursor: help;
+  }
+  .file-preview {
+    background: #FFF;
+    display: none;
+    padding: 5px;
+    border: solid 5px #71CBEF;
+    position: absolute;
+    z-index: 999;
+  }
+  .image_display .file-show {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border: solid 1px #D8D8D8;
+    cursor: auto;
+  }
+}
+
+
+/* Used for the Switch effect  cb: checkbox [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.cb-onoff {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  label {
+    cursor: pointer;
+    // fix validation plugin
+    /*
+    &.error{
+      top: 4px;
+      position: relative;
+    }
+    */
+  }
+  input[type="radio"] {
+    position: absolute;
+    left: -999px;
+  }
+
+  .enable, .disable, .enable span, .disable span {
+    background: url($bgFormOnoff) repeat-x;
+    display: block;
+    float: left;
+  }
+  .enable span, .disable span {
+    font-weight: bold;
+    line-height: 24px;
+    background-repeat: no-repeat;
+    display: block;
+  }
+  .enable {
+    span {
+      background-position: left -72px;
+      padding: 0 10px;
+    }
+    &.selected {
+      background-position: 0 -48px;
+      span {
+        background-position: left -120px;
+        color: #fff;
+      }
+    }
+  }
+  .disable {
+    span {
+      background-position: right -144px;
+      padding: 0 10px;
+    }
+    &.selected {
+      background-position: 0 -24px;
+      span {
+        background-position: right -168px;
+        color: #fff;
+      }
+    }
+  }
+
+}
+.yes-onoff , .no-onoff , .power-onoff  {
+  a {
+    line-height: 999%;
+    background: url($bgSky) no-repeat scroll;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    overflow: hidden;
+  }
+  img {}
+}
+.yes-onoff a {
+  &.enabled {
+    background-position: 0px -500px;
+    &:hover {
+      background-position: -40px -500px;
+    }
+    &:active {
+      background-position: -80px -500px;
+    }
+  }
+  &.disabled {
+    background-position: -120px -500px;
+    &:hover {
+      background-position: -160px -500px;
+    }
+    &:active {
+      background-position: -200px -500px;
+    }
+  }
+}
+.no-onoff a {
+  &.enabled {
+    background-position: 0px -540px;
+    &:hover {
+      background-position: -40px -540px;
+    }
+    &:active {
+      background-position: -80px -540px;
+    }
+  }
+  &.disabled {
+    background-position: -120px -540px;
+    &:hover {
+      background-position: -160px -540px;
+    }
+    &:active {
+      background-position: -200px -540px;
+    }
+  }
+}
+.power-onoff a {
+  &.enabled {
+    background-position: 0px -580px;
+    &:hover {
+      background-position: -40px -580px;
+    }
+    &:active {
+      background-position: -80px -580px;
+    }
+  }
+
+  &.disabled {
+    background-position: -120px -580px;
+    &:hover{
+      background-position: -160px -580px;
+    }
+    &:active {
+      background-position: -200px -580px;
+    }
+  }
+}
+
+

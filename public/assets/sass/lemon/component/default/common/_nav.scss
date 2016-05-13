@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* nav [(Mark Zhao) 2015/1/28]
+------------------------------------------------------ */
+.nav {
+  margin-top: 10px;
+  ul {
+    li {
+      font-size: 14px;
+      float: left;
+      padding-left: 29px;
+      padding-right: 30px;
+      height: 34px;
+      line-height: 34px;
+      a {
+        color: #0f66ad;
+      }
+    }
+  }
+}
+//蓝色导航
+.head-nav {
+  height: 40px;
+  background: #0174d7;
+  ul{ padding-left: 10px;}
+  li {
+    float: left;
+    line-height: 40px;
+    _display: inline;
+    padding: 0 12px;
+    a {
+      font-size: 14px;
+      display: block;
+      height: 40px;
+      _display: inline;
+      color: #fff;
+      &:hover {
+        color: #fe9d01;
+      }
+    }
+  }
+}
+//普通导航
+.top-publish {
+    li {
+      float: left;
+      height: 30px;
+      line-height: 30px;
+      padding: 10px 14px 8px 5px;
+      font-size: 12px;
+      a {
+        color: #666;
+      }
+    }
+    .publish-btn {
+      width: 90px;
+      font-size: 14px;
+      a {
+        display: block;
+        border-radius: 3px;
+        color: #fff;
+        background: #f26426;
+        text-align: center;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+}

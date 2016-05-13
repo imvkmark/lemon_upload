@@ -1,0 +1,40 @@
+@charset "utf-8";
+@import "variables";
+/* ajax Request [(Mark Zhao) 2015/1/19]
+------------------------------------------------------ */
+.ajax-member-signup {
+  font-size: 12px;
+  .tab-switch {
+    padding-left: 0;
+    li{
+      line-height: 34px;
+      text-align: center;
+      list-style: none;
+      float:left;
+      width: 49%;
+      height: 34px;
+      border-bottom: 2px solid #fff;
+      cursor: pointer;
+      &.current{
+        border-color: $blue-light;
+      }
+    }
+  }
+  .form-group{
+    margin-left:0;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .tab-content{
+    margin-top: 15px;
+  }
+}
+
+.ajax-member-editPwd{
+  font-size: 12px;
+  .form-group{
+    margin-left:0;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+}

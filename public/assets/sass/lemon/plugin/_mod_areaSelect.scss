@@ -1,0 +1,126 @@
+@charset "utf-8";
+@import "../_variables";
+
+//灰色边框
+$mod_areaSelection-grey_border: 1px solid #ccc;
+$mod_areaSelection-width: 300px;
+
+.sj-mod_areaSelect {
+  *{ -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+  width: $mod_areaSelection-width;
+  position: relative;
+  z-index: 5;
+  .areaSelect-title {
+    background: url("#{$sl-image-plugin}mod_areaSelect/arrow.png") no-repeat right 1px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    padding: 4px 8px;
+    outline: 0;
+    position: relative;
+    cursor: pointer;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: -1px;
+  }
+  .areaSelect-address{
+    position: absolute;
+    top:27px;
+  }
+  .areaSelect-title.open {
+    background-position: right -15px;
+  }
+  .areaSelect-tab {
+    border: 1px solid #ccc {
+      left: none;
+      bottom: none;
+    }
+    width: ($mod_areaSelection-width)-1px;
+    height: 35px;
+    background: #f0f0f0;
+    a {
+      float: left;
+      display: inline;
+      margin-bottom: -1px;
+      padding: 8px 20px;
+      width: 33px;
+      line-height: 1.5;
+      border: {
+        left: 1px solid #ccc;
+        bottom: 1px solid #ccc;
+      }
+      color: #4D4D4D;
+      text-align: center;
+      outline: 0;
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+      &.current {
+        background: #fff;
+        border-bottom: 1px solid #fff;
+        color: #f60
+      }
+    }
+    .last {
+      width: 36px;
+    }
+  }
+  .areaSelect-tabcont {
+    border: $mod_areaSelection-grey_border {
+      top: none;
+    }
+    padding: 10px 15px;
+    width: 268px;
+    max-height: 165px;
+    overflow-y: auto;
+    background-color: #fff;
+    font-size: 12px;
+    .areaSelect {
+      display: none;
+      overflow: hidden;
+      div{
+        display: none;}
+    }
+    .areaSelect-prov{
+      span {
+        display:inline;
+      }
+    }
+    dt {
+      display: inline-block;
+      width: 25px;
+      float: left;
+      padding-right: 10px;
+      font-weight: 700;
+      text-align: right;
+    }
+    dd {
+      width: 233px;
+      display: inline;
+      float: left;
+      margin-left: 0;
+    }
+    a, span {
+      color: #4D4D4D;
+      padding:3px 10px;
+      outline: 0;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-right: 2px;
+      cursor: pointer;
+      float:left;
+      &:hover, &:focus {
+        background-color: #fff8f3;
+        border-radius: 2px;
+        color: #f60
+      }
+      &.current {
+        background-color: #f60;
+        color: #fff;
+        border-radius: 2px
+      }
+    }
+  }
+}

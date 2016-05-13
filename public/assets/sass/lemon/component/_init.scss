@@ -1,0 +1,259 @@
+@charset "utf-8";
+@import "../variables";
+// reset
+@import "blueprint/reset";
+body {
+  color: $font-color;
+  font-size: $font-size-base;
+  font-family: $font-family;
+}
+
+// fancy
+@import "blueprint/fancy-type";
+body.fancy, .fancy {
+  @include fancy-type;
+}
+// print
+@import "blueprint/print";
+body.print {
+  @include blueprint-print(true);
+}
+
+/* shadow [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+@import "compass/css3/box-shadow";
+.shadow {
+  @include box-shadow;
+}
+@import "compass/css3/text-shadow";
+.text-shadow {
+  @include text-shadow;
+}
+
+/* title [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+h1, .h1 {
+  font-size: 36px;
+  .small, small {
+    font-size: 30px;
+  }
+}
+h2, .h2 {
+  font-size: 30px;
+  .small, small {
+    font-size: 24px;
+  }
+}
+h3, .h3 {
+  font-size: 24px;
+  .small, small {
+    font-size: 18px;
+  }
+}
+h4, .h4 {
+  font-size: 18px;
+  .small, small {
+    font-size: 14px;
+  }
+}
+h5, .h5 {
+  font-size: 14px;
+  .small, small {
+    font-size: 12px;
+  }
+}
+h6, .h6 {
+  font-size: 12px;
+  .small, small {
+    font-size: 12px;
+  }
+}
+
+/* margin / padding [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+@for $i from 1 through 30 {
+  // padding
+  .pd#{$i*1} { padding: 1px * $i !important; }
+  .pt#{$i*1} { padding-top: 1px * $i!important;}
+  .pl#{$i*1} { padding-left: 1px * $i!important;}
+  .pb#{$i*1} { padding-bottom: 1px * $i!important; }
+  .pl#{$i*1} { padding-left: 1px * $i!important; }
+  // margin
+  .mg#{$i*1} { margin-top: 1px * $i!important; }
+  .mt#{$i*1} { margin-top: 1px * $i!important; }
+  .ml#{$i*1} { margin-left: 1px * $i!important; }
+  .mb#{$i*1} { margin-bottom: 1px * $i!important; }
+  .mr#{$i*1} { margin-right: 1px * $i!important; }
+}
+
+/* border [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+.bd-none { border: none; }
+.bdb-none { border-bottom: none; }
+.bdt-none { border-top: none; }
+.bdl-none { border-left: none; }
+.bdr-none { border-right: none; }
+
+/* bacground [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+.bg-none {
+  background: transparent none no-repeat scroll 0 0 !important;
+  td, th {
+    background: transparent none no-repeat scroll 0 0 !important;
+  }
+}
+
+/* layout [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+// clear
+.clearfix,.clear, .cf {
+  *zoom: 1;
+  &:before, &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// float
+.pull-left, .fl { float: left; }
+.pull-right, .fr { float: right; }
+// valign
+.va-middle {
+  vertical-align: middle;
+  td {
+    vertical-align: middle;
+  }
+}
+.va-top {
+  vertical-align: top;
+  td {
+    vertical-align: top;
+  }
+}
+
+/* txt positon [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.txt-center { text-align: center; }
+.txt-right { text-align: right; }
+.txt-left { text-align: left; }
+
+/* 不需要换行 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* todo 图片DIV左右垂直局中  [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.thumb {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  i {
+    *display: inline-block;
+    *height: 100%;
+    *vertical-align: middle;
+  }
+  img {
+    *vertical-align: middle;
+  }
+}
+
+/*  显示状态   [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.hidden { display: none; }
+.perch { visibility: hidden } // 占位
+
+/* form [(Mark Zhao) 2014/11/21]
+------------------------------------------------------ */
+.resize-vertical {
+  resize: vertical !important;
+}
+
+.error, .alert {
+  background: $error-bg-color;
+  color: $error-color;
+  border:1px solid #ccc;
+  border-color: $error-border-color;
+  a {
+    color: $error-link-color;
+  }
+}
+
+.notice {
+  background: $notice-bg-color;
+  color: $notice-color;
+  border-color: $notice-border-color;
+  a{
+    color: $notice-link-color;
+  }
+}
+
+.success {
+  background: $success-bg-color;
+  color: $success-color;
+  border-color: $success-border-color;
+  a {
+    color: $success-link-color;
+  }
+}
+
+/* 宽度\高度\尺寸
+------------------------------------------------------------------- */
+$width-prefix : w !default;
+@for $i from 1 through 60 {
+  .#{$width-prefix}#{$i*12} { width: 12px * $i; }
+}
+
+/* color [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+
+.red {  color: red;}
+.green{  color: green;}
+.blue {  color: #06C;}
+.orange {  color: #F60;}
+.black {  color: black;}
+.grey {  color: grey;}
+
+.bold {
+  font-weight: bold;
+  color: #545454;
+}
+.light {
+  color: #CCC;
+  a {
+    color: #AAA;
+  }
+}
+
+/* 链接 [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    color: $link-hover-color;
+  }
+  img {
+    border: none;
+  }
+  &.reverse{
+    color: $link-hover-color;
+    &:hover{
+      color: $link-color;
+    }
+  }
+  &.link, .reverse{
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2px 5px 0;
+    font-size: 16px;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

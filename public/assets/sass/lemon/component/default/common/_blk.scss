@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* 区块div显示样式， 暂定这个用于区块 div 的显示方式 [(Mark Zhao) 2015/2/10]
+------------------------------------------------------ */
+@import "compass/css3";
+// 深井的类似样子
+.blk-default{
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+}
+.blk-sm{
+  padding: 9px;
+}
+

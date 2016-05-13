@@ -1,0 +1,375 @@
+@charset "utf-8";
+/**
+ * 后台主框架
+ * @author : Mark
+ */
+@import "variables";
+/* 后台主框架 logo [(Mark Zhao) 2014/11/22]
+------------------------------------------------------ */
+.logo {
+  background: url($bgSkyLogo) no-repeat;
+  width: 120px;
+  height: 50px;
+  position: absolute;
+  top: 17px;
+  left: 21px;
+  a {
+    display: block;
+  }
+}
+/*左侧导航菜单栏
+------------------------------------------------------------------- */
+.menutd {
+  background: url($bgSkyLeft) repeat-y left top;
+  vertical-align: top;
+}
+.main-menu {
+  padding-top: 10px;
+  z-index: 20;
+  width: 161px;
+  font-family: '微软雅黑';
+  ul {
+    background: url($bgSkyLeft) repeat-y 0px 0px;
+    display: none;
+    width: 161px;
+    top: 10px;
+    left: 0px;
+  }
+  li a {
+    line-height: 20px;
+    text-decoration: none;
+    color: #7394A4;
+    background: url($bgSky) no-repeat;
+    display: block;
+    width: 120px;
+    height: 20px;
+    float: left;
+    clear: left;
+    padding: 4px 12px 4px 29px;
+    margin: 0;
+    background-position: 0 -170px;
+    &.selected {
+      color: #31444D;
+      background-color: #CBE9F3;
+      background-position: -161px -170px;
+    }
+    &:hover {
+      color: #069;
+    }
+  }
+  .group a {
+    background-position: 8px -170px;
+    padding-left: 36px;
+    width: 113px;
+    &.selected {
+      background-position: 12px -940px;
+    }
+  }
+  dl dt {
+    line-height: 20px;
+    text-decoration: none;
+    color: #7394A4;
+    background: url($bgSky) no-repeat;
+    display: block;
+    width: 120px;
+    height: 20px;
+    float: left;
+    clear: left;
+    padding: 4px 12px 4px 29px;
+    margin: 0;
+    background-position: -322px -170px;
+    cursor: pointer;
+  }
+
+}
+.copyright {
+  width: 150px;
+  padding-top: 6px;
+  border-top: dashed 1px #CCC;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    line-height: 18px;
+    padding-left: 5px;
+    em a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a {
+      text-decoration: underline;
+      color: #000;
+    }
+  }
+  sup {
+    font-family: Tahoma;
+    font-size: 9px;
+    line-height: 10px;
+    color: #333;
+    display: inline;
+    height: 10px;
+    padding: 0 3px;
+    margin-left: 2px;
+  }
+}
+/* 框架头部及主导航
+------------------------------------------------------------------- */
+
+.mainhd {
+  background: url($bgSkyBody) repeat-x 0px 0px;
+}
+.layout-header {
+  background: url($bgSky) no-repeat 0 0;
+  text-align: left;
+  width: 100%;
+  height: 91px;
+  position: relative;
+  z-index: 1;
+  zoom: 1;
+}
+.top-nav {
+  background: url($bgSky) no-repeat 0px -91px;
+  max-width: 320px;
+  height: 28px;
+  padding-bottom: 29px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  ul {
+    line-height: 20px;
+    color: #999;
+    height: 20px;
+    padding: 6px 8px 2px 0px;
+  }
+  li {
+    color: #069;
+    background: url($bgSky) no-repeat scroll -638px -96px;
+    display: inline;
+    padding-left: 4px;
+    margin-left: 2px;
+    float: left;
+    a {
+      color: #069;
+      background: #ccedf9 url($bgSky) no-repeat scroll 0 999%;
+      padding-left: 4px;
+      &:hover {
+        color: #0D93BF;
+        background-position: -350px -128px;
+        padding-left: 4px;
+        text-decoration: none;
+      }
+      span {
+        background: #ccedf9 url($bgSky) no-repeat scroll 0 999%;
+        padding-right: 4px;
+      }
+      &:hover span {
+        background-position: 100% -128px;
+      }
+    }
+    &.adminid {
+      background: url($bgSky) no-repeat scroll -350px -100px;
+      white-space: nowrap;
+      max-width: 150px;
+      height: 20px;
+      padding: 0 0 0 24px;
+      margin-right: 4px;
+      overflow: hidden;
+    }
+  }
+}
+.main-nav {
+  height: 75px;
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  left: 153px;
+  ul {
+    height: 42px;
+    padding-left: 1px;
+    li {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 20px;
+      background: url($bgSkyButtonPng) no-repeat right -84px;
+      /* IE6 */
+      height: 42px;
+      float: left;
+      display: inline;
+      padding-right: 5px;
+      margin-left: 3px;
+      a {
+        span{
+          height: 20px;
+          float: left;
+          padding: 11px 14px 11px 6px;
+        }
+        &.link {
+          background: url($bgSkyButtonPng) no-repeat 0 9999px;
+          _background-image: none;
+          /* IE6 */
+          float: left;
+          padding-left: 8px;
+          cursor: pointer;
+          padding-top: 0;
+          &:hover {
+            text-decoration: none;
+            _text-decoration: underline;
+            background-position: left -126px;
+          }
+        }
+        &.actived {
+          background: url($bgSkyButtonPng) no-repeat 0px 0px;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+.main-nav ul li a {
+  font-size: 14px;
+  &.link span {
+    color: #069;
+    background: url($bgSkyButtonPng) no-repeat 0px 9999px;
+    _background-image: none;
+  }
+  &:hover.link span {
+    color: #333;
+    background-position: right -168px;
+  }
+  &.actived span {
+    color: #000;
+    background: url($bgSkyButtonPng) no-repeat right -42px;
+    _background-image: url($bgSkyButtonGif);
+  }
+  &:hover.actived {
+    background: url($bgSkyButtonPng) no-repeat 0px 0px;
+    _background-image: none;
+    // IE6
+    padding-left: 8px;
+    span {
+      color: #000;
+      background: url($bgSkyButtonPng) no-repeat right -42px;
+      _background-image: url($bgSkyButtonGif);
+    }
+  }
+}
+
+.location {
+  line-height: 24px;
+  color: #7292A4;
+  height: 24px;
+  position: absolute;
+  z-index: 2;
+  top: 62px;
+  left: 170px;
+  div, strong {
+    float: left;
+    margin-left: 2px;
+  }
+  .crumbs span, span.arrow {
+    float: left;
+    margin-left: 2px;
+  }
+  span.arrow {
+    background: url($bgSky) no-repeat scroll -50px -155px;
+    width: 4px;
+    height: 8px;
+    margin: 9px 6px 7px 6px;
+    _margin: 9px 3px 7px 3px;
+  }
+  /* IE6 */
+}
+/*站点地图和常用功能下拉菜单
+------------------------------------------------------------------- */
+.toolbar {
+  position: absolute;
+  z-index: 2;
+  top: 62px;
+  right: 5px;
+}
+.sitemap {
+  float: left;
+  position: relative;
+  z-index: 2;
+  a {
+    text-decoration: none;
+    background: url($bgSky) scroll no-repeat 0 -400px;
+    float: left;
+    height: 24px;
+    padding-left: 8px;
+    cursor: pointer;
+    &:hover {
+      background-position: 0 -425px;
+    }
+    span {
+      line-height: 24px;
+      font-weight: 700;
+      color: #FFF;
+      float: left;
+      background: #daf3fd url($bgSky) no-repeat scroll 100% -400px;
+      height: 24px;
+      padding-right: 8px;
+    }
+    &:hover span {
+      background-position: 100% -425px;
+    }
+  }
+}
+.toolmenu {
+  background: #daf3fd url($bgSky) scroll no-repeat 0px -450px;
+  width: 36px;
+  height: 24px;
+  margin: 0 12px 0 6px;
+  float: left;
+  position: relative;
+  z-index: 1;
+  .bar-btn {
+    display: block;
+    width: 36px;
+    height: 24px;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+  }
+  .bar-list {
+    background: url($bgSky) no-repeat 100% -450px;
+    display: none;
+    width: 96px;
+    height: 126px;
+    padding: 34px 5px 10px 5px;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0px;
+    li {
+      line-height: 16px;
+      height: 26px;
+      width: 96px;
+      float: left;
+      clear: left;
+      a {
+        text-decoration: none;
+        color: #FFF;
+        text-align: center;
+        display: inline;
+        width: 86px;
+        height: 16px;
+        padding: 3px;
+        margin: 1px;
+        float: left;
+        clear: left;
+        border: 1px solid #15ACDC;
+        &:hover {
+          color: #069;
+          background-color: #DAF3FD;
+          border: 1px solid #0299CC;
+        }
+      }
+    }
+  }
+}

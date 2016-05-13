@@ -1,0 +1,98 @@
+////////////////////////////////////////////////////////////
+// Import everything to generate your animate sass module //
+////////////////////////////////////////////////////////////
+@import "animate/helpers/mixins",
+	"animate/helpers/settings",
+	"animate/helpers/base";
+
+// ATTENTION
+@import	"animate/animations/attention-seekers/bounce",
+	"animate/animations/attention-seekers/flash",
+	"animate/animations/attention-seekers/pulse",
+	"animate/animations/attention-seekers/shake",
+	"animate/animations/attention-seekers/swing",
+	"animate/animations/attention-seekers/wiggle",
+	"animate/animations/attention-seekers/wobble",
+	"animate/animations/attention-seekers/tada";
+
+// BOUNCE
+@import "animate/animations/bounce-enter/bounceIn",
+	"animate/animations/bounce-enter/bounceInDown",
+	"animate/animations/bounce-enter/bounceInLeft",
+	"animate/animations/bounce-enter/bounceInRight",
+	"animate/animations/bounce-enter/bounceInUp",
+	"animate/animations/bounce-exit/bounceOut",
+	"animate/animations/bounce-exit/bounceOutDown",
+	"animate/animations/bounce-exit/bounceOutLeft",
+	"animate/animations/bounce-exit/bounceOutRight",
+	"animate/animations/bounce-exit/bounceOutUp";
+
+// FADE
+@import	"animate/animations/fade-enter/fadeIn",
+	"animate/animations/fade-enter/fadeInDown",
+	"animate/animations/fade-enter/fadeInDownBig",
+	"animate/animations/fade-enter/fadeInLeft",
+	"animate/animations/fade-enter/fadeInLeftBig",
+	"animate/animations/fade-enter/fadeInRight",
+	"animate/animations/fade-enter/fadeInRightBig",
+	"animate/animations/fade-enter/fadeInUp",
+	"animate/animations/fade-enter/fadeInUpBig",
+	"animate/animations/fade-exit/fadeOut",
+	"animate/animations/fade-exit/fadeOutDown",
+	"animate/animations/fade-exit/fadeOutDownBig",
+	"animate/animations/fade-exit/fadeOutLeft",
+	"animate/animations/fade-exit/fadeOutLeftBig",
+	"animate/animations/fade-exit/fadeOutRight",
+	"animate/animations/fade-exit/fadeOutRightBig",
+	"animate/animations/fade-exit/fadeOutUp",
+	"animate/animations/fade-exit/fadeOutUpBig";
+
+// FLIP
+@import "animate/animations/flippers/flip",
+	"animate/animations/flippers/flipInX",
+	"animate/animations/flippers/flipInY",
+	"animate/animations/flippers/flipOutX",
+	"animate/animations/flippers/flipOutY";
+
+// LIGHTSPEED
+@import	"animate/animations/lightspeed/lightSpeedIn",
+	"animate/animations/lightspeed/lightSpeedOut";
+
+// ROTATE
+@import	"animate/animations/rotate-enter/rotateIn",
+	"animate/animations/rotate-enter/rotateInDownLeft",
+	"animate/animations/rotate-enter/rotateInDownRight",
+	"animate/animations/rotate-enter/rotateInUpLeft",
+	"animate/animations/rotate-enter/rotateInUpRight",
+	"animate/animations/rotate-exit/rotateOut",
+	"animate/animations/rotate-exit/rotateOutDownLeft",
+	"animate/animations/rotate-exit/rotateOutDownRight",
+	"animate/animations/rotate-exit/rotateOutUpLeft",
+	"animate/animations/rotate-exit/rotateOutUpRight";
+
+// SLIDE
+@import "animate/animations/slide-enter/slideInDown",
+	"animate/animations/slide-enter/slideInLeft",
+	"animate/animations/slide-enter/slideInRight",
+	"animate/animations/slide-enter/slideInUp",
+	"animate/animations/slide-exit/slideOutDown",
+	"animate/animations/slide-exit/slideOutLeft",
+	"animate/animations/slide-exit/slideOutRight",
+	"animate/animations/slide-exit/slideOutUp";
+
+// SPECIAL
+@import "animate/animations/special/hinge",
+	"animate/animations/special/rollIn",
+	"animate/animations/special/rollOut";
+
+// ZOOM
+@import "animate/animations/zoom-enter/zoomIn",
+	"animate/animations/zoom-enter/zoomInDown",
+	"animate/animations/zoom-enter/zoomInLeft",
+	"animate/animations/zoom-enter/zoomInRight",
+	"animate/animations/zoom-enter/zoomInUp",
+	"animate/animations/zoom-exit/zoomOut",
+	"animate/animations/zoom-exit/zoomOutDown",
+	"animate/animations/zoom-exit/zoomOutLeft",
+	"animate/animations/zoom-exit/zoomOutRight",
+	"animate/animations/zoom-exit/zoomOutUp";

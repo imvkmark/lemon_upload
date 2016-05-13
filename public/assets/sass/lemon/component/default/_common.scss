@@ -1,0 +1,190 @@
+@charset "utf-8";
+@import "variables";
+/* layout [(Mark Zhao) 2014/12/23]
+------------------------------------------------------ */
+.layout860 {
+  width:860px;
+  margin:0 auto;
+}
+.layout1000 {
+  width: 1000px;
+  margin: 0 auto;
+  .col-side {
+    width: 240px;
+    overflow: hidden;
+  }
+  .col-main {
+    width: 740px;
+  }
+}
+.layout1190 {
+  width: 1190px;
+  margin: 0 auto;
+}
+
+@for $i from 1 through 30 {
+  // padding
+  .pd#{$i*1} { padding: 1px * $i !important; }
+  .pt#{$i*1} { padding-top: 1px * $i!important;}
+  .pl#{$i*1} { padding-left: 1px * $i!important;}
+  .pb#{$i*1} { padding-bottom: 1px * $i!important; }
+  .pl#{$i*1} { padding-left: 1px * $i!important; }
+  // margin
+  .mg#{$i*1} { margin-top: 1px * $i!important; }
+  .mt#{$i*1} { margin-top: 1px * $i!important; }
+  .ml#{$i*1} { margin-left: 1px * $i!important; }
+  .mb#{$i*1} { margin-bottom: 1px * $i!important; }
+  .mr#{$i*1} { margin-right: 1px * $i!important; }
+}
+
+
+// width .w12 - .w720
+@for $i from 1 through 60 {
+  .w#{$i*12} { width: 12px * $i !important; }
+}
+
+// clearfix
+.clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+// float
+.fl, .pull-left { float: left; }
+.fr, .pull-right { float: right; }
+.hide { display: none; }
+.show{ display: block;}
+.hidden { visibility: hidden;}
+.visible { visibility: visible;}
+
+/* color [(Mark Zhao) 2015/2/5]
+------------------------------------------------------ */
+.red{color:red};
+
+/* block [(Mark Zhao) 2015/2/6]
+------------------------------------------------------ */
+@import "common/nav";
+@import "common/crumbs";
+@import "common/footer";
+@import "common/block";
+@import "common/fragment";
+@import "common/pages";
+@import "common/blk";
+@import "common/well";
+@import "common/link";
+
+/* 超出范围省略号[(zhou xu) 2015/3/11]
+------------------------------------------------------ */
+.text-ellipsis,.text-ellipsis li,.text-ellipsis a{
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-break:keep-all;
+}
+
+/* 功能性类, 价格 [(Mark Zhao) 2015/6/14]
+------------------------------------------------------ */
+.price {
+  font-family: arial, sans-serif;
+  color: #F76120;
+  strong {
+    margin: 0.1em;
+  }
+}
+
+.money, .num, .old-price, .sales, .time {
+  font-family: arial, sans-serif;
+}
+
+/* line  [(Mark Zhao) 2015/6/14] ----------- */
+.line-main {
+  border: 1px solid #DDD;
+}
+
+.line-main-dotted {
+  border: 1px dotted #DDD;
+}
+
+.line-sub {
+  border: 1px solid #EEE;
+}
+
+/* 链接 [(Mark Zhao) 2015/6/14] ----------- */
+.link-orange {
+  color: #F76120;
+}
+
+.link-black {
+  color: #333;
+}
+
+.link-black_green {
+  color: #333;
+  &:hover {
+    color: #2BB8AA;
+  }
+}
+
+.link-black-weaken {
+  color: #666;
+}
+
+.link-arrow-down {
+  position: relative;
+  float: right;
+  padding: 0 8px;
+  color: #666;
+  font-size: 12px;
+  line-height: 22px;
+  padding-right: 16px;
+  &:hover {
+    color: #2BB8AA;
+    .tri {
+      border-top-color: #2BB8AA;
+    }
+  }
+  .tri {
+    border-top: 3px solid #666;
+    top: 9px;
+    right: 8px;
+  }
+}
+
+.link-arrow-right {
+  position: relative;
+  float: right;
+  padding: 0 8px;
+  color: #666;
+  font-size: 12px;
+  line-height: 22px;
+  span:before {
+    display: inline-block;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #2BB8AA;
+  }
+}
+
+.link-surround {
+  border: 1px solid #EEE;
+  background: #FFF;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.link-large {
+  font-size: 14px;
+  line-height: 24px;
+  .tri {
+    top: 10px;
+  }
+}

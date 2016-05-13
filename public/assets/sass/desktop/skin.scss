@@ -1,0 +1,341 @@
+@charset "utf-8";
+/**
+ * 皮肤
+ * @author : Mark
+ */
+
+@import "../lemon/variables";
+@import "variables";
+
+
+// reset
+@import "../lemon/component/init";
+// layout
+@import "../lemon/component/layout/liquid";
+
+@import "../lemon/component/doc";
+@import "__init";
+
+
+// reset blueprint
+body{
+  background: #fff;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 12px;
+}
+
+em, cite, th {
+  font-style: normal;
+  font-weight: normal;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+label, .pointer {
+  cursor: pointer;
+}
+
+.big {
+  font-size: 120% !important;
+  line-height: 120%;
+}
+pre,code{
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
+small .small {
+  font-size: 11px!important;
+}
+abbr{
+  border-bottom:1px #ccc dashed;
+  padding:0 3px;
+}
+/* 宽度\高度\尺寸
+------------------------------------------------------------------- */
+
+.size-64x64 {
+  width: 64px;
+  height: 64px;
+}
+
+.size-44x44 {
+  width: 44px;
+  height: 44px;
+}
+
+.size-106x106 {
+  width: 106px;
+  height: 106px;
+}
+
+
+/* Base
+---------------------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+  color: #4D5762;
+  position: relative;
+  word-spacing: -0.1em;
+}
+
+h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1, h2 {
+  line-height: 28px;
+  margin-bottom: 18px;
+}
+
+h1, h2, h3, h4 {
+  margin-top: 18px;
+}
+
+h3, h4,h5, h6 {
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 15px;
+  color: #09C;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 13px;
+  color: #0099CC;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+/* color
+---------------------------------------------------------------------*/
+
+
+// 链接
+.link-page{
+  color: #666;
+}
+
+.link-hover {
+  color: #ff6000;
+}
+
+.link-page, .link-hover{
+  font-weight: bold;
+  text-decoration: none;
+  padding: 2px 5px 0;
+  font-size: 16px;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.link-tips {
+  color: #FFF;
+  background-color: #F60;
+  padding: 2px 4px;
+  margin: 0 4px;
+  border: 1px solid #F30;
+  @include  border-radius(4px);
+  &:hover{
+    color: #eee;
+  }
+}
+.link-do {
+  color: #FFF;
+  background-color: #329ED1;
+  padding: 2px 4px;
+  margin: 0 4px;
+  border: 1px solid #069;
+  @include  border-radius(4px);
+  &:hover{
+    color: #eee;
+  }
+}
+.link-delete {
+  color: #FFF;
+  background-color: #E76F6F;
+  padding: 2px 4px;
+  margin: 0 4px;
+  border: 1px solid red;
+  @include  border-radius(4px);
+  &:hover{
+    color: #eee;
+  }
+}
+// block style and inline - style
+.blk-trace {
+  background: white;
+  margin: 6px;
+  font-size: 14px;
+  border: 1px dashed silver;
+  padding: 8px;
+}
+.inline-nonce {
+  border: 1px solid #ddd;
+  display: block;
+  height: 17px;
+  text-decoration: none;
+  color: #a3a3a3;
+  line-height: 17px;
+  padding: 0 5px;
+}
+
+.inline-stat {
+  height: 20px;
+  line-height: 20px;
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.blk-help {
+  line-height: 24px;
+  color: #666;
+  background-color: #F6F6F6;
+  padding: 6px;
+  border: 1px dashed #CCC;
+}
+
+.blk-intro {
+  font-size: 14px;
+  color: #555;
+  background-color: #F9F9F9;
+  width: 94%;
+  padding: 9px;
+  margin: 0 10px;
+  border: dotted 1px #E7E7E7;
+}
+
+.blk-msg {
+  background: url('#{$sl-image-desktop}System.gif') scroll no-repeat 80px 0px;
+  width: 250px;
+}
+.blk-tips {
+  color: #333;
+  background: none repeat scroll 0 0 #FEFEDA;
+  border: 1px solid #FFE8C2 !important;
+  padding: 4px;
+  margin-bottom: 6px;
+  i {
+    background: url($bgSky) no-repeat scroll -270px -630px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+/* Page title
+---------------------------------------------------------------------*/
+
+// 图片预览窗口
+.preview {
+  margin-bottom: 8px;
+  width: 570px;
+  height: 340px;
+  border: 1px solid #09C;
+  @include box-shadow(3px 3px 3px #EEE);
+}
+
+/* Buttons
+---------------------------------------------------------------------*/
+
+.thumblists li {
+  float: left;
+  width: 80px;
+  height: 100px;
+  margin-right: 10px;
+  &.picture {
+    div {
+      background: #FFF;
+      float: left;
+      /* if IE7/8/9*/
+      *text-align: center;
+      display: inline;
+      border: dotted 1px #CBE9F3;
+      padding: 2px;
+      margin: 5px;
+    }
+    p {
+      clear: both;
+      line-height: 20px;
+      height: 20px;
+      width: 70px;
+      margin: 0 5px;
+      span {
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+th.picture div ,td.picture div{
+  background: #FFF;
+  float: left;
+  /* if IE7/8/9*/
+  *text-align: center;
+  display: inline;
+  border: dotted 1px #CBE9F3;
+  padding: 2px;
+}
+
+
+/* 动态列表中分享商品内容样式 */
+
+.oper-tips {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  border: 1px solid #DDD;
+  line-height: 30px;
+  background: ivory;
+  padding: 0 15px;
+  font-weight: 600;
+}
+
+.oper-tip {
+  @extend .oper-tips;
+  color: #000;
+}
+
+.oper-error {
+  @extend .oper-tips;
+  color: #FFF;
+  background: #b43234;
+}
+
+.oper-ok {
+  @extend .oper-tips;
+  color: #f60;
+}
+
+.oper-notice {
+  @extend .oper-tips;
+  color: red;
+}

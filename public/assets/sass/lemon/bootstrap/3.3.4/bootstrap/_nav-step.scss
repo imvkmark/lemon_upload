@@ -1,0 +1,144 @@
+@import "compass/css3/border-radius";
+ul.nav-wizard {
+  background-color: #f9f9f9;
+  border: 1px solid #d4d4d4;
+	@include border-radius(6px);
+  *zoom: 1;
+  position: relative;
+  overflow: hidden;
+  &:before {
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 46px;
+    height: 47px;
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+    z-index: 11;
+    content: " ";
+  }
+  &:after {
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 138px;
+    height: 47px;
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+    z-index: 11;
+    content: " ";
+  }
+  li {
+    position: relative;
+    float: left;
+    height: 46px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 20px 0 30px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 46px;
+    a {
+      color: #468847;
+      padding: 0;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    &:before {
+      position: absolute;
+      display: block;
+      border: 24px solid transparent;
+      border-left: 16px solid #d4d4d4;
+      border-right: 0;
+      top: -1px;
+      z-index: 10;
+      content: '';
+      right: -16px;
+    }
+    &:after {
+      position: absolute;
+      display: block;
+      border: 24px solid transparent;
+      border-left: 16px solid #f9f9f9;
+      border-right: 0;
+      top: -1px;
+      z-index: 10;
+      content: '';
+      right: -15px;
+    }
+    &.active {
+      color: #3a87ad;
+      background: #d9edf7;
+      border-left: 0;
+      &:after {
+        border-left: 16px solid #d9edf7;
+      }
+      a {
+        color: #3a87ad;
+        background: #d9edf7;
+        &:active, &:visited, &:focus {
+          color: #3a87ad;
+          background: #d9edf7;
+        }
+      }
+    }
+  }
+  .active ~ li {
+    color: #999999;
+    background: #ededed;
+    &:after {
+      border-left: 16px solid #ededed;
+    }
+    a {
+      color: #999999;
+      background: #ededed;
+      &:active, &:visited, &:focus {
+        color: #999999;
+        background: #ededed;
+      }
+    }
+  }
+  &.nav-wizard-backnav {
+    li:hover {
+      color: #468847;
+      background: #f6fbfd;
+      &:after {
+        border-left: 16px solid #f6fbfd;
+      }
+      a {
+        color: #468847;
+        background: #f6fbfd;
+        &:active, &:visited, &:focus {
+          color: #468847;
+          background: #f6fbfd;
+        }
+      }
+    }
+    .active ~ li {
+      color: #999999;
+      background: #ededed;
+      &:after {
+        border-left: 16px solid #ededed;
+      }
+      a {
+        color: #999999;
+        background: #ededed;
+        &:active, &:visited, &:focus {
+          color: #999999;
+          background: #ededed;
+        }
+      }
+    }
+  }
+	&.nav-sm{
+		@include border-radius(3px);
+		li{
+			height :35px;
+			line-height :35px;
+			font-size :14px;
+		}
+	}
+}

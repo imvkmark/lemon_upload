@@ -1,0 +1,70 @@
+@charset "utf-8";
+@import "../../variables";
+@import "../_mixin.scss";
+// -------------- title
+.title-s, .title-m, .title-l {
+	.more {
+		float: right;
+		padding: 0 10px;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	.eng {
+		color: #333;
+		font-weight: normal;
+		padding-left: 10px;
+	}
+}
+// style
+.title-leftRed {
+	@include size-list($font-size-medium, $font-size-medium * $line-height-base, $font-size-medium * $line-height-base);
+	border-left: 4px solid #F72952;
+	padding-left: 15px;
+	font-weight: bold;
+}
+.title-tabRedCan {
+	@include size-list($font-size-medium, $font-size-medium * $line-height-base, $font-size-medium * $line-height-base);
+	border: 1px solid #C6C6C5;
+	/*border-left: none;*/
+	border-top: 2px solid #F72952;
+	background: #F5F2F2;
+	height: 34px;
+	line-height: 34px;
+	padding-left: 0;
+	li {
+		list-style: none;
+		float: left;
+		padding: 0 10px;
+		border-right: 1px solid #C6C6C5;
+	}
+	.current {
+		position: relative;
+		background: #FFF;
+	}
+	&.title-s .current { height: 22px; }
+	&.title-m .current { height: 26px; }
+	&.title-l .current { height: 37px; }
+}
+.title-greyBottom {
+	border-bottom: 2px solid #CCC;
+	color: #333;
+	overflow: hidden;
+	h3 {
+		float: left;
+		color: #555;
+	}
+}
+// size
+.title-s {
+	@include size-list($font-size-small, $font-size-small * $line-height-base, $font-size-small * $line-height-base);
+}
+.title-m {
+	@include size-list($font-size-medium, $font-size-medium * $line-height-base, $font-size-medium * $line-height-base);
+}
+.title-l {
+	@include size-list($font-size-large, $font-size-large * $line-height-base, $font-size-large * $line-height-base);
+}
+.block-tabRedCan {
+	border: 1px solid #CCC;
+	border-top: none;
+}

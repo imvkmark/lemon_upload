@@ -1,0 +1,52 @@
+@charset "utf-8";
+@import "compass/css3";
+/* 遮罩站点地图层
+------------------------------------------------------------------- */
+.sj-dialog-desktop {
+	@include box-shadow('0 0 8px rgba(82, 168, 236, 0.8) !important');
+	@include border-radius(5px !important);
+	border: 5px solid #71CBEF !important;
+	.ui-dialog-header {
+		padding: 5px 5px 0 20px;
+	}
+	.ui-dialog-close {
+		top: 6px;
+		right: 8px;
+	}
+	.ui-dialog-title {
+		font-size: 16px;
+		color: #329ED1;
+		padding: 8px 14px;
+	}
+	.ui-dialog-body {
+		clear: both;
+		padding: 0 5px;
+		overflow: auto;
+		dl {
+			font-size: 12px;
+			width: 100px;
+			float: left;
+			overflow: hidden;
+		}
+		dt {
+			font-size: 12px;
+			font-weight: bold;
+			color: #93BB3A;
+			line-height: 32px;
+			padding-left: 2px;
+		}
+		dd {
+			height: 24px;
+			a {
+				line-height: 20px;
+				padding: 2px 4px;
+				@include border-radius(4px);
+				&:hover {
+					color: #FFF;
+					background-color: #329ED1;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

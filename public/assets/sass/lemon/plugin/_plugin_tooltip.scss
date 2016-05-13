@@ -1,0 +1,22 @@
+@charset "utf-8";
+/*title提示*/
+@import "compass";
+.sj-plugin_tooltip{
+  color: #FFF;
+  background-color: #09C;
+  display: none;
+  padding: 5px;
+  position: absolute;
+  z-index: 100;
+  @include border-radius(4px);
+}
+
+.sj-plugin_tooltip-shadow {
+  background-color: #000;
+  display: none;
+  padding: 5px;
+  position: absolute;
+  z-index: 99;
+  @include opacity(0.3);
+  @include border-radius(4px);
+}

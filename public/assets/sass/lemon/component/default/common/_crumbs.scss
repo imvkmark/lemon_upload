@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import "../variables";
+/* crumbs [(Mark Zhao) 2015/1/15]
+------------------------------------------------------ */
+.crumbs{
+  line-height: 35px !important;
+  height: 35px !important;
+  overflow: hidden;
+  margin-top:10px;
+  font-size: 12px;
+  a, span{
+    display: inline-block;
+    font-family: "微软雅黑";
+    color:#555;
+    &:hover{
+      color:#f60;
+    }
+  }
+  .home, .step{
+    background: url(#{$css-img}default/crumbs.png) no-repeat 0 0;
+    color:#333;
+  }
+  .home{
+    background-position: 0 -1px ;
+    padding-left: 20px;
+  }
+  .step{
+    width: 20px;
+    background-position: 0 -43px ;
+  }
+}

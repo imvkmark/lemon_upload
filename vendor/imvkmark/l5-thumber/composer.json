@@ -1,0 +1,42 @@
+{
+	"name": "imvkmark/l5-thumber",
+	"description": "",
+	"authors": [
+		{
+			"name": "Mark Zhao",
+			"email": "zhaody901@126.com"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"imagine/imagine": "dev-master"
+	},
+	"require-dev": {
+		"firephp/firephp-core": "dev-master",
+		"rmccue/Requests": "dev-master",
+		"aferrandini/phpqrcode": "dev-master",
+		"symfony/process": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Imvkmark\\L5Thumber\\": "src/L5Thumber"
+		},
+		"psr-0": {
+			"Requests": "library/",
+			"PHPQRCode": "lib/"
+		}
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://packagist.phpcomposer.com"
+		},
+		{
+			"packagist": false
+		}
+	],
+	"minimum-stability": "dev"
+}

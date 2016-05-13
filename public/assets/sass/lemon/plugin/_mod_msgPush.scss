@@ -1,0 +1,103 @@
+@charset "utf-8";
+@import "../variables";
+.J-msgPush {
+  .radio-inline, .checkbox-inline{
+    width: 112px;
+    overflow: hidden;
+    text-align: left;
+    padding-left:0 !important;
+    margin-left:0 !important;
+    height: 20px;
+    margin-bottom: 5px;
+  }
+  label{
+    _color:#333;
+  }
+  input[type="radio"], input[type="checkbox"] {
+    position:static;
+    vertical-align: middle;
+    margin:3px 5px 0 0;
+  }
+  .form-group {
+    margin: 20px 0;
+    .form-control {
+      margin-right: 10px;
+      width: 120px;
+    }
+  }
+  .user-all {
+    margin: 20px 5px;
+    max-height:150px;
+    _height:150px;
+    overflow: hidden;
+    overflow-y:auto;
+    label {
+      font-size: 14px;
+      margin-right: 10px;
+      font-weight: normal;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+  .btnDel {
+    float: left;
+    display: block;
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    background: url("#{$sl-image-plugin}mod_multiArea/del-sel.gif") no-repeat 4px 6px;
+    border-left: 1px solid #DDD;
+    &:hover {
+      background: #f66604 url("#{$sl-image-plugin}mod_multiArea/del-sel1.gif") no-repeat 4px 6px;
+    }
+  }
+  .user-sel {
+    padding: 8px 0;
+    background-color: #f6f6f6;
+    border: 1px solid #e9e9e9;
+
+    .title {
+      display: block;
+      margin: 3px 0 3px 8px;
+    }
+    .user-list {
+      overflow: hidden;
+      overflow-y:auto;
+      max-height: 128px;
+      _height:128px;
+      li {
+        float: left;
+        margin: 5px;
+        border: 1px solid #DDD;
+        background-color: #fff;
+        span {
+          float: left;
+          display: block;
+          min-width: 75px;
+          _width: 75px;
+          overflow: hidden;
+          text-align: center;
+          line-height: 20px;
+
+          margin: 0;
+        }
+      }
+    }
+  }
+  .radio {
+    margin-bottom: 15px;
+    label {
+      margin: 12px 10px 12px 0;
+      _margin: 1px 10px 1px 0;
+
+    }
+    .form-radio {
+      width: 100px;
+      _padding-left:0;
+    }
+  }
+  .btn-push {
+    margin-top: 10px;
+    width: 60px;
+  }
+}

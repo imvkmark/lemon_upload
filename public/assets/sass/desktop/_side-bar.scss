@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "variables";
+
+.side-bar{
+  .side-wrapper {
+    border-right:1px solid #ccc;
+  }
+  li.active{
+    a{
+      color: $link-hover-color;
+    }
+  }
+}

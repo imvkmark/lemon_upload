@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import "../variables";
+.imglist{
+  overflow: hidden;
+  li{ float: left;
+    width:310px;
+    height:225px;
+    margin:5px;
+    list-style: none;
+    a{
+      display: block;
+      width:310px;
+      height:225px;
+    }
+  }
+}
+.thumbnail{
+
+}

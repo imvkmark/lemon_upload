@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* Tagging Basic Style */
+@import "compass/css3";
+.sj-tagging {
+  cursor: text;
+  font-size: 1em;
+  height: auto;
+  color: #333333;
+  background: #FAFAFA none repeat scroll 0 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ABADB3 #E2E3EA #E2E3EA #ABADB3;
+  padding: 2px 4px;
+  @include border-radius(4px);
+  .tag {
+    background: none repeat scroll 0 0 #EE7407;
+    border-radius: 2px;
+    color: white;
+    cursor: default;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    padding: 4px 20px 4px 0;
+    margin: 3px 5px 0 0;
+    span {
+      background: none repeat scroll 0 0 #D66806;
+      border-radius: 2px 0 0 2px;
+      margin-right: 5px;
+//      padding: 5px 10px 5px;
+    }
+    .tag-i {
+      color: white;
+      cursor: pointer;
+      font-size: 1.3em;
+      height: 0;
+      line-height: 0.1em;
+      position: absolute;
+      right: 5px;
+      top: 0.7em;
+      text-align: center;
+      width: 10px;
+      &:hover {
+        color: black;
+        text-decoration: underline;
+      }
+    }
+  }
+  .type-zone {
+    border: 0 none;
+    height: auto;
+    width: auto;
+    min-width: 20px;
+    display: inline-block;
+  }
+  .type-zone:focus {
+    outline: none;
+  }
+}
+
+
+

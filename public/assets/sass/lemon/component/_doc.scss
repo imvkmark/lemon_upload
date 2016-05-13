@@ -1,0 +1,103 @@
+@charset "utf-8";
+@import "compass";
+$doc-bgcolor: #0099CC;
+// 自己的doc
+.doc-container{
+	width:1000px;
+	margin: 0 auto;
+}
+.doc-header{
+  font-size: 20px;
+  padding:20px 0 10px 0;
+  .intro{
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: baseline;
+    padding-left: 20px;
+  }
+}
+.doc-navbar{
+  @include clearfix;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background: $doc-bgcolor;
+  list-style: none;
+  li{
+    float: left;
+    list-style: none;
+    a{
+      display: block;
+      padding: 0 15px;
+      color:#fff;
+      &:hover, &.current{
+        background: #ccc;
+        color:#ff6666;
+      }
+    }
+    &.current a{
+      background: #ccc;
+      color:#ff6666;
+      &:hover{
+        color: #fff;
+      }
+    }
+
+  }
+}
+.doc-intro{
+  border:1px solid #ccc;
+  @include border-radius(3px);
+  padding:5px;
+  background: #eee;
+}
+.doc-jsGen{
+  border:1px $doc-bgcolor dashed;
+  padding:10px 20px;
+  @include border-radius(3px);
+  //  background: #F0F0F0;
+  >h1,>h2,>h3,>h4,h5,>h6 {
+    background: #fff;
+  }
+}
+.doc-code{
+  line-height: 18px;
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
+.doc-label{
+  font-weight: bold;
+  line-height: 24px;
+  height: 24px;
+}
+.doc-emmet{
+  line-height: 18px;
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  border:1px solid #f66;
+  @include border-radius(3px);
+  em{
+    color: #f66;
+  }
+}
+.doc-title{
+  line-height: 50px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+.doc-side{
+  position: fixed;
+  top:20px;
+  overflow-y:auto;
+  .current{
+    background: $doc-bgcolor;
+    color: #fff;
+  }
+  ul{
+    line-height: 24px;
+    li{
+      height: 24px;
+      list-style: none;
+    }
+  }
+}

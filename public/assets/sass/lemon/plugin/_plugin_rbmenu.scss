@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import "../../lemon/variables";
+.sj-plugin_rbmenu {
+	position       : fixed;
+	right          : 0;
+	margin-right   : 20px;
+	bottom         : 20px;
+	padding-bottom : 20px;
+	z-index        : 999;
+}
+.sj-plugin_rbmenu .sj-btn {
+	width         : 73px;
+	height        : 73px;
+	margin-bottom : 1px;
+	cursor        : pointer;
+	position      : relative;
+	display       : block;
+}
+.sj-plugin_rbmenu .btn-qq {
+	background : url('#{$sl-image-plugin}rbmenu/r_qq.png') #6DA9DE 0 0 no-repeat;
+}
+.sj-plugin_rbmenu .btn-qq:hover {
+	background-color : #488BC7;
+}
+.sj-plugin_rbmenu a.btn-qq {
+	background      : url('#{$sl-image-plugin}rbmenu/r_qq.png') #6DA9DE 0 0 no-repeat;
+	text-decoration : none;
+	display         : block;
+}
+.sj-plugin_rbmenu a.btn-qq:visited {
+	background      : url('#{$sl-image-plugin}rbmenu/r_qq.png') #6DA9DE 0 0 no-repeat;
+	text-decoration : none;
+	display         : block;
+}
+.sj-plugin_rbmenu .btn-wx {
+	background : url('#{$sl-image-plugin}rbmenu/r_wx.png') #78C340 0 0 no-repeat;
+}
+.sj-plugin_rbmenu .btn-wx:hover {
+	background-color : #58A81C;
+}
+.sj-plugin_rbmenu .btn-wx .pic {
+	position : absolute;
+	left     : -160px;
+	top      : 0;
+	display  : none;
+	width    : 160px;
+	height   : 160px;
+}
+.sj-plugin_rbmenu .btn-phone {
+	background : url('#{$sl-image-plugin}rbmenu/r_phone.png') #FBB01F 0 0 no-repeat;
+}
+.sj-plugin_rbmenu .btn-phone:hover {
+	background-color : #FF811B;
+}
+.sj-plugin_rbmenu .btn-phone .phone {
+	background-color : #FF811B;
+	position         : absolute;
+	width            : 160px;
+	left             : -160px;
+	top              : 0;
+	line-height      : 73px;
+	color            : #FFF;
+	font-size        : 18px;
+	text-align       : center;
+	display          : none;
+}
+.sj-plugin_rbmenu .btn-top {
+	background : url('#{$sl-image-plugin}rbmenu/r_top.png') #666 0 0 no-repeat;
+	display    : none;
+}
+.sj-plugin_rbmenu .btn-top:hover {
+	background-color : #444;
+}

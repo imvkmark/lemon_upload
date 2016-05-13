@@ -1,0 +1,93 @@
+@charset "utf-8";
+@import "../lemon/variables";
+// reset
+$link-color: #007FCA;
+$link-hover-color: #F60;
+// layout
+@import "../lemon/component/layout/grid";
+// reset
+@import "../lemon/component/init";
+@import "js";
+
+body {
+	line-height: 24px;
+	background: #CFDFEC url('#{$sl-image-desktop}login_bg.png') repeat-x center top;
+}
+.loginBox {
+	background: url('#{$sl-image-desktop}login.png') no-repeat 0px 0px;
+	width: 738px;
+	height: 506px;
+	margin: 9px auto auto auto;
+	position: relative;
+	div {
+		width: 450px;
+		height: 32px;
+		position: absolute;
+		&.username {
+			top: 268px;
+			left: 105px;
+		}
+		&.password {
+			top: 323px;
+			left: 105px;
+		}
+		h5 {
+			width: 50px;
+			font-size: 14px;
+			color: #2B4253;
+			line-height: 32px;
+			font-weight: normal;
+			display: block;
+			float: left;
+			padding: 0 35px 0 15px;
+			margin: 0;
+		}
+		input {
+			&.text {
+				font-family: Tahoma, Geneva, sans-serif;
+				font-size: 12px;
+				line-height: 24px;
+				height: 24px;
+				float: left;
+				padding: 0;
+				margin: 4px 0 4px 8px;
+				border-width: 0;
+			}
+		}
+		.btnEnter {
+			font-size: 12px;
+			line-height: 39px;
+			background: url('#{$sl-image-desktop}login.png') no-repeat right -506px;
+			width: 98px;
+			height: 39px;
+			padding: 0;
+			margin: 0;
+			border-width: 0;
+			cursor: pointer;
+			opacity: 1;
+		}
+		&.code span {
+			float: left;
+			margin-top: 4px;
+			margin-left: 30px;
+		}
+		&.button {
+			width: 98px;
+			height: 39px;
+			position: absolute;
+			top: 384px;
+			right: 173px;
+			cursor: pointer;
+		}
+		&.back {
+			line-height: 28px;
+			background: url('#{$sl-image-desktop}login.png') no-repeat left -506px;
+			width: 120px;
+			height: 30px;
+			padding-left: 40px;
+			position: absolute;
+			top: 390px;
+			left: 97px;
+		}
+	}
+}

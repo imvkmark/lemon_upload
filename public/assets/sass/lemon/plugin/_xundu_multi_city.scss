@@ -1,0 +1,158 @@
+@charset "utf-8";
+@import "../variables";
+.J_MultiSubmit {
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  border: none;
+  background: url("#{$sl-image-plugin}mod_multiArea/button.gif") center no-repeat;
+  overflow: hidden;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  color: #FFF;
+}
+.JS_MultiAreaSel {
+  ul{ padding: 0;}
+  .selected-area {
+    padding: 0 5px 10px;
+    overflow: hidden;
+    border-bottom: 1px dotted #DDD;
+    ul {
+      display: block;
+      width: 570px;
+      height: 60px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      float: left;
+    }
+    li {
+      float: left;
+      margin: 5px;
+      border: 1px solid #DDD;
+      list-style: none;
+      span {
+        float: left;
+        display: block;
+        min-width: 75px;
+        _widht: 75px;
+        overflow: hidden;
+        text-align: center;
+        line-height: 20px;
+      }
+    }
+    .fr {
+      width: 92px;
+      height: 60px;
+      overflow: hidden;
+      float: right;
+    }
+    .btnDel {
+      float: left;
+      display: block;
+      height: 20px;
+      width: 20px;
+      overflow: hidden;
+      background: url("#{$sl-image-plugin}mod_multiArea/del-sel.gif") no-repeat 4px 6px;
+      border-left: 1px solid #DDD;
+      &:hover {
+        background: #f66604 url("#{$sl-image-plugin}mod_multiArea/del-sel1.gif") no-repeat 4px 6px;
+      }
+    }
+    .btnTrue, .btnEmpty {
+      display: block;
+      float: left;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border: none;
+      padding: 1px 3px;
+      margin:0 2px;
+      _margin:0 3px;
+    }
+    .btnTrue {
+      width: 50px;
+      background: url("#{$sl-image-plugin}mod_multiArea/button.gif") center no-repeat;
+      color: #fff;
+      font-size: 13px;
+    }
+    .btnEmpty {
+      width: 27px;
+      background: url("#{$sl-image-plugin}mod_multiArea/delete.gif") center no-repeat;
+      text-indent: -99em;
+    }
+  }
+  .area-list {
+    clear: both;
+    padding: 10px;
+    p {
+      margin-left: 5px;
+      &.selected {
+        color: red;
+      }
+    }
+    li {
+      width: 80px;
+      float: left;
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      i {
+        display: block;
+        width: 7px;
+        height: 4px;
+        background: url("#{$sl-image-plugin}mod_multiArea/popuparrow.png") no-repeat 0 0;
+        position: absolute;
+        top: 12px;
+        right: 8px;
+      }
+    }
+    label {
+      padding: 5px 8px 5px 5px;
+      cursor: pointer;
+      display: block;
+      font-weight: normal;
+      position: relative;
+      input {
+        vertical-align: middle;
+        margin: 0 2px;
+        _margin: 0;
+      }
+    }
+    .pro-label {
+      border: 1px solid #FFF;
+    }
+    .pro-li.current {
+      z-index: 5;
+      .pro-label {
+        background-color: #fff;
+        border-color: #ddd;
+        border-bottom-color: #fff;
+        z-index: 20;
+      }
+      i {
+        background-position: 0 -18px;
+      }
+    }
+
+    .city-ul {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      z-index: 10;
+      width: 345px;
+      padding-bottom: 10px;
+      overflow: hidden;
+      border: 1px solid #DDD;
+      background: #FFF;
+      display: none;
+      li {
+        width: 85px;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+      }
+    }
+
+  }
+}
