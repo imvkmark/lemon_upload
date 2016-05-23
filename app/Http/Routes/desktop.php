@@ -12,50 +12,40 @@ Route::group([
 
 
 	Route::get('dsk_cp', [
-		'as'   => 'dsk_home.cp',
-		'uses' => 'HomeController@getCp',
+		'as'   => 'dsk_lemon_home.cp',
+		'uses' => 'LemonHomeController@getCp',
 	]);
 
 	// 主页
-	Route::controller('dsk_home', 'HomeController', [
-		'getWelcome'   => 'dsk_home.welcome',
-		'getCp'        => 'dsk_home.cp',
-		'getLogout'    => 'dsk_home.logout',
-		'getPassword'  => 'dsk_home.password',
-		'postPassword' => 'dsk_home.password',
-		'getLogin'     => 'dsk_home.login',
-		'postLogin'    => 'dsk_home.login',
-	]);
-
-	// 网站设置
-	Route::controller('dsk_site', 'SiteController', [
-		'postSetting' => 'dsk_site.setting',
-		'getCache'    => 'dsk_site.cache',
+	Route::controller('dsk_lemon_home', 'LemonHomeController', [
+		'getWelcome'  => 'dsk_lemon_home.welcome',
+		'getCp'       => 'dsk_lemon_home.cp',
+		'getLogout'   => 'dsk_lemon_home.logout',
+		'getPassword' => 'dsk_lemon_home.password',
+		'getLogin'    => 'dsk_lemon_home.login',
+		'getSetting'  => 'dsk_lemon_home.setting',
+		'getCache'    => 'dsk_lemon_home.cache',
 	]);
 
 	// 角色管理
 	Route::controller('dsk_pam_role', 'PamRoleController', [
 		'getIndex'    => 'dsk_pam_role.index',
 		'getCreate'   => 'dsk_pam_role.create',
-		'postCreate'  => 'dsk_pam_role.create',
 		'postCheck'   => 'dsk_pam_role.check',
 		'getMenu'     => 'dsk_pam_role.menu',
-		'postMenu'    => 'dsk_pam_role.menu',
 		'getEdit'     => 'dsk_pam_role.edit',
 		'postDestroy' => 'dsk_pam_role.destroy',
 	]);
 
 	// 账户列表
-	Route::controller('dsk_account', 'AccountController', [
-		'postStatus'               => 'dsk_account.status',
-		'getLog'                   => 'dsk_account.log',
-		'getEdit'                  => 'dsk_account.edit',
-		'postEdit'                 => 'dsk_account.edit',
-		'postDestroy'              => 'dsk_account.destroy',
-		'getCreate'                => 'dsk_account.create',
-		'postCreate'               => 'dsk_account.create',
-		'getIndex'                 => 'dsk_account.index',
-		'getAuth'                  => 'dsk_account.auth',
+	Route::controller('dsk_pam_account', 'PamAccountController', [
+		'postStatus'  => 'dsk_pam_account.status',
+		'getLog'      => 'dsk_pam_account.log',
+		'getEdit'     => 'dsk_pam_account.edit',
+		'postDestroy' => 'dsk_pam_account.destroy',
+		'getCreate'   => 'dsk_pam_account.create',
+		'getIndex'    => 'dsk_pam_account.index',
+		'getAuth'     => 'dsk_pam_account.auth',
 	]);
 
 

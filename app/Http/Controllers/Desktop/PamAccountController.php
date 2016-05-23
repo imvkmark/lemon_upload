@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
  * Class GameController
  * @package App\Http\Controllers\Desktop
  */
-class AccountController extends InitController {
+class PamAccountController extends InitController {
 
 	public function __construct(Request $request) {
 		parent::__construct($request);

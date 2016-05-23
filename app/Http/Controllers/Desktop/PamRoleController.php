@@ -127,7 +127,7 @@ class PamRoleController extends InitController {
 		$permission  = RbacHelper::permission($accountType);
 		$perms       = $role->perms();
 		if (!$permission) {
-			return site_end('error', '暂无权限信息！', 'location|' . route('dsk_home.tip'));
+			return site_end('error', '暂无权限信息！');
 		}
 		return view('desktop.pam_role.menu', [
 			'permission' => $permission,

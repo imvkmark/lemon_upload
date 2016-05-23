@@ -23,11 +23,12 @@ class SlUploadController extends Controller {
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function postImage(Request $request) {
+		$field     = $request->input('field', 'image_file');
 		$validator = \Validator::make($request->all(), [
-			'image_file'   => 'required',
+			$field         => 'required',
 			'upload_token' => 'required',
 		], [
-			'image_file.required'   => '图片参数不能为空',
+			$field . '.required'    => '图片参数不能为空',
 			'upload_token.required' => 'upload_token不能为空',
 		]);
 		if ($validator->fails()) {
@@ -35,8 +36,8 @@ class SlUploadController extends Controller {
 				'json' => true,
 			]);
 		}
-		$field = $request->input('field', 'image_file');
-		$sign  = $request->input('upload_token');
+
+		$sign = $request->input('upload_token');
 
 		// 匹配
 		$file  = \Input::file($field);

@@ -2,14 +2,16 @@
 
 use App\Http\Requests;
 use App\Http\Requests\Desktop\LoginRequest;
+use App\Lemon\Repositories\Application\SettingUi;
 use App\Lemon\Repositories\Sour\LmFile;
 use App\Lemon\Repositories\System\SysAcl;
+use App\Models\BaseConfig;
 use App\Models\PamAccount;
 use App\Models\PluginAllowip;
 use Illuminate\Http\Request;
 
 
-class HomeController extends InitController {
+class LemonHomeController extends InitController {
 
 
 	/**
@@ -29,12 +31,12 @@ class HomeController extends InitController {
 
 	/**
 	 * 登录
-	 * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+	 * @return $this|\Illuminate\Http\RedirectResponse
 	 * @internal param LoginRequest $request
 	 */
 	public function getLogin() {
 		if (\Auth::check() && \Auth::user()->account_type == PamAccount::ACCOUNT_TYPE_DESKTOP) {
-			return site_end('success', trans('desktop.home.login_already'), 'location|' . route('dsk_home.cp'));
+			return site_end('success', trans('desktop.home.login_already'), 'location|' . route('dsk_lemon_home.cp'));
 		}
 		return view('desktop.home.login');
 	}
@@ -49,24 +51,17 @@ class HomeController extends InitController {
 
 		if (\Auth::once($credentials)) {
 			if (!\Rbac::hasRole('root')) {
-				// check ip
-				if (!PluginAllowip::ipExists($this->ip)) {
-					\Event::fire('desktop.login_ip_banned', [\Auth::user()]);
-					$msg = trans('desktop.home.login_ip_banned', ['ip' => $this->ip]);
-					return site_end('error', $msg, 'location|' . route('dsk_home.login'), $request->only('adm_name'));
-				}
-
 				// check is_enable
 				$account = \Auth::user();
 				if ($account['is_enable'] == 'N') {
-					return site_end('error', '用户被禁用', 'location|' . route('dsk_home.login'), $request->only('adm_name'));
+					return site_end('error', '用户被禁用', 'location|' . route('dsk_lemon_home.login'), $request->only('adm_name'));
 				}
 			}
 			\Auth::login(\Auth::user(), true);
-			return site_end('success', '登陆成功', 'location|' . route('dsk_home.cp'));
+			return site_end('success', '登陆成功', 'location|' . route('dsk_lemon_home.cp'));
 		} else {
 			\Event::fire('auth.failed', [$credentials]);
-			return site_end('error', '登陆用户名密码不匹配', 'location|' . route('dsk_home.login'), $request->only('adm_name'));
+			return site_end('error', '登陆用户名密码不匹配', 'location|' . route('dsk_lemon_home.login'), $request->only('adm_name'));
 		}
 	}
 
@@ -105,16 +100,16 @@ class HomeController extends InitController {
 		$password = $request->input('password');
 		PamAccount::changePassword(\Auth::id(), $password);
 		\Auth::logout();
-		return site_end('success', trans('desktop.edit_password_ok_and_relogin'), 'location|' . route('dsk_home.login'));
+		return site_end('success', trans('desktop.edit_password_ok_and_relogin'), 'location|' . route('dsk_lemon_home.login'));
 	}
 
 	/**
 	 * 登出
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function getLogout() {
 		\Auth::logout();
-		return site_end('success', trans('desktop.logout_ok'), 'location|' . route('dsk_home.login'));
+		return site_end('success', trans('desktop.logout_ok'), 'location|' . route('dsk_lemon_home.login'));
 	}
 
 	/**
@@ -146,7 +141,27 @@ class HomeController extends InitController {
 		return view('desktop.inc.tip');
 	}
 
-	public function getTest() {
+	public function getSetting() {
+		$Ui = new SettingUi('site');
+		$Ui->setDesktop();
+		$Ui->setTitle('网站设置');
+		$site = site();
+		return $Ui->render($site);
+	}
 
+	public function postSetting(Request $request) {
+		BaseConfig::configUpdate($request->except(['_token']), 'site');
+		BaseConfig::reCache();
+		return site_end('success', '更新配置成功', 'location|' . route('dsk_site.setting'));
+	}
+
+	/**
+	 * 更新缓存
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function getCache() {
+		BaseConfig::reCache();
+		SysAcl::reCache();
+		return site_end('success', '更新缓存成功');
 	}
 }

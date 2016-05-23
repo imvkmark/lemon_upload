@@ -1,9 +1,7 @@
 <?php namespace App\Lemon\Repositories\Providers;
 
 
-use App\Models\DailianOrder;
 use App\Models\PamRole;
-use App\Policies\DailianOrderPolicy;
 use App\Policies\PamRolePolicy;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -16,7 +14,6 @@ class PolicyServiceProvider extends ServiceProvider {
 	 */
 	protected $policies = [
 		PamRole::class      => PamRolePolicy::class,
-		DailianOrder::class => DailianOrderPolicy::class,
 	];
 
 	/**

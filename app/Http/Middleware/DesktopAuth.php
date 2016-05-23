@@ -28,11 +28,11 @@ class DesktopAuth {
 	 */
 	public function handle($request, Closure $next) {
 		if ($this->auth->guest()) {
-			return site_end('error', '登陆已过期!', 'location|' . route('dsk_home.login'));
+			return site_end('error', '登陆已过期!', 'location|' . route('dsk_lemon_home.login'));
 		}
 
 		if (\Auth::user()->account_type != PamAccount::ACCOUNT_TYPE_DESKTOP) {
-			return site_end('error', '只有管理员才能访问后台， 其他用户类型不可以!', 'location|' . route('dsk_home.login'));
+			return site_end('error', '只有管理员才能访问后台， 其他用户类型不可以!', 'location|' . route('dsk_lemon_home.login'));
 		}
 
 		$routeName = \Route::currentRouteName();

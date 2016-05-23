@@ -5,7 +5,7 @@
 @endsection
 @section('desktop-main')
 	<div class="loginBox">
-		{!! Form::open(['route' => 'dsk_home.login','id' => 'form_login']) !!}
+		{!! Form::open(['route' => 'dsk_lemon_home.login','id' => 'form_login']) !!}
 		<div class="username">
 			<h5>{!! Form::label('adm_name', trans('desktop.login.username')) !!}</h5>
 			{!! Form::text('adm_name', null, ['class'=>'text span-7']) !!}

@@ -28,14 +28,6 @@ return [
 			'title'           => '网站控制',
 			'first_col_class' => 'w180',
 		],
-		'transfer' => [
-			'title'           => '转账',
-			'first_col_class' => 'w180',
-		],
-		'order'   => [
-			'title'           => '订单',
-			'first_col_class' => 'w180',
-		],
 	],
 	'site_name'               => [
 		'form_type'    => SysKernel::FORM_TYPE_TEXT,
@@ -72,67 +64,6 @@ return [
 		'form_options' => [
 			'cols' => 30,
 			'rows' => 5,
-		],
-	],
-
-	/*
-	|--------------------------------------------------------------------------
-	| 转账
-	|--------------------------------------------------------------------------
-	|
-	*/
-	'open_transfer'           => [
-		'form_type'                   => SysKernel::FORM_TYPE_SINGLE_SELECT,
-		'title'                       => '是否开启转账支付',
-		'single_select_default_value' => 0,
-		'single_select_options'       => [
-			'N' => '否',
-			'Y' => '是',
-		],
-		'group'                       => 'transfer',
-	],
-	'transfer_alipay_account' => [
-		'form_type'    => SysKernel::FORM_TYPE_TEXT,
-		'title'        => '支付宝转账账号',
-		'validator'    => 'required',
-		'group'        => 'transfer',
-		'form_options' => [
-			'class' => 'w240',
-		],
-	],
-	'cash_bank_type'          => [
-		'form_type'    => SysKernel::FORM_TYPE_TEXTAREA,
-		'title'        => '提现银行卡类型',
-		'group'        => 'transfer',
-		'tip'          => '每行一个, 提现支持的银行卡或者账户的类型',
-		'form_options' => [
-			'cols' => 30,
-			'rows' => 5,
-		],
-	],
-	'cash_rate' => [
-		'form_type'    => SysKernel::FORM_TYPE_TEXT,
-		'title'        => '提现手续费(%)',
-		'validator'    => 'required|digits_between:0,100',
-		'group'        => 'transfer',
-		'form_options' => [
-			'class' => 'w240',
-		],
-	],
-
-	/*
-	|--------------------------------------------------------------------------
-	| 订单
-	|--------------------------------------------------------------------------
-	|
-	*/
-	'order_over_hour' => [
-		'form_type'    => SysKernel::FORM_TYPE_TEXT,
-		'title'        => '订单返款时间（小时）',
-		'validator'    => 'required|digits_between:0,100',
-		'group'        => 'order',
-		'form_options' => [
-			'class' => 'w120',
 		],
 	],
 

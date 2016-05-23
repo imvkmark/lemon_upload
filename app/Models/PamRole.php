@@ -62,6 +62,7 @@ class PamRole extends \Eloquent implements RbacRoleInterface {
 	/**
 	 * 根据账户类型获取角色
 	 * @param string|null $accountType
+	 * @param bool        $cache
 	 * @return array
 	 */
 	public static function getAll($accountType = null, $cache = true) {
@@ -72,7 +73,7 @@ class PamRole extends \Eloquent implements RbacRoleInterface {
 			} else {
 				$items = self::all()->toArray();
 			}
-			$roles = LmArr::pluck($items, 'role_id');
+			$roles = LmArr::pluck($items, 'id');
 		}
 		return $roles;
 	}
@@ -82,6 +83,7 @@ class PamRole extends \Eloquent implements RbacRoleInterface {
 	 * 获取角色信息
 	 * @param      $role_id
 	 * @param null $key
+	 * @param bool $cache
 	 * @return null
 	 */
 	public static function info($role_id, $key = null, $cache = true) {

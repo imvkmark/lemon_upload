@@ -23,8 +23,8 @@
 										(<span data-roleId="{{$_role['role_id']}}">{{$_role['role_name']}}</span>)
 									</strong>
 								</li>
-								<li><a href="{{route('dsk_home.password')}}" target="workspace" title="{{trans('desktop.edit_password')}}"><span>{{trans('desktop.edit_password')}}</span></a></li>
-								<li><a href="{{route('dsk_home.logout')}}" target="workspace" title="{{trans('desktop.cp.logout')}}"><span>{{trans('desktop.cp.logout')}}</span></a></li>
+								<li><a href="{{route('dsk_lemon_home.password')}}" target="workspace" title="{{trans('desktop.edit_password')}}"><span>{{trans('desktop.edit_password')}}</span></a></li>
+								<li><a href="{{route('dsk_lemon_home.logout')}}" target="workspace" title="{{trans('desktop.cp.logout')}}"><span>{{trans('desktop.cp.logout')}}</span></a></li>
 							</ul>
 						</div>
 						<!-- End of Top navigation -->

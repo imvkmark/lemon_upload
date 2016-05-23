@@ -6,7 +6,7 @@
 				<h3>{{trans('desktop.edit_password')}}</h3>
 			</div>
 		</div>
-		<form action="{{route('dsk_home.password')}}" data-rel="account" method="post" id="form_password">
+		<form action="{{route('dsk_lemon_home.password')}}" data-rel="account" method="post" id="form_password">
 		<table class="table">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="account_id" value="{{$_pam['account_id']}}">

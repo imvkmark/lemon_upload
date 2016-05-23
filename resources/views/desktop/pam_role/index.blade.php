@@ -22,16 +22,16 @@
 						<td>{{$role->updated_at}}</td>
 						<td>
 							@can('menu', $role)
-							<a class="fa fa-check-square-o fa-lg J_iframe"
-							   data-title="编辑 [{{$role->role_title}}] 权限"
-							   data-width="600"
-							   href="{{route('dsk_pam_role.menu', [$role->id])}}"></a>
+								<a class="fa fa-check-square-o fa-lg J_iframe"
+								   data-title="编辑 [{{$role->role_title}}] 权限"
+								   data-width="600"
+								   href="{{route('dsk_pam_role.menu', [$role->id])}}"></a>
 							@endcan
 							@can('edit', $role)
-							<a class="fa fa-edit fa-lg" href="{{route('dsk_pam_role.edit', [$role->id])}}"></a>
+								<a class="fa fa-edit fa-lg" href="{{route('dsk_pam_role.edit', [$role->id])}}"></a>
 							@endcan
 							@can('destroy', $role)
-							<a class="fa fa-remove fa-lg red J_delete" href="{{route('dsk_pam_role.destroy', [$role->id])}}"></a>
+								<a class="fa fa-remove fa-lg red J_request" href="{{route('dsk_pam_role.destroy', [$role->id])}}"></a>
 							@endcan
 						</td>
 					</tr>
