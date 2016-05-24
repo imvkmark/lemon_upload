@@ -1,7 +1,7 @@
 <?php
 return [
 	'title'     => '账号管理',
-	'route'     => 'dsk_account',
+	'route'     => 'dsk_pam_account',
 	'operation' => [
 		'index'           => [
 			'title' => '用户列表',

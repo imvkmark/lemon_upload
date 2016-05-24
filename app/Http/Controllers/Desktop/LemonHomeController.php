@@ -7,7 +7,6 @@ use App\Lemon\Repositories\Sour\LmFile;
 use App\Lemon\Repositories\System\SysAcl;
 use App\Models\BaseConfig;
 use App\Models\PamAccount;
-use App\Models\PluginAllowip;
 use Illuminate\Http\Request;
 
 
@@ -77,7 +76,7 @@ class LemonHomeController extends InitController {
 	/**
 	 * 修改本账户密码
 	 * @param Request $request
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function postPassword(Request $request) {
 
@@ -117,7 +116,7 @@ class LemonHomeController extends InitController {
 	 * @return \Illuminate\View\View
 	 */
 	public function getCp() {
-		$menus = SysAcl::menu(PamAccount::ACCOUNT_TYPE_DESKTOP, $this->roleId, true);
+		$menus = SysAcl::menu(PamAccount::ACCOUNT_TYPE_DESKTOP, $this->pam, true);
 		return view('desktop.home.cp', [
 			'menus' => $menus,
 		]);

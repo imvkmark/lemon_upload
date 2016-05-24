@@ -3,9 +3,9 @@
 	<div class="page-fixed">
 		@include('desktop.account.header')
 		@if (isset($item))
-			{!! Form::model($item,['route' => ['dsk_account.edit', $item['account_id']], 'id' => 'form_item']) !!}
+			{!! Form::model($item,['route' => ['dsk_pam_account.edit', $item['account_id']], 'id' => 'form_item']) !!}
 		@else
-			{!! Form::open(['route' => 'dsk_account.create','id' => 'form_item', 'method' => 'post']) !!}
+			{!! Form::open(['route' => 'dsk_pam_account.create','id' => 'form_item', 'method' => 'post']) !!}
 		@endif
 		{!!Form::hidden('account_type', $account_type)!!}
 		<table class="table">

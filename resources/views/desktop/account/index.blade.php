@@ -2,7 +2,7 @@
 @section('desktop-main')
 	<div class="page-fixed">
 		@include('desktop.account.header')
-		{!! Form::model(isset($search) ? $search : null,['route' => 'dsk_account.index', 'id' => 'form_search', 'method' => 'get']) !!}
+		{!! Form::model(isset($search) ? $search : null,['route' => 'dsk_pam_account.index', 'id' => 'form_search', 'method' => 'get']) !!}
 		{!!Form::hidden('type', $account_type)!!}
 		<table class="table table-search">
 			<tr>
@@ -11,7 +11,7 @@
 					{!! Form::text('search[account_name]', null, ['placeholder' => '请输入用户名', 'class' => 'small']) !!}<span class="sep">&nbsp;</span>
 					{!! Form::label('role_id', '用户角色') !!} <span class="sep">&nbsp;</span>
 					{!! Form::select('search[role_id]', $roles) !!} <span class="sep">&nbsp;</span>
-					<button class="btn-small" type="reset" onclick="window.location.href='{{route('dsk_account.index', ['type' => $account_type])}}'"><span>重置搜索</span></button>
+					<button class="btn-small" type="reset" onclick="window.location.href='{{route('dsk_pam_account.index', ['type' => $account_type])}}'"><span>重置搜索</span></button>
 					<button class="btn-search"><span>Search</span></button>
 				</td>
 			</tr>
@@ -51,24 +51,24 @@
 							<th>{{$account->money}}</th>
 						@endif
 						<td>
-							@if (check_auth($_role_id, 'dsk_account.auth'))
-								<a data-tip="授权进入用户中心" target="_blank" href="{{route('dsk_account.auth', [$account->account_id])}}">
+							@if (check_auth($_role_id, 'dsk_pam_account.auth'))
+								<a data-tip="授权进入用户中心" target="_blank" href="{{route('dsk_pam_account.auth', [$account->account_id])}}">
 									<i class="fa fa-user-md fa-lg"></i>
 								</a>
 							@endif
 							@if ($account->is_enable == 'Y')
-								<a class="J_request" data-tip="当前启用, 点击禁用" title="禁用" href="{{route_url('dsk_account.status',null, ['id' => $account->account_id, 'field' => 'is_enable', 'status' => 'N', 'type' => $account_type])}}">
+								<a class="J_request" data-tip="当前启用, 点击禁用" title="禁用" href="{{route_url('dsk_pam_account.status',null, ['id' => $account->account_id, 'field' => 'is_enable', 'status' => 'N', 'type' => $account_type])}}">
 									<i class="fa fa-unlock fa-lg green"></i>
 								</a>
 							@else
-								<a class="J_request" data-tip="当前禁用, 点击启用" href="{{route_url('dsk_account.status',null, ['id' => $account->account_id, 'field' => 'is_enable', 'status' => 'Y', 'type' => $account_type])}}">
+								<a class="J_request" data-tip="当前禁用, 点击启用" href="{{route_url('dsk_pam_account.status',null, ['id' => $account->account_id, 'field' => 'is_enable', 'status' => 'Y', 'type' => $account_type])}}">
 									<i class="fa fa-lock fa-lg red"></i>
 								</a>
 							@endif
-							<a data-tip="编辑[{{$account->account_name}}]" href="{{route('dsk_account.edit', [$account->account_id])}}">
+							<a data-tip="编辑[{{$account->account_name}}]" href="{{route('dsk_pam_account.edit', [$account->account_id])}}">
 								<i class="fa fa-edit fa-lg"></i>
 							</a>
-							<a class="J_request" data-tip="删除[{{$account->account_name}}]" data-confirm="确认删除？" href="{{route_url('dsk_account.destroy',null, ['id' =>$account->account_id])}}">
+							<a class="J_request" data-tip="删除[{{$account->account_name}}]" data-confirm="确认删除？" href="{{route_url('dsk_pam_account.destroy',null, ['id' =>$account->account_id])}}">
 								<i class="fa fa-close fa-lg red"></i>
 							</a>
 						</td>

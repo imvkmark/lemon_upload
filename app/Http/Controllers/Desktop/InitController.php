@@ -61,11 +61,13 @@ class InitController extends Controller {
 			'_account_name' => $this->pam ? $this->pam->account_name : '',
 			'_pam_types'    => PamAccount::accountTypeAll(),
 		]);
-		$kv           = SysAcl::key(PamAccount::ACCOUNT_TYPE_DESKTOP, null, true);
-		$currentRoute = \Route::currentRouteName();
-		\View::share([
-			'_title' => isset($kv[$currentRoute]) ? $kv[$currentRoute]['title'] : '',
-		]);
+
+		if ($this->route) {
+			$title = SysAcl::getTitleCache('desktop', $this->route);
+			\View::share([
+				'_title' => $title . '_' . site('site_name'),
+			]);
+		}
 	}
 
 

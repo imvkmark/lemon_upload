@@ -19,6 +19,33 @@ class SysAcl {
 
 	const CACHE_PREFIX = 'acl_';
 
+
+	/**
+	 * 获取缓存
+	 * @param string      $type  类型
+	 * @param null|string $route 路由名称
+	 * @return mixed
+	 */
+	public static function getTitleCache($type = 'desktop', $route = null) {
+		$cacheKey = cache_name(__CLASS__, '_title_' . $type);
+
+		if (!\Cache::has($cacheKey)) {
+			$cacheData = self::permission($type);
+			$links     = [];
+			if (is_array($cacheData)) {
+				foreach ($cacheData as $key => $ctl) {
+					$links[$key] = $ctl['title'];
+				}
+			}
+			\Cache::forever($cacheKey, $links);
+		}
+		$cache = \Cache::get($cacheKey);
+
+		return $route
+			? isset($cache[$route]) ? $cache[$route] : ''
+			: $cache;
+	}
+
 	/**
 	 * 获取缓存
 	 * @param $type
@@ -79,12 +106,12 @@ class SysAcl {
 
 	/**
 	 * 获取菜单
-	 * @param string    $type
-	 * @param null      $role_id
-	 * @param bool|true $is_menu
+	 * @param string     $type
+	 * @param PamAccount $user
+	 * @param bool|true  $is_menu
 	 * @return mixed|string
 	 */
-	public static function menu($type = PamAccount::ACCOUNT_TYPE_DESKTOP, $role_id = null, $is_menu = true) {
+	public static function menu($type = PamAccount::ACCOUNT_TYPE_DESKTOP, $user = null, $is_menu = true) {
 		// define file
 		$file = app_path(self::ACL_PATH . '/' . $type . '.php');
 
@@ -111,7 +138,7 @@ class SysAcl {
 		if (is_array($typeFiles) && !empty($typeFiles)) {
 			foreach ($typeFiles as $f) {
 				$key            = basename($f, '.php');
-				$typeData[$key] = self::operation($typeDir . '/' . $key, $role_id, $is_menu);
+				$typeData[$key] = self::operation($typeDir . '/' . $key, $user, $is_menu);
 			}
 		}
 
@@ -140,44 +167,14 @@ class SysAcl {
 
 
 	/**
-	 * 返回权限键值, 没有权限将返回所有
-	 * @param string $type
-	 * @param null   $role_id
-	 * @param bool   $desc
-	 * @return array
-	 */
-	public static function key($type = PamAccount::ACCOUNT_TYPE_DESKTOP, $role_id = null, $desc = false) {
-		// 获取缓存key
-		$allMenu = self::getCache($type, $role_id);
-
-		// 获取链接
-		$links = [];
-		if (is_array($allMenu)) {
-			foreach ($allMenu as $ctl) {
-				foreach ($ctl['group'] as $group) {
-					if (isset($ctl['menu_link'][$group])) {
-						$keyCtr = $ctl['menu_link'][$group];
-						$links  = array_merge($links, $keyCtr['sub_group'], $keyCtr['direct']);
-					}
-				}
-			}
-		}
-		if ($desc) {
-			return $links;
-		} else {
-			return array_keys($links);
-		}
-	}
-
-
-	/**
 	 * 根据类型/ 路由 获取定义的数据
-	 * @param           $file_relative
-	 * @param null      $role_id
-	 * @param bool|true $is_menu
+	 * @param             $file_relative
+	 * @param PamAccount  $user
+	 * @param bool|true   $is_menu
+	 * @param bool        $with_group
 	 * @return array
 	 */
-	public static function operation($file_relative, $role_id = null, $is_menu = true, $with_group = true) {
+	public static function operation($file_relative, $user = null, $is_menu = true, $with_group = true) {
 		$file_relative = explode('/', $file_relative);
 		$type          = ucfirst($file_relative[0]);
 		$filePath      = app_path(self::ACL_PATH . '/' . $type . '/' . $file_relative[1] . '.php');
@@ -189,9 +186,7 @@ class SysAcl {
 			return $define_data;
 		}
 
-		if ($role_id && !is_super($role_id)) {
-			$roleMenu = BaseConfig::roleMenu($role_id);
-		}
+
 		$operationWithGroup = [
 			'title' => $define_data['title'],
 		];
@@ -202,22 +197,24 @@ class SysAcl {
 
 			foreach ($define_data['operation'] as $op_key => $op_define) {
 				// 剔除非菜单项目
+
 				if ($is_menu) {
-					if (!$op_define['menu'] || $op_define['menu'] == false) continue;
+					if (!isset($op_define['menu']) || !$op_define['menu'] || $op_define['menu'] == false) {
+						continue;
+					}
 				}
 
 				// 组合路由
 				$route = $define_data['route'] . '.' . $op_key;
-				if ($role_id && !is_super($role_id)) {
-					if (isset($roleMenu[$route]) && !$roleMenu[$route]) {
-						continue;
-					}
+
+				if ($user && !$user->capable($route)) {
+					continue;
 				}
 				$singleDefine = [
 					'title'       => $op_define['title'],
 					'route'       => $route,
 					'group_title' => $define_data['title'],
-					'menu'        => $op_define['menu'],
+					'menu'        => (isset($op_define['menu']) && $op_define['menu']) ? $op_define['menu'] : 0,
 					'param'       => isset($op_define['param']) ? $op_define['param'] : '',
 				];
 				if ($with_group) {

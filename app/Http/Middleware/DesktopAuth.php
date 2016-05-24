@@ -36,7 +36,7 @@ class DesktopAuth {
 		}
 
 		$routeName = \Route::currentRouteName();
-		if ($routeName && !\Rbac::capable($routeName)) {
+		if (!\Auth::user()->hasRole('root') && $routeName && !\Rbac::capable($routeName)) {
 			return site_end('error', '后台权限不足, 您无权访问本模块!');
 		}
 		return $next($request);

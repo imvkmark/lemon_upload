@@ -46,7 +46,7 @@
 						required : '请输入密码'
 					}
 				}
-			}, 'bt3_inline');
+			}, 'bt3_ajax_tip');
 			$("#form_login").validate(conf);
 		})
 	});

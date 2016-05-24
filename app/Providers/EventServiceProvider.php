@@ -17,11 +17,7 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Handlers\Events\Auth\FailedLog',
 		],
 		'auth.login'                                    => [
-			'App\Handlers\Events\Auth\LoginLog',
 			'App\Handlers\Events\Auth\LoginNum',
-		],
-		'SocialiteProviders\Manager\SocialiteWasCalled' => [
-			'SocialiteProviders\Qq\QqExtendSocialite',
 		],
 	];
 

@@ -5,7 +5,7 @@
 			<div class="title-bar">
 				<h3>其他管理</h3>
 				<ul class="tab-base">
-					<li><a class="{{ ($_route == 'dsk_account.log') ? 'current' : '' }}" href="{{route('dsk_account.log')}}"><span>账户日志</span></a></li>
+					<li><a class="{{ ($_route == 'dsk_pam_account.log') ? 'current' : '' }}" href="{{route('dsk_pam_account.log')}}"><span>账户日志</span></a></li>
 				</ul>
 			</div>
 		</div>

@@ -106,7 +106,7 @@ class PamAccountController extends InitController {
 				$develop['account_id'] = $account_id;
 				AccountDevelop::create($develop);
 			}
-			return site_end('success', '用户添加成功', 'location|' . route('dsk_account.index', ['type' => $account_type]));
+			return site_end('success', '用户添加成功', 'location|' . route('dsk_pam_account.index', ['type' => $account_type]));
 		} else {
 			return site_end('error', '用户添加失败');
 		}
@@ -146,7 +146,7 @@ class PamAccountController extends InitController {
 			PamRoleAccount::where('account_id', $id)->delete();
 		});
 
-		return site_end('success', '删除用户成功', 'location|' . route('dsk_account.index', ['type' => $account['account_type']]));
+		return site_end('success', '删除用户成功', 'location|' . route('dsk_pam_account.index', ['type' => $account['account_type']]));
 	}
 
 	/**
@@ -219,7 +219,7 @@ class PamAccountController extends InitController {
 
 		$account_type = $request->input('account_type');
 
-		return site_end('success', '用户资料编辑成功', 'location|' . route('dsk_account.index', ['type' => $account_type]));
+		return site_end('success', '用户资料编辑成功', 'location|' . route('dsk_pam_account.index', ['type' => $account_type]));
 	}
 
 	/**

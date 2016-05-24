@@ -2,7 +2,7 @@
 @section('desktop-main')
 	<div class="page-fixed">
 		@include('desktop.validate.header')
-		{!! Form::model(isset($search) ? $search : null,['route' => 'dsk_account.index', 'id' => 'form_search', 'method' => 'get']) !!}
+		{!! Form::model(isset($search) ? $search : null,['route' => 'dsk_pam_account.index', 'id' => 'form_search', 'method' => 'get']) !!}
 		<table class="table table-search">
 			<tr>
 				<td>

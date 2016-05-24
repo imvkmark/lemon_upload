@@ -147,7 +147,6 @@ return [
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,
 		App\Providers\AuthServiceProvider::class,
-		App\Providers\FrontAuthServiceProvider::class,
 
 		App\Providers\BusServiceProvider::class,
 		App\Providers\ConfigServiceProvider::class,
