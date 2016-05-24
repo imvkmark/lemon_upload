@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "86c511200c4662a59fd808fe3298c694",
-    "content-hash": "d5ebabd2cc375703f8eeaf9142655462",
+    "hash": "a3cfb56d6084be4d5c2387305d067a31",
+    "content-hash": "a5ae7d44e6ae305ffb5265fe64c422fd",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -834,6 +834,63 @@
                 "uri"
             ],
             "time": "2016-04-13 19:56:01"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "10e9522f11a6e846061226b7e54347909a849e09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/avalanche123/Imagine/10e9522f11a6e846061226b7e54347909a849e09.zip",
+                "reference": "10e9522f11a6e846061226b7e54347909a849e09",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2014-08-26 11:26:34"
         },
         {
             "name": "intervention/image",
@@ -4120,6 +4177,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "imagine/imagine": 20,
         "daavelar/revengedb": 20
     },
     "prefer-stable": false,

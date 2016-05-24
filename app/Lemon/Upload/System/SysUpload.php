@@ -26,11 +26,7 @@ class SysUpload {
 		if (LmUtil::isUrl($path)) {
 			return $path;
 		} else {
-			if (config('sl-upload.directory')) {
-				$subDirectory = config('sl-upload.directory') . '/';
-			} else {
-				$subDirectory = '';
-			}
+			$subDirectory = 'thumber/config/';
 			return config('app.url') . '/' . $subDirectory . $path;
 		}
 	}
@@ -77,14 +73,15 @@ class SysUpload {
 		}
 		return $path_or_url;
 	}
-
+	
 	/**
 	 * 存储的磁盘
 	 * @return mixed|string
 	 */
 	public static function disk() {
-		return config('sl-upload.disk');
+		return config('sl-upload.server_disk');
 	}
+
 
 	/**
 	 * 存储的目录

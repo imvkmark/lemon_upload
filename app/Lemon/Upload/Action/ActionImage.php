@@ -69,16 +69,13 @@ class ActionImage {
 				$imageRelativePath = date("Ym", time()) . '/' . date("d") . '/' . date("H") . '/' . $imageName;
 			}
 
-			// 保存的完整相对路径
-			$imageSaveDestination = (SysUpload::dir() ? SysUpload::dir() . '/' : '') . $imageRelativePath;
-
 			$imageContent = file_get_contents($file);
-			$Disk->put($imageSaveDestination, $imageContent);
+			$Disk->put($imageRelativePath, $imageContent);
 
 			/**
 			 * 图片的实际存储地址
 			 */
-			$imageRealPath = disk_path($diskName) . $imageSaveDestination;
+			$imageRealPath = disk_path($diskName) . $imageRelativePath;
 
 			// 缩放图片
 			if ($file->getClientOriginalExtension() != 'gif') {
@@ -93,7 +90,7 @@ class ActionImage {
 			// 保存图片
 			$imageInfo = LmImage::getImageInfo($imageRealPath);
 			PluginImageUpload::create([
-				'upload_path'      => $imageSaveDestination,
+				'upload_path'      => $imageRelativePath,
 				'upload_type'      => 'image',
 				'upload_extension' => $file->getClientOriginalExtension(),
 				'upload_filesize'  => $imageInfo['size'],

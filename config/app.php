@@ -144,6 +144,7 @@ return [
 		Collective\Html\HtmlServiceProvider::class,                                  // Form
 		Daavelar\RevengeDb\Providers\RevengeDbServiceProvider::class,                // revenged db
 		Intervention\Image\ImageServiceProvider::class,                              // image
+		Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                         // 缩略图
 		
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,
