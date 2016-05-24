@@ -20,9 +20,11 @@ class SysCrypt {
 	 * @param string $key
 	 * @return mixed
 	 */
-	public static function encode($txt, $key = '') {
-		if (!$key) {
+	public static function encode($txt, $key = null) {
+		if (is_null($key)) {
 			$key = config('app.key');
+		} else {
+			$key = '';
 		}
 		$rnd = md5(microtime());
 		$len = strlen($txt);
@@ -42,9 +44,11 @@ class SysCrypt {
 	 * @param string $key
 	 * @return string
 	 */
-	public static function decode($txt, $key = '') {
-		if (!$key) {
+	public static function decode($txt, $key = null) {
+		if (is_null($key)) {
 			$key = config('app.key');
+		} else {
+			$key = '';
 		}
 		$txt = self::_calc(base64_decode($txt), $key);
 		$len = strlen($txt);

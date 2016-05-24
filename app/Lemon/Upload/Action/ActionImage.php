@@ -4,6 +4,8 @@ use App\Lemon\Repositories\Sour\LmEnv;
 use App\Lemon\Repositories\Sour\LmFile;
 use App\Lemon\Repositories\Sour\LmImage;
 use App\Lemon\Repositories\System\SysCrypt;
+use App\Lemon\Upload\System\SysUpload;
+use App\Models\PluginImageKey;
 use App\Models\PluginImageUpload;
 use Illuminate\Support\MessageBag;
 use Imvkmark\SlUpload\Helper\SlUpload;
@@ -42,7 +44,7 @@ class ActionImage {
 			}
 
 			// 图片存储的磁盘
-			$diskName = SlUpload::disk();
+			$diskName = SysUpload::disk();
 			// 磁盘对象
 			$Disk = \Storage::disk($diskName);
 
@@ -72,7 +74,7 @@ class ActionImage {
 			}
 
 			// 保存的完整相对路径
-			$imageSaveDestination = (SlUpload::dir() ? SlUpload::dir() . '/' : '') . $imageRelativePath;
+			$imageSaveDestination = (SysUpload::dir() ? SysUpload::dir() . '/' : '') . $imageRelativePath;
 
 			$imageContent = file_get_contents($file);
 			$Disk->put($imageSaveDestination, $imageContent);
@@ -121,7 +123,7 @@ class ActionImage {
 	 * @return string
 	 */
 	public function getUrl() {
-		return SlUpload::url($this->destination);
+		return SysUpload::url($this->destination);
 	}
 
 	/**
@@ -145,13 +147,14 @@ class ActionImage {
 
 		// 反解令牌
 		try {
-			$deCode = SysCrypt::decode($sign);
+			$deCode = SysCrypt::decode($sign, '');
 		} catch (\Exception $e) {
 			return $this->setError('令牌解析失败!');
 		}
 		$info = explode('|', $deCode);
 
 		// 是否是上传令牌
+		\Log::debug($info);
 		$isUpload = ($info[0] == 'upload');
 		if (!$isUpload) {
 			return $this->setError('令牌类型不正确, 应该生成上传令牌!');
@@ -169,7 +172,7 @@ class ActionImage {
 		$public = $info[1];
 		$secret = $info[2];
 		if ($public && $secret) {
-			$serverSecret = SlImageKey::getSecretByPublic($public);
+			$serverSecret = PluginImageKey::getSecretByPublic($public);
 			if ($secret != $serverSecret) {
 				return $this->setError('令牌不匹配, 冒牌令牌');
 			}
@@ -178,7 +181,7 @@ class ActionImage {
 		}
 
 
-		$this->accountId   = SlImageKey::getAccountIdByPublic($public);
+		$this->accountId   = PluginImageKey::getAccountIdByPublic($public);
 		$this->isCheckSign = true;
 		return true;
 	}

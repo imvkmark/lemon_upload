@@ -17,7 +17,7 @@ Route::group([
 	]);
 
 	Route::post('upload_image', [
-		'as'   => 'vendor.upload_image',
-		'uses' => '\Imvkmark\SlUpload\Http\Controllers\SlUploadController@postImage',
+		'as'   => 'upload.image',
+		'uses' => 'UploadController@postImage',
 	]);
 });

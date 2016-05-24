@@ -31,7 +31,7 @@ function js_global($url = '') {
 	];
 	$supportUrlJson = json_encode($supportUrl);
 
-	$uploadUrl = route('vendor.upload_image');
+	$uploadUrl = route('upload.image');
 	$js        = <<<JS
 	define(function(){
 		return {
@@ -47,13 +47,4 @@ function js_global($url = '') {
 	})
 JS;
 	return str_replace(["\n", "\/", " ", "\t"], ['', '/', '', ''], $js);
-}
-
-
-
-/**
- * key
- */
-function upload_token() {
-	return SysUpload::genUploadToken();
 }

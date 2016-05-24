@@ -58,7 +58,7 @@ class PamAccountController extends InitController {
 		$accounts = $Db->paginate($this->pageNum);
 		$accounts->appends($request->input());
 		$roles = PamRole::getLinear($account_type);
-		return view('desktop.account.index', [
+		return view('desktop.pam_account.index', [
 			'accounts'     => $accounts,
 			'account_type' => $account_type,
 			'search'       => ['search' => $search],
@@ -73,7 +73,7 @@ class PamAccountController extends InitController {
 	 */
 	public function getCreate(Request $request) {
 		$account_type = $request->input('type');
-		return view('desktop.account.item', [
+		return view('desktop.pam_account.item', [
 			'account_type' => $account_type,
 			'roles'        => PamRole::getLinear($account_type),
 		]);
@@ -156,7 +156,7 @@ class PamAccountController extends InitController {
 	 */
 	public function getEdit($id) {
 		$item = PamAccount::info($id, true);
-		return view('desktop.account.item', [
+		return view('desktop.pam_account.item', [
 			'account_type' => $item['account_type'],
 			'item'         => $item,
 			'roles'        => PamRole::getLinear($item['account_type']),
@@ -228,10 +228,10 @@ class PamAccountController extends InitController {
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function postStatus(Request $request) {
-		$field   = $request->input('field');
-		$status  = $request->input('status');
-		$id      = $request->input('id');
-		$user = PamAccount::find($id);
+		$field  = $request->input('field');
+		$status = $request->input('status');
+		$id     = $request->input('id');
+		$user   = PamAccount::find($id);
 		if ($user->hasRole('root')) {
 			return site_end('error', '账号是超级管理员', 'reload|1');
 		}
@@ -246,7 +246,7 @@ class PamAccountController extends InitController {
 	 */
 	public function getLog() {
 		$items = PamLog::orderBy('created_at', 'desc')->paginate($this->pageNum);
-		return view('desktop.account.log', [
+		return view('desktop.pam_account.log', [
 			'items' => $items,
 		]);
 	}

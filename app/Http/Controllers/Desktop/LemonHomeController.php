@@ -35,9 +35,9 @@ class LemonHomeController extends InitController {
 	 */
 	public function getLogin() {
 		if (\Auth::check() && \Auth::user()->account_type == PamAccount::ACCOUNT_TYPE_DESKTOP) {
-			return site_end('success', trans('desktop.home.login_already'), 'location|' . route('dsk_lemon_home.cp'));
+			return site_end('success', trans('desktop.lemon_home.login_already'), 'location|' . route('dsk_lemon_home.cp'));
 		}
-		return view('desktop.home.login');
+		return view('desktop.lemon_home.login');
 	}
 
 	public function postLogin(LoginRequest $request) {
@@ -70,7 +70,7 @@ class LemonHomeController extends InitController {
 	 * @return \Illuminate\View\View
 	 */
 	public function getPassword() {
-		return view('desktop.home.password');
+		return view('desktop.lemon_home.password');
 	}
 
 	/**
@@ -117,7 +117,7 @@ class LemonHomeController extends InitController {
 	 */
 	public function getCp() {
 		$menus = SysAcl::menu(PamAccount::ACCOUNT_TYPE_DESKTOP, $this->pam, true);
-		return view('desktop.home.cp', [
+		return view('desktop.lemon_home.cp', [
 			'menus' => $menus,
 		]);
 
@@ -130,7 +130,7 @@ class LemonHomeController extends InitController {
 	public function getWelcome() {
 		$build     = LmFile::get(app_path('build.md'));
 		$buildHtml = nl2br($build);
-		return view('desktop.home.welcome', [
+		return view('desktop.lemon_home.welcome', [
 			'html' => $buildHtml,
 		]);
 	}
