@@ -19,11 +19,6 @@ class FrontAuth {
 		if (\Auth::user()->account_type != PamAccount::ACCOUNT_TYPE_FRONT) {
 			return site_end('error', '只有用户才能访问前台， 其他用户类型不可以!', 'location|' . route('user.login'));
 		}
-		$roleId    = PamRoleAccount::getRoleIdByAccountId(\Auth::id());
-		$routeName = \Route::currentRouteName();
-		if (!check_auth($roleId, $routeName)) {
-			return site_end('error', '权限不足, 您无权访问本模块!', 'location|' . route('user.login'));
-		}
 		return $next($request);
 	}
 

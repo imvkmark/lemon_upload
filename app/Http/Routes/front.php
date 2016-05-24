@@ -15,13 +15,9 @@ Route::group([
 		'as'   => 'home.homepage',
 		'uses' => 'HomeController@getHomepage',
 	]);
-	Route::get('cp', [
-		'as'   => 'home.cp',
-		'uses' => 'HomeController@getCp',
-	]);
-	Route::controller('home', 'HomeController', [
-		'getTest' => 'home.test',
-		'getCp'   => 'home.cp',
-	]);
 
+	Route::post('upload_image', [
+		'as'   => 'vendor.upload_image',
+		'uses' => '\Imvkmark\SlUpload\Http\Controllers\SlUploadController@postImage',
+	]);
 });

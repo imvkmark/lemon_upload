@@ -13,7 +13,6 @@ class FailedLog {
 
 	/**
 	 * Create the event handler.
-	 * @return void
 	 */
 	public function __construct() {
 		//
@@ -21,7 +20,7 @@ class FailedLog {
 
 	/**
 	 * Handle the event.
-	 * @return void
+	 * @param $credentials
 	 */
 	public function handle($credentials) {
 		$account      = PamAccount::getByAccountName($credentials['account_name']);

@@ -1,5 +1,8 @@
 <?php namespace App\Http;
 
+use App\Lemon\Repositories\Application\Rbac\Middleware\RbacAbility;
+use App\Lemon\Repositories\Application\Rbac\Middleware\RbacPermission;
+use App\Lemon\Repositories\Application\Rbac\Middleware\RbacRole;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Imvkmark\L5Rbac\Middleware\L5RbacAbility;
 use Imvkmark\L5Rbac\Middleware\L5RbacPermission;
@@ -32,9 +35,9 @@ class Kernel extends HttpKernel {
 		'lm_develop.auth'     => 'App\Http\Middleware\DevelopAuth',
 		'lm_api.auth'         => 'App\Http\Middleware\ApiAuth',
 		'lm_api.access_token' => 'App\Http\Middleware\ApiAccessToken',
-		'role'                => L5RbacRole::class,
-		'permission'          => L5RbacPermission::class,
-		'ability'             => L5RbacAbility::class,
+		'role'                => RbacRole::class,
+		'permission'          => RbacPermission::class,
+		'ability'             => RbacAbility::class,
 	];
 
 }

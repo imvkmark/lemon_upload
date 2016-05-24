@@ -26,7 +26,7 @@ class ImageKeyController extends DesktopInitController {
 	}
 
 	public function getCreate() {
-		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
+		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_FRONT)
 			->lists('account_name', 'account_id');
 		$public     = PluginImageKey::genPublic($this->pam->account_id);
 		return view('desktop.image_key.item', [
@@ -57,7 +57,7 @@ class ImageKeyController extends DesktopInitController {
 	public function getEdit($id) {
 		/** @type PluginImageKey $item */
 		$item       = PluginImageKey::find($id);
-		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
+		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_FRONT)
 			->lists('account_name', 'account_id');
 		return view('desktop.image_key.item', [
 			'item'       => $item,

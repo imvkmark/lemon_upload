@@ -10,13 +10,7 @@ class VerifyCsrfToken extends BaseVerifier {
 	 * @var array
 	 */
 	protected $except = [
-		'finance/charge-notify',             // 充值回调
-		'dsk_validate/*',                    // 后台验证
-		'validate/*',                        // 前台验证, 不需要
-		'support_validate/*',                // 通用验证, 不需要
-		'callback/*',                        // 回调
 		'upload_image',                      // 上传图片
-		'user/avatar-upload',                // 上传头像
 	];
 
 	/**

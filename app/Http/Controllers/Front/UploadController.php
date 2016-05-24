@@ -1,8 +1,8 @@
-<?php namespace Imvkmark\SlUpload\Http\Controllers;
+<?php namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Lemon\Upload\Action\ActionImage;
 use Illuminate\Http\Request;
-use Imvkmark\SlUpload\Action\SlUploadImage;
 
 
 /**
@@ -10,7 +10,7 @@ use Imvkmark\SlUpload\Action\SlUploadImage;
  * Class UploadController
  * @package App\Http\Controllers\Support
  */
-class SlUploadController extends Controller {
+class UploadController extends Controller {
 
 	protected $action;
 
@@ -41,7 +41,7 @@ class SlUploadController extends Controller {
 
 		// 匹配
 		$file  = \Input::file($field);
-		$Image = new SlUploadImage();
+		$Image = new ActionImage();
 		if ($Image->checkUpload($sign) && $Image->save($file)) {
 			return site_end('success', '图片上传成功', [
 				'json'        => true,

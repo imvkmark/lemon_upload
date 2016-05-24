@@ -1,11 +1,9 @@
 <?php
 namespace App\Console;
 
-use App\Console\Commands\ClearExpiredApiToken;
 use App\Console\Commands\ClearOfflineUser;
 use App\Console\Commands\Lemon\Fe as LemonFe;
 use App\Console\Commands\Lemon\Rbac as LemonRbac;
-use App\Console\Commands\OverGameOrder;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,8 +15,6 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		LemonFe::class,
-		OverGameOrder::class,
-		ClearExpiredApiToken::class,
 		ClearOfflineUser::class,
 		LemonRbac::class,
 	];
@@ -29,12 +25,6 @@ class Kernel extends ConsoleKernel {
 	 * @return void
 	 */
 	protected function schedule(Schedule $schedule) {
-		$schedule->command('lemon:over-game-order')
-			->everyMinute()
-			->sendOutputTo(storage_path('console/over-game-order.log'));
-		$schedule->command('lemon:clear-expired-api-token')
-			->everyThirtyMinutes()
-			->sendOutputTo(storage_path('console/clear-expired-api-token.log'));
 		$schedule->command('lemon:clear-offline-user')
 			->everyThirtyMinutes()
 			->sendOutputTo(storage_path('console/clear-offline-user.log'));

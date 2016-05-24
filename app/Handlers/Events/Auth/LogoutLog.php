@@ -1,13 +1,13 @@
 <?php namespace App\Handlers\Events\Auth;
 
 use App\Lemon\Repositories\Sour\LmEnv;
+use App\Models\PamAccount;
 use App\Models\PamLog;
 
 class logoutLog {
 
 	/**
 	 * Create the event handler.
-	 * @return void
 	 */
 	public function __construct() {
 		//
@@ -15,7 +15,7 @@ class logoutLog {
 
 	/**
 	 * Handle the event.
-	 * @return void
+	 * @param $user PamAccount
 	 */
 	public function handle($user) {
 		PamLog::create([

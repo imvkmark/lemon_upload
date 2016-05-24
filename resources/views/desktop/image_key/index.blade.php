@@ -16,7 +16,7 @@
 					@foreach($items as $item)
 						<tr>
 							<td>{{$item['account_id']}}</td>
-							<td>{{\App\Models\PluginImageKey::typeDesc($item['key_type'])}}</td>
+							<td>{{\App\Models\PluginImageKey::kvKeyType($item['key_type'])}}</td>
 							<td>{{$item['key_public']}}</td>
 							<td>{{$item['key_secret']}}</td>
 							<td>

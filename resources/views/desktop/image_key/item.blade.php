@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td class="w108">{!! Form::label('key_type', '密钥类型', ['class' => 'strong validation']) !!}</td>
-				<td>{!! Form::select('key_type', \App\Models\PluginImageKey::typeLinear(), null, ['placeholder'=> '请选择密钥类型']) !!}</td>
+				<td>{!! Form::select('key_type', \App\Models\PluginImageKey::kvKeyType(), null, ['placeholder'=> '请选择密钥类型']) !!}</td>
 			</tr>
 			<tr>
 				<td class="w108">{!! Form::label('key_public', '用户号', ['class' => 'strong validation']) !!}</td>

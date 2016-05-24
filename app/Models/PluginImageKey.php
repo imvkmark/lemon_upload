@@ -46,20 +46,22 @@ class PluginImageKey extends \Eloquent {
 	public function pam() {
 		return $this->hasOne('App\Models\PamAccount', 'account_id');
 	}
-	
 
-	protected static $typeDesc = [
-		'product' => '开发环境',
-		'develop' => '测试环境',
-	];
 
-	public static function typeDesc($key) {
-		if (isset(self::$typeDesc[$key])) {
-			return self::$typeDesc[$key];
-		} else {
-			return '';
-		}
+	/**
+	 * @param null $key
+	 * @return array|mixed|string
+	 */
+	public static function kvKeyType($key = null) {
+		$desc = [
+			'product' => '开发环境',
+			'develop' => '测试环境',
+		];
+		return !is_null($key)
+			? isset($desc[$key]) ? $desc[$key] : ''
+			: $desc;
 	}
+
 
 	public static function typeLinear() {
 		return self::$typeDesc;
