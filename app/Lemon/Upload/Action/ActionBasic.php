@@ -1,4 +1,4 @@
-<?php namespace App\Lemon\Dailian\Action;
+<?php namespace App\Lemon\Upload\Action;
 
 use App\Models\PamAccount;
 

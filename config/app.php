@@ -154,7 +154,6 @@ return [
 		App\Providers\RouteServiceProvider::class,
 		App\Providers\FormServiceProvider::class,
 		
-		Imvkmark\SlUpload\SlUploadServiceProvider::class,                           // upload
 		App\Lemon\Repositories\Providers\RbacServiceProvider::class,                 // rbac
 		App\Lemon\Repositories\Providers\PolicyServiceProvider::class,              // core policy
 

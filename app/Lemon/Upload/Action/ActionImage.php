@@ -1,9 +1,10 @@
-<?php namespace Imvkmark\SlUpload\Action;
+<?php namespace App\Lemon\Upload\Action;
 
 use App\Lemon\Repositories\Sour\LmEnv;
 use App\Lemon\Repositories\Sour\LmFile;
 use App\Lemon\Repositories\Sour\LmImage;
 use App\Lemon\Repositories\System\SysCrypt;
+use App\Models\PluginImageUpload;
 use Illuminate\Support\MessageBag;
 use Imvkmark\SlUpload\Helper\SlUpload;
 use Imvkmark\SlUpload\Models\SlImageKey;
@@ -11,7 +12,7 @@ use Imvkmark\SlUpload\Models\SlImageUpload;
 use Intervention\Image\Constraint;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class SlUploadImage {
+class ActionImage {
 
 	private   $error       = '';
 	protected $isCheckSign = false;
@@ -46,7 +47,7 @@ class SlUploadImage {
 			$Disk = \Storage::disk($diskName);
 
 			if ($aim_path) {
-				if ( !(strpos($aim_path, '/')=== false || strpos($aim_path, '\\') === false) ) {
+				if (!(strpos($aim_path, '/') === false || strpos($aim_path, '\\') === false)) {
 					return $this->setError('不允许在上传根目录存放文件');
 				}
 				/**
@@ -72,7 +73,7 @@ class SlUploadImage {
 
 			// 保存的完整相对路径
 			$imageSaveDestination = (SlUpload::dir() ? SlUpload::dir() . '/' : '') . $imageRelativePath;
-			
+
 			$imageContent = file_get_contents($file);
 			$Disk->put($imageSaveDestination, $imageContent);
 
@@ -93,7 +94,7 @@ class SlUploadImage {
 
 			// 保存图片
 			$imageInfo = LmImage::getImageInfo($imageRealPath);
-			SlImageUpload::create([
+			PluginImageUpload::create([
 				'upload_path'      => $imageSaveDestination,
 				'upload_type'      => 'image',
 				'upload_extension' => $file->getClientOriginalExtension(),

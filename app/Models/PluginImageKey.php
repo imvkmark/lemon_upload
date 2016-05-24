@@ -46,10 +46,7 @@ class PluginImageKey extends \Eloquent {
 	public function pam() {
 		return $this->hasOne('App\Models\PamAccount', 'account_id');
 	}
-
-	public function role() {
-		return $this->hasOne('App\Models\PamRoleAccount', 'account_id');
-	}
+	
 
 	protected static $typeDesc = [
 		'product' => '开发环境',

@@ -3,15 +3,15 @@
 use App\Http\Controllers\Desktop\InitController as DesktopInitController;
 use App\Http\Requests;
 use App\Models\PamAccount;
+use App\Models\PluginImageKey;
 use Illuminate\Http\Request;
-use Imvkmark\SlUpload\Models\SlImageKey;
 
 /**
  * 开发者图片平台 key 管理
  * Class ImageKeyController
  * @package App\Http\Controllers\Desktop
  */
-class SlUploadKeyController extends DesktopInitController {
+class ImageKeyController extends DesktopInitController {
 
 	public function __construct(Request $request) {
 		parent::__construct($request);
@@ -19,7 +19,7 @@ class SlUploadKeyController extends DesktopInitController {
 	}
 
 	public function getIndex() {
-		$items = SlImageKey::paginate($this->pageNum);
+		$items = PluginImageKey::paginate($this->pageNum);
 		return view('sl-upload::desktop.image_key.index', [
 			'items' => $items,
 		]);
@@ -28,16 +28,16 @@ class SlUploadKeyController extends DesktopInitController {
 	public function getCreate() {
 		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
 			->lists('account_name', 'account_id');
-		$public     = SlImageKey::genPublic($this->pam->account_id);
+		$public     = PluginImageKey::genPublic($this->pam->account_id);
 		return view('sl-upload::desktop.image_key.item', [
-			'develops'         => $developers,
+			'develops'   => $developers,
 			'key_public' => $public,
 		]);
 	}
 
 	public function postCreate(Request $request) {
-		$key    = SlImageKey::genPublic($this->pam->account_id);
-		$exists = SlImageKey::where('account_id', $request->input('account_id'))
+		$key    = PluginImageKey::genPublic($this->pam->account_id);
+		$exists = PluginImageKey::where('account_id', $request->input('account_id'))
 			->where('key_public', $key)
 			->exists();
 		if ($exists) {
@@ -47,32 +47,32 @@ class SlUploadKeyController extends DesktopInitController {
 				'key_type'   => $request->input('key_type'),
 				'key_public' => $key,
 				'key_secret' => $request->input('key_secret'),
-				'account_id'       => $request->input('account_id'),
+				'account_id' => $request->input('account_id'),
 			];
-			SlImageKey::create($data);
+			PluginImageKey::create($data);
 			return site_end('success', '添加成功!', 'location|' . route('dsk_image_key.index'));
 		}
 	}
 
 	public function getEdit($id) {
-		/** @type SlImageKey $item */
-		$item       = SlImageKey::find($id);
+		/** @type PluginImageKey $item */
+		$item       = PluginImageKey::find($id);
 		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
 			->lists('account_name', 'account_id');
 		return view('sl-upload::desktop.image_key.item', [
-			'item'             => $item,
+			'item'       => $item,
 			'key_public' => $item->key_public,
-			'develops'         => $developers,
+			'develops'   => $developers,
 		]);
 	}
 
 	public function postEdit(Request $request, $id) {
-		SlImageKey::where('id', $id)->update($request->except(['_token']));
+		PluginImageKey::where('id', $id)->update($request->except(['_token']));
 		return site_end('success', '保存成功', 'location|' . route('dsk_image_key.index'));
 	}
 
 	public function postDestroy($id) {
-		SlImageKey::destroy($id);
+		PluginImageKey::destroy($id);
 		return site_end('success', '删除成功!', 'location|' . route('dsk_image_key.index'));
 	}
 

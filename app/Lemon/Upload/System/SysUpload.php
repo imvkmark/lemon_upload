@@ -1,4 +1,4 @@
-<?php namespace Imvkmark\SlUpload\Helper;
+<?php namespace App\Lemon\Upload\System;
 
 use App\Lemon\Repositories\Sour\LmEnv;
 use App\Lemon\Repositories\Sour\LmUtil;
@@ -6,10 +6,10 @@ use App\Lemon\Repositories\System\SysCrypt;
 
 /**
  * 图片上传处理
- * Class SlUpload
- * @package Imvkmark\SlUpload\Helper;
+ * Class SysUpload
+ * @package App\Lemon\Upload\System;
  */
-class SlUpload {
+class SysUpload {
 
 
 	/**

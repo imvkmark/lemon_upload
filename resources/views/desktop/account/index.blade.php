@@ -51,11 +51,6 @@
 							<th>{{$account->money}}</th>
 						@endif
 						<td>
-							@if (check_auth($_role_id, 'dsk_pam_account.auth'))
-								<a data-tip="授权进入用户中心" target="_blank" href="{{route('dsk_pam_account.auth', [$account->account_id])}}">
-									<i class="fa fa-user-md fa-lg"></i>
-								</a>
-							@endif
 							@if ($account->is_enable == 'Y')
 								<a class="J_request" data-tip="当前启用, 点击禁用" title="禁用" href="{{route_url('dsk_pam_account.status',null, ['id' => $account->account_id, 'field' => 'is_enable', 'status' => 'N', 'type' => $account_type])}}">
 									<i class="fa fa-unlock fa-lg green"></i>

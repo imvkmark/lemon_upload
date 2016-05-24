@@ -32,7 +32,6 @@
 			"App\\": "app/",
 			"Imvkmark\\L5Thumber\\": "vendor/imvkmark/l5-thumber/src/L5Thumber",
 			"Imvkmark\\SlDeploy\\": "vendor/imvkmark/sl-deploy/src/SlDeploy",
-			"Imvkmark\\SlUpload\\": "vendor/imvkmark/sl-upload/src/SlUpload"
 		}
 	},
 	"autoload-dev": {

@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider {
 		// 系统快速帮助
 		require_once app_path('Lemon/Repositories/Helper/helper.php');
 		// 项目函数
-		require_once app_path('Lemon/Dailian/Helper/helper.php');
+		require_once app_path('Lemon/Upload/Helper/helper.php');
 	}
 
 	/**

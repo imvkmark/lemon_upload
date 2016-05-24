@@ -48,5 +48,11 @@ Route::group([
 		'getAuth'     => 'dsk_pam_account.auth',
 	]);
 
+	Route::controller('dsk_image_key', 'ImageKeyController', [
+		'getIndex'    => 'dsk_image_key.index',
+		'getCreate'   => 'dsk_image_key.create',
+		'getEdit'     => 'dsk_image_key.edit',
+		'postDestroy' => 'dsk_image_key.destroy',
+	]);
 
 });
