@@ -1,7 +1,7 @@
 @extends('lemon.template.desktop')
 @section('desktop-main')
 	<div class="page-fixed">
-		@include('sl-upload::desktop.image_key.header')
+		@include('desktop.image_key.header')
 		@if (isset($item))
 			{!! Form::model($item,['route' => ['dsk_image_key.edit', $item->id], 'id' => 'form_image_key']) !!}
 		@else
@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td class="w108">{!! Form::label('key_type', '密钥类型', ['class' => 'strong validation']) !!}</td>
-				<td>{!! Form::select('key_type', \Imvkmark\SlUpload\Models\SlImageKey::typeLinear(), null, ['placeholder'=> '请选择密钥类型']) !!}</td>
+				<td>{!! Form::select('key_type', \App\Models\PluginImageKey::typeLinear(), null, ['placeholder'=> '请选择密钥类型']) !!}</td>
 			</tr>
 			<tr>
 				<td class="w108">{!! Form::label('key_public', '用户号', ['class' => 'strong validation']) !!}</td>

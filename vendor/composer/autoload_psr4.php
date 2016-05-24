@@ -34,7 +34,6 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laracasts\\Generators\\' => array($vendorDir . '/laracasts/generators/src'),
-    'Imvkmark\\SlUpload\\' => array($vendorDir . '/imvkmark/sl-upload/src/SlUpload'),
     'Imvkmark\\SlDeploy\\' => array($vendorDir . '/imvkmark/sl-deploy/src/SlDeploy'),
     'Imvkmark\\L5Thumber\\' => array($vendorDir . '/imvkmark/l5-thumber/src/L5Thumber'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),

@@ -14,14 +14,8 @@ Route::group([
 	// validate string true/false
 
 
-	Route::controller('support_plugin', 'PluginController', [
-		'getArea' => 'support_plugin.area',
-	]);
-
 	Route::controller('support_validate', 'ValidateController', [
 		'postAccountNameAvailable' => 'support_validate.account_name_available',
 		'postAccountNameExists'    => 'support_validate.account_name_exists',
-		'postMobileCodeValid'      => 'support_validate.mobile_code_valid',
-		'postAllowIpAvailable'     => 'support_validate.allow_ip_available',
 	]);
 });

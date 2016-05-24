@@ -1,4 +1,4 @@
-<?php namespace Imvkmark\SlUpload\Http\Controllers\Desktop;
+<?php namespace App\Http\Controllers\Desktop;
 
 use App\Http\Controllers\Desktop\InitController as DesktopInitController;
 use App\Http\Requests;
@@ -20,7 +20,7 @@ class ImageKeyController extends DesktopInitController {
 
 	public function getIndex() {
 		$items = PluginImageKey::paginate($this->pageNum);
-		return view('sl-upload::desktop.image_key.index', [
+		return view('desktop.image_key.index', [
 			'items' => $items,
 		]);
 	}
@@ -29,7 +29,7 @@ class ImageKeyController extends DesktopInitController {
 		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
 			->lists('account_name', 'account_id');
 		$public     = PluginImageKey::genPublic($this->pam->account_id);
-		return view('sl-upload::desktop.image_key.item', [
+		return view('desktop.image_key.item', [
 			'develops'   => $developers,
 			'key_public' => $public,
 		]);
@@ -59,7 +59,7 @@ class ImageKeyController extends DesktopInitController {
 		$item       = PluginImageKey::find($id);
 		$developers = PamAccount::where('account_type', PamAccount::ACCOUNT_TYPE_DEVELOP)
 			->lists('account_name', 'account_id');
-		return view('sl-upload::desktop.image_key.item', [
+		return view('desktop.image_key.item', [
 			'item'       => $item,
 			'key_public' => $item->key_public,
 			'develops'   => $developers,
