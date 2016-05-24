@@ -45,6 +45,7 @@ class UploadController extends Controller {
 		if ($Image->checkUpload($sign) && $Image->save($file)) {
 			return site_end('success', '图片上传成功', [
 				'json'        => true,
+				'success'     => true,   // 兼容 fullAvatarEditor
 				'url'         => $Image->getUrl(),
 				'destination' => $Image->getDestination(),
 			]);

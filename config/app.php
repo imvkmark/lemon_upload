@@ -143,7 +143,8 @@ return [
 		App\Providers\ClockworkClearServiceProvider::class,                          // 清理 clockwork file
 		Collective\Html\HtmlServiceProvider::class,                                  // Form
 		Daavelar\RevengeDb\Providers\RevengeDbServiceProvider::class,                // revenged db
-
+		Intervention\Image\ImageServiceProvider::class,                              // image
+		
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,
 		App\Providers\AuthServiceProvider::class,
@@ -153,9 +154,9 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		App\Providers\FormServiceProvider::class,
-		
+
 		App\Lemon\Repositories\Providers\RbacServiceProvider::class,                 // rbac
-		App\Lemon\Repositories\Providers\PolicyServiceProvider::class,              // core policy
+		App\Lemon\Repositories\Providers\PolicyServiceProvider::class,               // core policy
 
 
 	],

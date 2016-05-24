@@ -1,16 +1,12 @@
 <?php namespace App\Lemon\Upload\Action;
 
 use App\Lemon\Repositories\Sour\LmEnv;
-use App\Lemon\Repositories\Sour\LmFile;
 use App\Lemon\Repositories\Sour\LmImage;
 use App\Lemon\Repositories\System\SysCrypt;
 use App\Lemon\Upload\System\SysUpload;
 use App\Models\PluginImageKey;
 use App\Models\PluginImageUpload;
 use Illuminate\Support\MessageBag;
-use Imvkmark\SlUpload\Helper\SlUpload;
-use Imvkmark\SlUpload\Models\SlImageKey;
-use Imvkmark\SlUpload\Models\SlImageUpload;
 use Intervention\Image\Constraint;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -154,7 +150,6 @@ class ActionImage {
 		$info = explode('|', $deCode);
 
 		// 是否是上传令牌
-		\Log::debug($info);
 		$isUpload = ($info[0] == 'upload');
 		if (!$isUpload) {
 			return $this->setError('令牌类型不正确, 应该生成上传令牌!');
