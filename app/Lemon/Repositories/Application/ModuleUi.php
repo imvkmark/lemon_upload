@@ -1,6 +1,7 @@
 <?php namespace App\Lemon\Repositories\Application;
 
 use App\Lemon\Repositories\Contracts\FormType;
+use App\Lemon\Repositories\System\SysKernel;
 use App\Models\BaseModule;
 use App\Models\ModuleField;
 
@@ -62,7 +63,7 @@ class ModuleUi {
 		foreach ($this->fieldSetting as $setting_key => $setting) {
 
 			$formType = $setting['form_type'];
-
+			if($setting['field_name'])
 			$class = '\\App\\Lemon\\Repositories\\Application\\FormType\\' . ucfirst(camel_case($formType));
 
 			if (!isset($setting['relations'])) {
@@ -86,12 +87,12 @@ class ModuleUi {
 			/** @type FormType $object */
 			$object                          = new $class($setting_key, $setting, $current);
 			$setting['_render']              = $object->render();
-			$setting['_label']               = $object->label();
+			$setting['_label']               = in_array($formType,['map','area']) ? SysKernel::formTypeDesc($formType) : $object->label();
 			$setting['_tip']                 = $object->tip();
 			$this->formSetting[$setting_key] = $setting;
 		}
 
-		return view('_layout.module.desktop', [
+		return view('lemon.module.desktop', [
 			'title'     => $this->title,
 			'url'       => $this->url,
 			'module_id' => $this->moduleId,

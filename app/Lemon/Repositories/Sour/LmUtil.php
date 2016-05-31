@@ -10,7 +10,7 @@
 class LmUtil {
 
 	/**
-	 * 检测是否url
+	 * 检测是否email
 	 * @param $email
 	 * @return bool
 	 */

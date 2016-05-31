@@ -76,11 +76,6 @@ function hide_email($input) {
 }
 
 
-// alias function
-function check_obj($obj, $action, $role_id = null, $table = null, $kv_match = null) {
-	return \App\Lemon\Repositories\System\SysProgress::act($obj, $action, $role_id, $table, $kv_match);
-}
-
 
 /**
  * 获取完整的数据表名称

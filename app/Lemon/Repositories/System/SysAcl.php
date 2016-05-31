@@ -1,10 +1,7 @@
 <?php namespace App\Lemon\Repositories\System;
 
 use App\Lemon\Repositories\Sour\LmFile;
-use App\Models\BaseConfig;
 use App\Models\PamAccount;
-use App\Models\PamRole;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * 权限控制
@@ -13,12 +10,9 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class SysAcl {
 
-	const TYPE_API = 'api';
-
 	const ACL_PATH = 'Lemon/Suit/Acl';
 
 	const CACHE_PREFIX = 'acl_';
-
 
 	/**
 	 * 获取缓存
@@ -34,7 +28,7 @@ class SysAcl {
 			$links     = [];
 			if (is_array($cacheData)) {
 				foreach ($cacheData as $key => $ctl) {
-					$links[$key] = $ctl['title'];
+					$links[$key] = isset($ctl['title']) ? $ctl['title'] : '';
 				}
 			}
 			\Cache::forever($cacheKey, $links);
@@ -46,62 +40,33 @@ class SysAcl {
 			: $cache;
 	}
 
-	/**
-	 * 获取缓存
-	 * @param $type
-	 * @param $role_id
-	 * @return mixed
-	 */
-	public static function getCache($type, $role_id) {
-		static $cache;
-		if ($role_id) {
-			$cacheKey = self::CACHE_PREFIX . $type . '_' . $role_id;
-		} else {
-			$cacheKey = self::CACHE_PREFIX . $type;
-		}
-		if (!isset($cache[$cacheKey])) {
-			if (!\Cache::has($cacheKey)) {
-				$cacheData = self::menu($type, $role_id, false);
-				\Cache::forever($cacheKey, $cacheData);
+
+	public static function getPermissionCache($type = 'desktop') {
+		$cacheKey = cache_name(__CLASS__, '_permission_' . $type);
+
+		if (!\Cache::has($cacheKey)) {
+			$cacheData = self::permission($type);
+			$links     = [];
+			if (is_array($cacheData)) {
+				foreach ($cacheData as $key => $ctl) {
+					$links[$key] = true;
+				}
 			}
-			$cache[$cacheKey] = \Cache::get($cacheKey);
+			\Cache::forever($cacheKey, $links);
 		}
-		return $cache[$cacheKey];
+		$cache = \Cache::get($cacheKey);
+		return $cache;
 	}
 
-	/**
-	 * 清除缓存
-	 */
 	public static function reCache() {
-		$roles = PamRole::getAll();
-		$keys  = [PamAccount::ACCOUNT_TYPE_DESKTOP, PamAccount::ACCOUNT_TYPE_DEVELOP, PamAccount::ACCOUNT_TYPE_FRONT];
-		foreach ($roles as $role) {
-			$keys[] = $role['account_type'] . '_' . $role['role_id'];
-			$keys[] = $role['account_type'];
-		}
-		$collection = new Collection($keys);
-		$collection->each(function ($key) {
-			\Cache::forget(self::CACHE_PREFIX . $key);
-		});
-	}
-
-	public static function permission($type = PamAccount::ACCOUNT_TYPE_DESKTOP) {
-		$typeDir = ucfirst($type);
-		$dir     = app_path(self::ACL_PATH . '/' . $typeDir);
-		if (!is_dir($dir)) {
-			return false;
-		}
-		// 子目录扫描并获取可以操作的项目
-		$typeData  = [];
-		$typeFiles = LmFile::subFile($dir);
-		if (is_array($typeFiles) && !empty($typeFiles)) {
-			foreach ($typeFiles as $f) {
-				$key      = basename($f, '.php');
-				$typeData =
-					array_merge($typeData, self::operation($typeDir . '/' . $key, null, false, false));
-			}
-		}
-		return $typeData;
+		// title Cache
+		\Cache::forget(cache_name(__CLASS__, '_title_desktop'));
+		\Cache::forget(cache_name(__CLASS__, '_title_develop'));
+		\Cache::forget(cache_name(__CLASS__, '_title_front'));
+		// permission cache
+		\Cache::forget(cache_name(__CLASS__, '_permission_desktop'));
+		\Cache::forget(cache_name(__CLASS__, '_permission_develop'));
+		\Cache::forget(cache_name(__CLASS__, '_permission_front'));
 	}
 
 	/**
@@ -109,9 +74,10 @@ class SysAcl {
 	 * @param string     $type
 	 * @param PamAccount $user
 	 * @param bool|true  $is_menu
+	 * @param bool       $with_group
 	 * @return mixed|string
 	 */
-	public static function menu($type = PamAccount::ACCOUNT_TYPE_DESKTOP, $user = null, $is_menu = true) {
+	public static function menu($type = 'desktop', $user = null, $is_menu = true, $with_group = false) {
 		// define file
 		$file = app_path(self::ACL_PATH . '/' . $type . '.php');
 
@@ -138,7 +104,7 @@ class SysAcl {
 		if (is_array($typeFiles) && !empty($typeFiles)) {
 			foreach ($typeFiles as $f) {
 				$key            = basename($f, '.php');
-				$typeData[$key] = self::operation($typeDir . '/' . $key, $user, $is_menu);
+				$typeData[$key] = self::operation($typeDir . '/' . $key, $user, $is_menu, $with_group, false);
 			}
 		}
 
@@ -147,14 +113,14 @@ class SysAcl {
 			$menuLink   = [];
 			$links      = [];
 			$link_count = 0;
-			foreach ($group['group'] as $type_key) {
-				if (!isset($typeData[$type_key]) || empty($typeData[$type_key])) {
+			foreach ($group['group'] as $route) {
+				if (!isset($typeData[$route]) || empty($typeData[$route])) {
 					continue;
 				}
-				$menuLink[$type_key] = $typeData[$type_key];
+				$menuLink[$route] = $typeData[$route];
 
-				$link_count += count($typeData[$type_key]['sub_group']) + count($typeData[$type_key]['direct']);
-				$links = array_merge($links, $typeData[$type_key]['sub_group'], $typeData[$type_key]['direct']);
+				$link_count += count($typeData[$route]['sub_group']) + count($typeData[$route]['direct']);
+				$links = array_merge($links, $typeData[$route]['sub_group'], $typeData[$route]['direct']);
 			}
 			$menu[$menu_group]['menu_link']  = $menuLink;
 			$menu[$menu_group]['link_count'] = $link_count;
@@ -172,9 +138,11 @@ class SysAcl {
 	 * @param PamAccount  $user
 	 * @param bool|true   $is_menu
 	 * @param bool        $with_group
+	 * @param bool        $with_permission 是否包含权限
 	 * @return array
 	 */
-	public static function operation($file_relative, $user = null, $is_menu = true, $with_group = true) {
+	public static function operation($file_relative, $user = null, $is_menu = true, $with_group = true, $with_permission = false) {
+
 		$file_relative = explode('/', $file_relative);
 		$type          = ucfirst($file_relative[0]);
 		$filePath      = app_path(self::ACL_PATH . '/' . $type . '/' . $file_relative[1] . '.php');
@@ -190,7 +158,7 @@ class SysAcl {
 		$operationWithGroup = [
 			'title' => $define_data['title'],
 		];
-		$operationOnly      = [];
+
 		if (isset($define_data['operation'])) {
 			$operationWithGroup['sub_group'] = [];
 			$operationWithGroup['direct']    = [];
@@ -200,6 +168,12 @@ class SysAcl {
 
 				if ($is_menu) {
 					if (!isset($op_define['menu']) || !$op_define['menu'] || $op_define['menu'] == false) {
+						continue;
+					}
+				}
+
+				if (!$with_permission) { // 不包含权限
+					if (isset($op_define['permission']) && $op_define['permission'] = true) {
 						continue;
 					}
 				}
@@ -217,22 +191,42 @@ class SysAcl {
 					'menu'        => (isset($op_define['menu']) && $op_define['menu']) ? $op_define['menu'] : 0,
 					'param'       => isset($op_define['param']) ? $op_define['param'] : '',
 				];
-				if ($with_group) {
-					if (isset($op_define['group']) && $op_define['group']) {
-						$operationWithGroup['sub_group'][$route] = $singleDefine;
-					} else {
-						$operationWithGroup['direct'][$route] = $singleDefine;
-					}
+
+				if ($with_group && isset($op_define['group']) && $op_define['group']) {
+					$operationWithGroup['sub_group'][$route] = $singleDefine;
 				} else {
-					$operationOnly[$route] = $singleDefine;
+					$operationWithGroup['direct'][$route] = $singleDefine;
 				}
 
 			}
 		}
-		if ($with_group) {
-			return $operationWithGroup;
-		} else {
-			return $operationOnly;
+
+		return $operationWithGroup;
+
+	}
+
+	/**
+	 * 权限
+	 * @param string $type
+	 * @param null   $user
+	 * @return array|bool
+	 */
+	public static function permission($type = 'desktop', $user = null) {
+		$typeDir = ucfirst($type);
+		$dir     = app_path(self::ACL_PATH . '/' . $typeDir);
+		if (!is_dir($dir)) {
+			return false;
 		}
+		// 子目录扫描并获取可以操作的项目
+		$typeData  = [];
+		$typeFiles = LmFile::subFile($dir);
+		if (is_array($typeFiles) && !empty($typeFiles)) {
+			foreach ($typeFiles as $f) {
+				$key       = basename($f, '.php');
+				$operation = self::operation($typeDir . '/' . $key, $user, false, false, false);
+				$typeData  = array_merge($typeData, $operation['direct']);
+			}
+		}
+		return $typeData;
 	}
 }

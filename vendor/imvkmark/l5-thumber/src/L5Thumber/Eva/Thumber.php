@@ -281,7 +281,7 @@ class Thumber {
 		if ($config->get('cache')) {
 			$this->saveImage();
 		}
-		$this->showImage($extension);
+		return $this->showImage($extension);
 	}
 
 
@@ -327,19 +327,39 @@ class Thumber {
 
 	protected function showImage($extension) {
 		if (true === $this->optimized) {
-			$this->showOptimizedImage($extension);
+			return $this->showOptimizedImage($extension);
 		}
-
-		$this->showNormalImage($extension);
+		return $this->showNormalImage($extension);
 	}
 
 	protected function showNormalImage($extension) {
+		ob_clean();
+		ob_start();
 		$imageOption = $this->getImageOptions();
-		echo $this->getImage()->show($extension, $imageOption);
+		echo $this->getImage()->get($extension, $imageOption);
+		$content = ob_get_clean();
+		$mime    = $this->getMimeType($extension);
+		return response($content, 200, [
+			'Content-Type' => $mime,
+		]);
 	}
 
 	protected function showOptimizedImage($extension) {
-		$mimeTypes = [
+		ob_clean();
+		ob_start();
+		$handle = fopen($this->optimizedImage, "r");
+		echo stream_get_contents($handle);
+		unlink($this->optimizedImage);
+		fclose($handle);
+		$content = ob_get_clean();
+		$mime    = $this->getMimeType($extension);
+		return response($content, 200, [
+			'Content-Type' => $mime,
+		]);
+	}
+
+	private function getMimeType($extension) {
+		static $mimeTypes = [
 			'jpeg' => 'image/jpeg',
 			'jpg'  => 'image/jpeg',
 			'gif'  => 'image/gif',
@@ -347,11 +367,7 @@ class Thumber {
 			'wbmp' => 'image/vnd.wap.wbmp',
 			'xbm'  => 'image/xbm',
 		];
-		header('Content-type: ' . $mimeTypes[$extension]);
-		$handle = fopen($this->optimizedImage, "r");
-		echo stream_get_contents($handle);
-		unlink($this->optimizedImage);
-		fclose($handle);
+		return isset($mimeTypes[$extension]) ? $mimeTypes[$extension] : $mimeTypes['png'];
 	}
 
 	protected function process() {

@@ -91,15 +91,6 @@ SWITCH;
 					util.image_popup_show($('#img_url_{$id}').val(), $(window).width() / 2);
 				}
 			});";
-		if ($options['interactive']) {
-			$interactive_str .= "
-			$('#img_preview_{$id}').hover(function(e){
-				util.image_hover_show('#img_preview_{$id}_ctr', $('#img_url_{$id}').val(), 300);
-			}, function(){
-				util.image_hover_hide();
-			})";
-		}
-
 
 		$parseStr = <<<CONTENT
 	<div class="sj-uploadify-thumb" id="thumb_{$id}_ctr">
@@ -107,6 +98,7 @@ SWITCH;
 	<input type="hidden" name="{$name}" value="{$thumb_key}" id="img_url_{$id}"/>
 	<span id="img_preview_{$id}_ctr" {$display_str}>
 		<span id="img_preview_{$id}" class="uploadify-preview"></span>
+		<span id='img_del_{$id}' class="fa fa-times"></span>
 	</span>
 	</div>
 <script>
@@ -124,6 +116,7 @@ SWITCH;
 				'queueSizeLimit' : 1,
 				'fileSizeLimit' : '2MB',
 				'multi':false,
+//				'debug':true,
 				'fileTypeExts':'*.jpg;*.png;*.gif',
 				'fileTypeDesc': "请选择 jpg png gif 文件",
 //				'queueID'  : 'J_fileQueue',
@@ -138,9 +131,14 @@ SWITCH;
 						$('#img_url_{$id}').val(obj_resp.url);
 						$('#img_preview_{$id}_ctr').removeClass('hidden');
 					}
+					$("#img_preview_{$id}_ctr").show();
 				}
 			});
 			$interactive_str
+		});
+		$("#img_del_{$id}").click(function () {
+			$("#img_preview_{$id}_ctr").hide();
+			$("input[name={$name}]").val('');
 		});
 	})
 </script>
@@ -150,14 +148,13 @@ CONTENT;
 
 	/**
 	 * 显示上传的单图
-	 * @param       $key
+	 * @param       $url
 	 * @param array $options
 	 * @return string
 	 */
-	public function showThumb($key, $options = []) {
-		$url     = $key ? SysPic::thumb($key) : config('app.url_image') . '/xundu/nopic/nopic@300x200.png';
+	public function showThumb($url, $options = []) {
+		$url     = $url ? SysPic::thumb($url) : config('app.url_image') . '/xundu/nopic/nopic@300x200.png';
 		$options = $this->html->attributes($options);
-
 		$parse_str = '<img class="J_image_preview" src="' . $url . '" ' . $options . ' title="单击可打开图片, 按住 `ctrl` + `鼠标` 点击可以查看原图" >';
 		return $parse_str;
 	}
@@ -296,15 +293,14 @@ Html;
 		$value         = (string) $this->getValueAttribute($name, $value);
 		$append        = $this->html->attributes($options);
 		$width         = isset($options['width']) ? $options['width'] : '100%';
-		$height        = isset($options['height']) ? $options['height'] : '100px';
+		$height        = isset($options['height']) ? $options['height'] : '300px';
 		$token         = upload_token();
-		$id            = $options['id'] ?: 'Ke_' . LmStr::random(4);
+		$id            = $options['id'] ?: 'ke_' . LmStr::random(4);
 		$data          = <<<KindEditor
 		<textarea name="$name" id="$id" $append>$value</textarea>
 		<script>
 		requirejs(['ke', 'global'], function (ke, lemon) {
-			window.editor = window.editor || {};
-			window.editor.{$id} = ke.create('#{$id}',{
+			ke.create('#{$id}',{
 				extraFileUploadParams:{
 					'upload_token': '{$token}'
 				},
@@ -570,6 +566,13 @@ HTML;
 	 * 多图上传
 	 * @param       $name
 	 * @param null  $values
+	 *          [
+	 *          [
+	 *          'thumb'=> '',
+	 *          'intro'=> '',
+	 *          'is_cover'=> '',
+	 *          ]
+	 *          ]
 	 * @param array $options
 	 * @return string
 	 */
@@ -578,14 +581,43 @@ HTML;
 		$values        = !empty($values) ? $values : '';
 		$doId          = $options['id'] . '_do';
 		$uploadId      = $options['id'] . '_upload';
-		$html          = <<<HTML
+
+		$strImages = '';
+		if ($values && is_array($values)) {
+			foreach ($values as $key => $img) {
+				$index = 'old_' . $key;
+				$strImages .= '
+				<div class="imgbox" data-cover="' . $img['is_cover'] . '">
+                    <div class="w_upload">
+                        <a href="javascript:void(0)" class="item_close">删除</a>
+                        <div class="item_box">
+                        	<div class="photo">
+                            <img data-big="' . SysPic::thumb($img['thumb']) . '" src="' . SysPic::thumb($img['thumb']) . '" class="js_picUP">
+                            </div>
+                            <div class="miaoshu-photo">
+                                <input type="hidden" name="' . $name . '[' . $index . '][url]" value="' . $img['thumb'] . '" class="input-text">
+                                <input type="text" name="' . $name . '[' . $index . '][alt]" value="' . $img['intro'] . '"  class="miaoshu-wenzi">
+                            </div>
+                        </div>
+                      <div class="btn-set-fm js_set_fm"><span>点击设为封面</span></div>
+                    </div>
+                </div>';
+			}
+		}
+
+		if ($strImages) {
+			$display = 'display:block';
+		} else {
+			$display = 'display:none;';
+		}
+		$html = <<<HTML
 <div>
-	<div class="con-upload-photo" id="{$uploadId}" style="display: none;">
-		<input name="{$name}" type="hidden" value="{$values}">
+	<div class="con-upload-photo" id="{$uploadId}" style="{$display}">
 		<fieldset class="con-upload-photo-fie blue">
 			<legend>上传图片列表</legend>
-			<div id="image" class="tupian-upload clearfix">
-				<input name="is_cover" id="js-fm-selected" type="hidden" value="0">
+			<div class="J_image_ctr tupian-upload clearfix">
+				<input name="{$name}_is_cover" id="js-fm-selected" type="hidden" value="1">
+				{$strImages}
 			</div>
 		</fieldset>
 	</div>
@@ -595,9 +627,9 @@ HTML;
 	</div>
 </div>
 <script>
-requirejs(['jquery', 'xundu/multi_image/core'], function ($, multi_image) {
-	window.multi_image = multi_image;
-	window.multi_image.upload("#{$doId}", '#{$uploadId}', "{$name}");
+requirejs(['jquery', 'xundu/multi_image'], function ($, multi_image) {
+	window.multi_image = multi_image.init("#{$doId}", '#{$uploadId}', "{$name}");
+	window.multi_image.start();
 })
 </script>
 HTML;

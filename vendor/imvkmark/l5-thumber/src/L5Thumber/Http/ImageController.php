@@ -15,12 +15,12 @@ class ImageController extends Controller {
 		$thumber = new Thumber(app('l5.thumber.config'));
 
 		try {
-			$thumber->show();
+			return $thumber->show();
 		} catch (\Exception $e) {
 //			throw $e;
 			$config  = $thumber->getConfig();
 			header('location:' . $config->get('error_url') . '?msg=' . urlencode($e->getMessage()));
-
+			
 		}
 	}
 }

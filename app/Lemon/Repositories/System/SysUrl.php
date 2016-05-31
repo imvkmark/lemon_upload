@@ -1,7 +1,7 @@
 <?php namespace App\Lemon\Repositories\System;
 /*
  *
- * @author     Mark <zhaody901@qq.com>
+ * @author     Mark <zhaody901@126.com>
  * @copyright  Copyright (c) 2013-2015 Sour Lemon Team
  */
 class SysUrl {
