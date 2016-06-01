@@ -37,6 +37,7 @@ return array(
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'Imvkmark\\SlDeploy\\' => array($vendorDir . '/imvkmark/sl-deploy/src/SlDeploy'),
     'Imvkmark\\L5Thumber\\' => array($vendorDir . '/imvkmark/l5-thumber/src/L5Thumber'),
+    'Imvkmark\\L5DbReverse\\' => array($vendorDir . '/imvkmark/l5-db-reverse/src/L5DbReverse'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),

@@ -142,10 +142,10 @@ return [
 		Clockwork\Support\Laravel\ClockworkServiceProvider::class,                   // Clockwork
 		App\Providers\ClockworkClearServiceProvider::class,                          // 清理 clockwork file
 		Collective\Html\HtmlServiceProvider::class,                                  // Form
-		Daavelar\RevengeDb\Providers\RevengeDbServiceProvider::class,                // revenged db
 		Intervention\Image\ImageServiceProvider::class,                              // image
-		Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                         // 缩略图
-		
+		Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                          // 缩略图
+		\Imvkmark\L5DbReverse\L5DbReverseServiceProvider::class,                     // db reverse
+
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,
 		App\Providers\AuthServiceProvider::class,

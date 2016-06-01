@@ -1,0 +1,20 @@
+{
+    "name": "imvkmark/l5-db-reverse",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mark Zhao",
+            "email": "zhaody901@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Imvkmark\\L5DbReverse\\": "src/L5DbReverse"
+        }
+    },
+    "minimum-stability": "dev"
+}
