@@ -21,6 +21,7 @@ return [
 		'param' => '',
 		'group' => [
 			'dsk_image_key',
+			'dsk_image_upload',
 		],
 	],
 ];
