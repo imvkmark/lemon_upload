@@ -55,4 +55,9 @@ Route::group([
 		'postDestroy' => 'dsk_image_key.destroy',
 	]);
 
+	Route::controller('dsk_image_upload', 'ImageUploadController', [
+		'getIndex'    => 'dsk_image_upload.index',
+		'postDestroy' => 'dsk_image_upload.destroy',
+	]);
+
 });

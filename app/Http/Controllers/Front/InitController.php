@@ -123,10 +123,13 @@ class InitController extends Controller {
 		]);
 
 		// for title
-		$frontKv = SysAcl::key(PamAccount::ACCOUNT_TYPE_FRONT, null, true);
-		\View::share([
-			'_title' => isset($frontKv[$this->route]) ? $frontKv[$this->route]['title'] : '',
-		]);
+		if ($this->route) {
+			$title = SysAcl::getTitleCache('front', $this->route);
+			\View::share([
+				'_title' => $title,
+			]);
+		}
+
 	}
 
 	public function deny($message = '') {

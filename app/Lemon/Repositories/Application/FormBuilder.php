@@ -4,6 +4,7 @@ use App\Lemon\Repositories\Sour\LmStr;
 use App\Lemon\Repositories\Sour\LmTree;
 use App\Lemon\Repositories\System\SysCity;
 use App\Lemon\Repositories\System\SysPic;
+use App\Lemon\Upload\System\SysUpload;
 use App\Models\BaseArea;
 use App\Models\BaseCity;
 use App\Models\BaseType;
@@ -153,8 +154,8 @@ CONTENT;
 	 * @return string
 	 */
 	public function showThumb($url, $options = []) {
-		$url     = $url ? SysPic::thumb($url) : config('app.url_image') . '/xundu/nopic/nopic@300x200.png';
-		$options = $this->html->attributes($options);
+		$url       = $url ? SysUpload::url($url) : config('app.url_image') . '/xundu/nopic/nopic@300x200.png';
+		$options   = $this->html->attributes($options);
 		$parse_str = '<img class="J_image_preview" src="' . $url . '" ' . $options . ' title="单击可打开图片, 按住 `ctrl` + `鼠标` 点击可以查看原图" >';
 		return $parse_str;
 	}

@@ -20,11 +20,13 @@ class InitController extends Controller {
 
 	public function __construct(Request $request) {
 		parent::__construct();
-
-		$kv = SysAcl::key(SysAcl::TYPE_API, null, true);
-		\View::share([
-			'_title' => isset($kv[$this->route]) ? $kv[$this->route]['title'] : '',
-		]);
+		
+		if ($this->route) {
+			$title = SysAcl::getTitleCache('support', $this->route);
+			\View::share([
+				'_title' => $title,
+			]);
+		}
 	}
 
 }

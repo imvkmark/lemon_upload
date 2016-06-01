@@ -19,9 +19,8 @@
  * @mixin \Eloquent
  */
 
-use Illuminate\Database\Eloquent\Model;
 
-class PluginImageUpload extends Model {
+class PluginImageUpload extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
