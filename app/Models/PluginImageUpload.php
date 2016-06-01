@@ -38,6 +38,7 @@ class PluginImageUpload extends \Eloquent {
 	}
 
 	protected $fillable = [
+		'md5',
 		'upload_path',
 		'upload_type',
 		'upload_extension',

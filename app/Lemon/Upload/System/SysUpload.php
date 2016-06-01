@@ -1,5 +1,6 @@
 <?php namespace App\Lemon\Upload\System;
 
+use App\Lemon\Repositories\Sour\LmArr;
 use App\Lemon\Repositories\Sour\LmEnv;
 use App\Lemon\Repositories\Sour\LmUtil;
 use App\Lemon\Repositories\System\SysCrypt;
@@ -54,26 +55,17 @@ class SysUpload {
 			|--------------------------------------------------------------------------
 			| 支持 l5-thumber 的替换方式
 			|--------------------------------------------------------------------------
-			| 201510/17/622g_nwcb3p_x9C,h_150,w_690.jpg
-			| 201510/17/622g_nwcb3p_x9C.jpg
+			| 201510/17/demo,h_150,w_690.jpg
+			| 201510/17/demo.jpg
 			*/
 			$path_or_url = preg_replace('/(,.*?\.)/U', '.', $path_or_url);
 		} else {
 			$path_or_url = str_replace(config('sl-upload.directory'), '', $path_or_url);
 		}
 		$path_or_url = ltrim($path_or_url, '/');
-		if (
-			config('imagecache.support_route')
-			&&
-			substr($path_or_url, 0, strlen(config('imagecache.support_route'))) == config('imagecache.support_route')
-		) {
-			// 减去第二个 / 之前的字符
-			$preg        = "/^" . config('imagecache.support_route') . "\/([a-z_]+?)\//";
-			$path_or_url = preg_replace($preg, '', $path_or_url);
-		}
 		return $path_or_url;
 	}
-	
+
 	/**
 	 * 存储的磁盘
 	 * @return mixed|string
@@ -93,11 +85,30 @@ class SysUpload {
 
 
 	/**
-	 * 加密
+	 * 生成上传的token
 	 * @return string
 	 */
 	public static function genUploadToken() {
-		return SysCrypt::encode('upload|' . config('sl-upload.public_key') . '|' . config('sl-upload.public_secret') . '|' . LmEnv::time());
+		return SysCrypt::encode('upload|' . config('sl-upload.public_key') . '|' . str_random() . '|' . LmEnv::time(), config('app.key'));
 	}
 
+	/**
+	 * 计算请求签名
+	 * @param $app_key
+	 * @param $app_secret
+	 * @param $timestamp
+	 * @param $version
+	 * @return string
+	 */
+	public static function calcSign($app_key, $app_secret, $timestamp, $version) {
+		$array = [
+			'timestamp'  => $timestamp,
+			'app_key'    => $app_key,
+			'app_secret' => $app_secret,
+			'version'    => $version,
+		];
+		ksort($array);
+		$str = LmArr::toKvStr($array);
+		return sha1(md5($str));
+	}
 }

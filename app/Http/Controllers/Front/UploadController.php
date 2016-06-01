@@ -1,7 +1,11 @@
 <?php namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Lemon\Repositories\Sour\LmEnv;
+use App\Lemon\Repositories\System\SysCrypt;
 use App\Lemon\Upload\Action\ActionImage;
+use App\Lemon\Upload\System\SysUpload;
+use App\Models\PluginImageKey;
 use Illuminate\Http\Request;
 
 
@@ -62,4 +66,49 @@ class UploadController extends Controller {
 		// url, path
 	}
 
+	/**
+	 * 生成 upload_token
+	 * @param Request $request
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function getToken(Request $request) {
+		$timestamp = $request->input('timestamp');
+		$app_key   = $request->input('app_key');
+		$version   = $request->input('version');
+		$sign      = $request->input('sign');
+		if (abs($timestamp - LmEnv::time()) > config('sl-upload.server_key_expires')) {
+			return response()->json([
+				'status'  => 'error',
+				'message' => '服务器时差差距过大, 请重新设置',
+			]);
+		}
+		$app_secret = PluginImageKey::getSecretByPublic($app_key);
+		if (!$app_secret) {
+			return response()->json([
+				'status'  => 'error',
+				'message' => 'app key 不存在!',
+			]);
+		}
+		$key = [
+			'timestamp'  => $timestamp,
+			'app_key'    => $app_key,
+			'app_secret' => $app_secret,
+			'version'    => $version,
+		];
+
+		$serverSign = SysCrypt::crypt($key);
+		if ($serverSign != $sign) {
+			return response()->json([
+				'status'  => 'error',
+				'message' => '签名错误!',
+			]);
+		}
+		return response()->json([
+			'status'  => 'success',
+			'message' => '获取上传 token 成功',
+			'data'    => [
+				'upload_token' => SysUpload::genUploadToken(),
+			],
+		]);
+	}
 }

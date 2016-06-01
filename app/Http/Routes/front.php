@@ -10,7 +10,6 @@ Route::group([
 ], function () {
 
 	// home
-	Route::get('test', 'HomeController@getTest');
 	Route::get('/', [
 		'as'   => 'home.homepage',
 		'uses' => 'HomeController@getHomepage',
@@ -19,5 +18,9 @@ Route::group([
 	Route::post('upload_image', [
 		'as'   => 'upload.image',
 		'uses' => 'UploadController@postImage',
+	]);
+	Route::get('upload_token', [
+		'as'   => 'upload.token',
+		'uses' => 'UploadController@getToken',
 	]);
 });

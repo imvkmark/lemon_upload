@@ -117,15 +117,7 @@ class SysCrypt {
 		}
 		return $str;
 	}
-
-	/**
-	 * 权责加密
-	 * @return string
-	 */
-	public static function copyright() {
-		return substr(md5(config('lemon.author') . '-|-' . config('lemon.email') . '-|-' . config('lemon.website')), 0, 7);
-	}
-
+	
 
 	/**
 	 * 序列加密

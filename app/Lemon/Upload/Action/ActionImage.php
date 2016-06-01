@@ -86,10 +86,19 @@ class ActionImage {
 				});
 				$Image->save();
 			}
+			// check md5
+			$md5     = md5_file($imageRealPath);
+			$hasItem = PluginImageUpload::where('md5', $md5)->first();
+			if ($hasItem) {
+				$this->destination = $hasItem->upload_path;
+				unlink($imageRealPath);
+				return true;
+			}
 
 			// 保存图片
 			$imageInfo = LmImage::getImageInfo($imageRealPath);
 			PluginImageUpload::create([
+				'md5'              => $md5,
 				'upload_path'      => $imageRelativePath,
 				'upload_type'      => 'image',
 				'upload_extension' => $file->getClientOriginalExtension(),
