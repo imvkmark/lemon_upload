@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'AccountTest' => $baseDir . '/tests/AccountTest.php',
     'Carbon' => $baseDir . '/tests/CarbonTest.php',
-    'CreateMkPamAccountTable' => $baseDir . '/database/migrations/2016_06_02_071736_create_mk_pam_account_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'ExampleTest' => $baseDir . '/tests/ExampleTest.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

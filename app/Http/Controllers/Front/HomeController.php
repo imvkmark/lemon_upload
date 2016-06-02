@@ -20,4 +20,5 @@ class HomeController extends InitController {
 	public function getHomepage() {
 		return view('front.home.homepage');
 	}
+	
 }

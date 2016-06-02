@@ -4,7 +4,6 @@
 use App\Lemon\Repositories\Sour\LmEnv;
 use App\Models\AccountFront;
 use App\Models\PamAccount;
-use App\Models\PamBind;
 use App\Models\PamOnline;
 use Carbon\Carbon;
 
@@ -125,36 +124,7 @@ class ActionAccount extends ActionBasic {
 			'logined_at' => Carbon::now(),
 		]);
 	}
-	/**
-	 * 绑定社会化组件
-	 * @param      $account_id
-	 * @param      $field
-	 * @param      $key
-	 * @param null $head_pic
-	 * @return bool
-	 */
-	public static function bindSocialite($account_id, $field, $key, $head_pic = null) {
-		if ($head_pic) {
-			/* 拖慢性能. 暂时不处理
-			$img         = \Image::make($head_pic);
-			$destination = 'uploads/avatar/' . $account_id . '.png';
-			$img->save(public_path($destination));
-			$head_pic = $destination;
-			 */
-			AccountFront::where('account_id', $account_id)->update([
-				'head_pic' => $head_pic
-			]);
-		}
-		if (PamBind::where('account_id', $account_id)->first()) {
-			PamBind::where('account_id', $account_id)->update([$field => $key]);
-		} else {
-			PamBind::create([
-				'account_id' => $account_id,
-				$field       => $key,
-			]);
-		}
-		return true;
-	}
+	
 
 	/**
 	 * 账户名是否合法, 包含:, 允许是中文, 英文, 数字, 下划线, 和英文的 :
