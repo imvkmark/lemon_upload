@@ -592,6 +592,10 @@ class Inline
                         return self::evaluateBinaryScalar(substr($scalar, 9));
                     case preg_match('/^(-|\+)?[0-9][0-9,]*(\.[0-9_]+)?$/', $scalar):
                     case preg_match('/^(-|\+)?[0-9][0-9_]*(\.[0-9_]+)?$/', $scalar):
+                        if (false !== strpos($scalar, ',')) {
+                            @trigger_error('Using the comma as a group separator for floats is deprecated since version 3.2 and will be removed in 4.0.', E_USER_DEPRECATED);
+                        }
+
                         return (float) str_replace(array(',', '_'), '', $scalar);
                     case preg_match(self::getTimestampRegex(), $scalar):
                         if (Yaml::PARSE_DATETIME & $flags) {

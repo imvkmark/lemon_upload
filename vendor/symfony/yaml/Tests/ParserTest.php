@@ -31,9 +31,30 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getDataFormSpecifications
      */
-    public function testSpecifications($file, $expected, $yaml, $comment)
+    public function testSpecifications($file, $expected, $yaml, $comment, $deprecated)
     {
+        $deprecations = array();
+
+        if ($deprecated) {
+            set_error_handler(function ($type, $msg) use (&$deprecations) {
+                if (E_USER_DEPRECATED !== $type) {
+                    restore_error_handler();
+
+                    return call_user_func_array('PHPUnit_Util_ErrorHandler::handleError', func_get_args());
+                }
+
+                $deprecations[] = $msg;
+            });
+        }
+
         $this->assertEquals($expected, var_export($this->parser->parse($yaml), true), $comment);
+
+        if ($deprecated) {
+            restore_error_handler();
+
+            $this->assertCount(1, $deprecations);
+            $this->assertContains('Using the comma as a group separator for floats is deprecated since version 3.2 and will be removed in 4.0.', $deprecations[0]);
+        }
     }
 
     public function getDataFormSpecifications()
@@ -58,7 +79,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
                 } else {
                     eval('$expected = '.trim($test['php']).';');
 
-                    $tests[] = array($file, var_export($expected, true), $test['yaml'], $test['test']);
+                    $tests[] = array($file, var_export($expected, true), $test['yaml'], $test['test'], isset($test['deprecated']) ? $test['deprecated'] : false);
                 }
             }
         }
@@ -633,7 +654,7 @@ EOF;
 
     /**
      * @expectedException \Symfony\Component\Yaml\Exception\ParseException
-     * @expectedExceptionMessage Multiple documents are not supported.
+     * @expectedExceptionMessageRegExp /^Multiple documents are not supported.+/
      */
     public function testMultipleDocumentsNotSupportedException()
     {
@@ -663,6 +684,34 @@ yaml:
   - array stuff
 EOF
         );
+    }
+
+    public function testSequenceInMappingStartedBySingleDashLine()
+    {
+        $yaml = <<<EOT
+a:
+-
+  b:
+  -
+    bar: baz
+- foo
+d: e
+EOT;
+        $expected = array(
+            'a' => array(
+                array(
+                    'b' => array(
+                        array(
+                            'bar' => 'baz',
+                        ),
+                    ),
+                ),
+                'foo',
+            ),
+            'd' => 'e',
+        );
+
+        $this->assertSame($expected, $this->parser->parse($yaml));
     }
 
     /**
@@ -1014,6 +1063,7 @@ EOT
 foo
 # bar
 baz
+
 EOT
                     ,
                 ),
@@ -1042,7 +1092,7 @@ EOT;
         $expected = array(
             'foo' => array(
                 'bar' => array(
-                    'scalar-block' => 'line1 line2>',
+                    'scalar-block' => "line1 line2>\n",
                 ),
                 'baz' => array(
                     'foobar' => null,
@@ -1200,6 +1250,19 @@ EOT
                 '/The base64 encoded data \(.*\) contains invalid characters/',
             ),
         );
+    }
+
+    public function testParseDateAsMappingValue()
+    {
+        $yaml = <<<EOT
+date: 2002-12-14
+EOT;
+        $expectedDate = new \DateTime();
+        $expectedDate->setTimeZone(new \DateTimeZone('UTC'));
+        $expectedDate->setDate(2002, 12, 14);
+        $expectedDate->setTime(0, 0, 0);
+
+        $this->assertEquals(array('date' => $expectedDate), $this->parser->parse($yaml, Yaml::PARSE_DATETIME));
     }
 }
 

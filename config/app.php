@@ -143,8 +143,8 @@ return [
 		App\Providers\ClockworkClearServiceProvider::class,                          // 清理 clockwork file
 		Collective\Html\HtmlServiceProvider::class,                                  // Form
 		Intervention\Image\ImageServiceProvider::class,                              // image
-		Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                          // 缩略图
-		\Imvkmark\L5DbReverse\L5DbReverseServiceProvider::class,                     // db reverse
+		//Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                          // 缩略图
+		// Imvkmark\L5DbReverse\L5DbReverseServiceProvider::class,                     // db reverse
 
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,

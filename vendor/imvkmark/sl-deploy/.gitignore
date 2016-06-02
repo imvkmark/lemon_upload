@@ -1,2 +1,4 @@
-!/vendor/.gitkeep
+/.idea
 /vendor
+/composer.lock
+!/vendor/.gitkeep
