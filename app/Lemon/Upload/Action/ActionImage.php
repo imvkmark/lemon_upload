@@ -149,7 +149,7 @@ class ActionImage {
 
 		// 反解令牌
 		try {
-			$deCode = SysCrypt::decode($sign, '');
+			$deCode = SysCrypt::decode($sign, config('app.key'));
 		} catch (\Exception $e) {
 			return $this->setError('令牌解析失败!');
 		}
@@ -170,11 +170,12 @@ class ActionImage {
 		}
 
 		// 令牌是否正确, kv 是否相符
-		$public = $info[1];
-		$secret = $info[2];
+		$public = $info[1];  // public key
+		$secret = $info[2];  // secret
+		\Log::debug($info);
 		if ($public && $secret) {
 			$serverSecret = PluginImageKey::getSecretByPublic($public);
-			if ($secret != $serverSecret) {
+			if (!$serverSecret) {
 				return $this->setError('令牌不匹配, 冒牌令牌');
 			}
 		} else {

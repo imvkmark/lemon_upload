@@ -86,10 +86,11 @@ class SysUpload {
 
 	/**
 	 * 生成上传的token
+	 * @param $app_key
 	 * @return string
 	 */
-	public static function genUploadToken() {
-		return SysCrypt::encode('upload|' . config('sl-upload.public_key') . '|' . str_random() . '|' . LmEnv::time(), config('app.key'));
+	public static function genUploadToken($app_key) {
+		return SysCrypt::encode('upload|' . $app_key . '|' . str_random() . '|' . LmEnv::time(), config('app.key'));
 	}
 
 	/**

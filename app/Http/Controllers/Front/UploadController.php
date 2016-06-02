@@ -107,7 +107,7 @@ class UploadController extends Controller {
 			'status'  => 'success',
 			'message' => '获取上传 token 成功',
 			'data'    => [
-				'upload_token' => SysUpload::genUploadToken(),
+				'upload_token' => SysUpload::genUploadToken($app_key),
 			],
 		]);
 	}
