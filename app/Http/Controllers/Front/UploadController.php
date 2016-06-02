@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Lemon\Repositories\Sour\LmEnv;
+use App\Lemon\Repositories\Sour\LmUtil;
 use App\Lemon\Repositories\System\SysCrypt;
 use App\Lemon\Upload\Action\ActionImage;
 use App\Lemon\Upload\System\SysUpload;
@@ -41,22 +42,29 @@ class UploadController extends Controller {
 			]);
 		}
 
-		$sign = $request->input('upload_token');
-
+		$sign       = $request->input('upload_token');
+		$return_url = $request->input('return_url');
 		// 匹配
 		$file  = \Input::file($field);
 		$Image = new ActionImage();
 		if ($Image->checkUpload($sign) && $Image->save($file)) {
-			return site_end('success', '图片上传成功', [
-				'json'        => true,
+			$return = [
+				'status'      => 'success',
+				'message'     => '图片上传成功',
 				'success'     => true,   // 兼容 fullAvatarEditor
 				'url'         => $Image->getUrl(),
 				'destination' => $Image->getDestination(),
-			]);
+			];
 		} else {
-			return site_end('error', $Image->getError(), [
-				'json' => true,
-			]);
+			$return = [
+				'status'  => 'error',
+				'message' => $Image->getError(),
+			];
+		}
+		if ($return_url && LmUtil::isUrl($return_url)) {
+			return response()->redirectTo($return_url . '?upload_return=' . base64_encode(json_encode($return)));
+		} else {
+			return response()->json($return);
 		}
 		// kindeditor
 		// {"error" : 0,"url" : "' . $url . '"}
