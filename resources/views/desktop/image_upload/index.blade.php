@@ -7,14 +7,17 @@
 			<!-- 数据表格 -->
 				<table class="table">
 					<tr class="thead-space">
+						<th class="w72">ID</th>
 						<th class="w72">开发者账户ID</th>
-						<th>类型</th>
-						<th>Key</th>
-						<th>密钥</th>
+						<th>预览</th>
+						<th>宽度</th>
+						<th>高度</th>
+						<th>文件大小</th>
 						<th class="w108">操作</th>
 					</tr>
 					@foreach($items as $item)
 						<tr>
+							<td>{{$item->id}}</td>
 							<td>{{$item->account_id}}</td>
 							<td>{!! Form::showThumb($item->upload_path, ['height'=> '30px'])  !!}</td>
 							<td>{{$item->image_width}}</td>

@@ -6,6 +6,8 @@ use App\Models\PamAccount;
 use App\Models\PluginImageKey;
 use App\Models\PluginImageUpload;
 use Illuminate\Http\Request;
+use Imvkmark\L5Thumber\Eva\Config\Config;
+use Imvkmark\L5Thumber\Eva\Thumber;
 
 /**
  * 开发者图片平台 key 管理
@@ -27,7 +29,13 @@ class ImageUploadController extends DesktopInitController {
 	}
 
 	public function postDestroy($id) {
-		PluginImageUpload::destroy($id);
+		$upload     = PluginImageUpload::find($id);
+		$uploadPath = $upload->upload_path;
+		/** @type Config $config */
+		$config = app('l5.thumber.config');
+		$aim = $config->get('source_path').'/'.$uploadPath;
+		unlink($aim);
+		$upload->delete();
 		return site_end('success', '删除成功!', 'location|' . route('dsk_image_upload.index'));
 	}
 
