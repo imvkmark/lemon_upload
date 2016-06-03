@@ -31,10 +31,10 @@ class ImageUploadController extends DesktopInitController {
 	public function postDestroy($id) {
 		$upload     = PluginImageUpload::find($id);
 		$uploadPath = $upload->upload_path;
-		/** @type Config $config */
-		$config = app('l5.thumber.config');
-		$aim = $config->get('source_path').'/'.$uploadPath;
-		unlink($aim);
+		$aim = config('l5-thumber.config.source_path') . '/' . $uploadPath;
+		if (file_exists($aim)) {
+			unlink($aim);
+		}
 		$upload->delete();
 		return site_end('success', '删除成功!', 'location|' . route('dsk_image_upload.index'));
 	}
