@@ -13,7 +13,7 @@ return [
 
 		// 如果存在前缀则不能用缓存重写, if no prefix, will use array key
 		'cache'                => 1,
-		'error_url'            => config('app.url') . '/assets/image/xundu/nopic/nopic@300x200.png',
+		'error_url'            => config('app.url') . '/assets/image/lemon/fw/nopic.gif',
 		'allow_stretch'        => false,
 		//'min_width' => 10,
 		//'min_height' => 10,

@@ -13,13 +13,13 @@ return [
 
 		// 如果存在前缀则不能用缓存重写, if no prefix, will use array key
 		'cache'                => 1,
-		'error_url'            => 'http://thumb.ixdcw.com/error.png',
+		'error_url'            => 'http://www.fake_domain.com/error.png',
 		'allow_stretch'        => false,
 		//'min_width' => 10,
 		//'min_height' => 10,
 		'max_width'            => 2000,
 		'max_height'           => 2000,
-		'quality'              => 100,
+		'quality'              => 70,
 		'blending_layer'       => __DIR__ . '/upload/blend.png',
 		'redirect_referer'     => true,
 		'face_detect'          => [

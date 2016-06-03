@@ -920,10 +920,6 @@
             "autoload": {
                 "psr-4": {
                     "Imvkmark\\L5Thumber\\": "src/L5Thumber"
-                },
-                "psr-0": {
-                    "Requests": "library/",
-                    "PHPQRCode": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",

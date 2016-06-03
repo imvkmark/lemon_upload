@@ -16,7 +16,7 @@
 					@foreach($items as $item)
 						<tr>
 							<td>{{$item->account_id}}</td>
-							<td>{!! Form::showThumb($item->upload_path)  !!}</td>
+							<td>{!! Form::showThumb($item->upload_path, ['height'=> '30px'])  !!}</td>
 							<td>{{$item->image_width}}</td>
 							<td>{{$item->image_height}}</td>
 							<td>{{ \App\Lemon\Repositories\Sour\LmUtil::formatBytes($item->upload_filesize, 2)}}</td>

@@ -154,7 +154,7 @@ CONTENT;
 	 * @return string
 	 */
 	public function showThumb($url, $options = []) {
-		$url       = $url ? SysUpload::url($url) : config('app.url_image') . '/xundu/nopic/nopic@300x200.png';
+		$url       = $url ? SysUpload::url($url) : config('app.url_image') . '/lemon/fw/nopic.gif';
 		$options   = $this->html->attributes($options);
 		$parse_str = '<img class="J_image_preview" src="' . $url . '" ' . $options . ' title="单击可打开图片, 按住 `ctrl` + `鼠标` 点击可以查看原图" >';
 		return $parse_str;

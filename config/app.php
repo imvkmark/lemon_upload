@@ -143,8 +143,7 @@ return [
 		App\Providers\ClockworkClearServiceProvider::class,                          // 清理 clockwork file
 		Collective\Html\HtmlServiceProvider::class,                                  // Form
 		Intervention\Image\ImageServiceProvider::class,                              // image
-		//Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                          // 缩略图
-		// Imvkmark\L5DbReverse\L5DbReverseServiceProvider::class,                     // db reverse
+		Imvkmark\L5Thumber\L5ThumberServiceProvider::class,                          // 缩略图
 
 		//App Service Provider
 		App\Providers\AppServiceProvider::class,
@@ -223,7 +222,6 @@ return [
 	'url_js'     => env('URL_JS') ?: env('URL_SITE') . '/assets/js',
 	'url_css'    => env('URL_CSS') ?: env('URL_SITE') . '/assets/css',
 	'url_image'  => env('URL_IMAGE') ?: env('URL_SITE') . '/assets/image',
-	'url_upload' => env('URL_UPLOAD') ?: env('URL_SITE') . '/assets/uploads',
 
 	'cookie_prefix' => env('COOKIE_PREFIX') ?: '',
 	'cookie_base64' => env('COOKIE_BASE64') ?: false,
