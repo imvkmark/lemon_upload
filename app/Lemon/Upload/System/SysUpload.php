@@ -45,12 +45,6 @@ class SysUpload {
 			'',
 		], $path_or_url);
 		if (LmUtil::isUrl($path_or_url)) {
-			$wait_replace = array_merge((array) config('sl-upload.replace_url'), [
-				// default replace
-				config('app.url') . '/' . config('sl-upload.directory'),
-			]);
-			$path_or_url  = str_replace($wait_replace, '', $path_or_url);
-
 			/*
 			|--------------------------------------------------------------------------
 			| 支持 l5-thumber 的替换方式
@@ -59,8 +53,6 @@ class SysUpload {
 			| 201510/17/demo.jpg
 			*/
 			$path_or_url = preg_replace('/(,.*?\.)/U', '.', $path_or_url);
-		} else {
-			$path_or_url = str_replace(config('sl-upload.directory'), '', $path_or_url);
 		}
 		$path_or_url = ltrim($path_or_url, '/');
 		return $path_or_url;
@@ -71,18 +63,9 @@ class SysUpload {
 	 * @return mixed|string
 	 */
 	public static function disk() {
-		return config('sl-upload.server_disk');
+		return config('upload.server_disk');
 	}
-
-
-	/**
-	 * 存储的目录
-	 * @return mixed|string
-	 */
-	public static function dir() {
-		return config('sl-upload.directory');
-	}
-
+	
 
 	/**
 	 * 生成上传的token

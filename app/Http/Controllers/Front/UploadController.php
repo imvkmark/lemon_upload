@@ -8,6 +8,7 @@ use App\Lemon\Upload\Action\ActionImage;
 use App\Lemon\Upload\System\SysUpload;
 use App\Models\PluginImageKey;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 /**
@@ -28,38 +29,55 @@ class UploadController extends Controller {
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function postImage(Request $request) {
-		$field     = $request->input('field', 'image_file');
-		$validator = \Validator::make($request->all(), [
-			$field         => 'required',
-			'upload_token' => 'required',
-		], [
-			$field . '.required'    => '图片参数不能为空',
-			'upload_token.required' => 'upload_token不能为空',
-		]);
-		if ($validator->fails()) {
-			return site_end('error', $validator->errors(), [
-				'json' => true,
-			]);
-		}
-
-		$sign       = $request->input('upload_token');
+		$field      = $request->input('field', 'image_file');
 		$return_url = $request->input('return_url');
-		// 匹配
-		$file  = \Input::file($field);
-		$Image = new ActionImage();
-		if ($Image->checkUpload($sign) && $Image->save($file)) {
-			$return = [
-				'status'      => 'success',
-				'message'     => '图片上传成功',
-				'success'     => true,   // 兼容 fullAvatarEditor
-				'url'         => $Image->getUrl(),
-				'destination' => $Image->getDestination(),
-			];
-		} else {
+		\Log::debug($_REQUEST);
+		$file       = \Input::file($field);
+		if (is_null($file)) {
 			$return = [
 				'status'  => 'error',
-				'message' => $Image->getError(),
+				'msg' => '文件上传至服务器失败, 原因:网络过慢或图片超过 ' . LmUtil::formatBytes(UploadedFile::getMaxFilesize()),
 			];
+		} else {
+			if (!$file->isValid()) {
+				$return = [
+					'status'  => 'error',
+					'msg' => $file->getError(),
+				];
+			} else {
+				$validator = \Validator::make($request->all(), [
+					$field         => 'required',
+					'upload_token' => 'required',
+				], [
+					$field . '.required'    => '图片参数不能为空',
+					'upload_token.required' => 'upload_token不能为空',
+				]);
+				if ($validator->fails()) {
+					return site_end('error', $validator->errors(), [
+						'json' => true,
+					]);
+				}
+
+				$sign = $request->input('upload_token');
+
+				// 匹配
+				$file  = \Input::file($field);
+				$Image = new ActionImage();
+				if ($Image->checkUpload($sign) && $Image->save($file)) {
+					$return = [
+						'status'      => 'success',
+						'msg'     => '图片上传成功',
+						'success'     => true,   // 兼容 fullAvatarEditor
+						'url'         => $Image->getUrl(),
+						'destination' => $Image->getDestination(),
+					];
+				} else {
+					$return = [
+						'status'  => 'error',
+						'msg' => $Image->getError(),
+					];
+				}
+			}
 		}
 		if ($return_url && LmUtil::isUrl($return_url)) {
 			return response()->redirectTo($return_url . '?upload_return=' . base64_encode(json_encode($return)));
@@ -84,17 +102,17 @@ class UploadController extends Controller {
 		$app_key   = $request->input('app_key');
 		$version   = $request->input('version');
 		$sign      = $request->input('sign');
-		if (abs($timestamp - LmEnv::time()) > config('sl-upload.server_key_expires')) {
+		if (abs($timestamp - LmEnv::time()) > config('upload.expires')) {
 			return response()->json([
 				'status'  => 'error',
-				'message' => '服务器时差差距过大, 请重新设置',
+				'msg' => '服务器时差差距过大, 请重新设置',
 			]);
 		}
 		$app_secret = PluginImageKey::getSecretByPublic($app_key);
 		if (!$app_secret) {
 			return response()->json([
 				'status'  => 'error',
-				'message' => 'app key 不存在!',
+				'msg' => 'app key 不存在!',
 			]);
 		}
 		$key = [
@@ -108,12 +126,12 @@ class UploadController extends Controller {
 		if ($serverSign != $sign) {
 			return response()->json([
 				'status'  => 'error',
-				'message' => '签名错误!',
+				'msg' => '签名错误!',
 			]);
 		}
 		return response()->json([
 			'status'  => 'success',
-			'message' => '获取上传 token 成功',
+			'msg' => '获取上传 token 成功',
 			'data'    => [
 				'upload_token' => SysUpload::genUploadToken($app_key),
 			],

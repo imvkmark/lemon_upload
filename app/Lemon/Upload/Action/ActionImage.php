@@ -71,7 +71,7 @@ class ActionImage {
 
 			$imageContent = file_get_contents($file);
 			$Disk->put($imageRelativePath, $imageContent);
-
+			
 			/**
 			 * 图片的实际存储地址
 			 */
@@ -163,16 +163,16 @@ class ActionImage {
 
 		// 令牌失效时间
 		$unix_time = $info[3];
-		$expires   = config('sl-upload.expires') ?: 3600;
+		$expires   = config('upload.expires') ?: 3600;
 		$diff      = abs(LmEnv::time() - $unix_time);
 		if ($expires * 60 < $diff) {
-			return $this->setError('上传令牌已过期, 有效期为 `' . config('sl-upload.time_diff') . '` 分钟');
+			return $this->setError('上传令牌已过期, 有效期为 `' . config('upload.expires') . '` 分钟');
 		}
 
 		// 令牌是否正确, kv 是否相符
 		$public = $info[1];  // public key
 		$secret = $info[2];  // secret
-		\Log::debug($info);
+
 		if ($public && $secret) {
 			$serverSecret = PluginImageKey::getSecretByPublic($public);
 			if (!$serverSecret) {

@@ -2,12 +2,8 @@
 
 use App\Http\Controllers\Desktop\InitController as DesktopInitController;
 use App\Http\Requests;
-use App\Models\PamAccount;
-use App\Models\PluginImageKey;
 use App\Models\PluginImageUpload;
 use Illuminate\Http\Request;
-use Imvkmark\L5Thumber\Eva\Config\Config;
-use Imvkmark\L5Thumber\Eva\Thumber;
 
 /**
  * 开发者图片平台 key 管理
