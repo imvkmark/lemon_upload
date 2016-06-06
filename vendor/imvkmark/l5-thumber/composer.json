@@ -10,10 +10,8 @@
 	"require": {
 		"php": ">=5.4.0",
 		"imagine/imagine": "dev-master",
-		"firephp/firephp-core": "dev-master",
 		"rmccue/Requests": "dev-master",
-		"aferrandini/phpqrcode": "dev-master",
-		"symfony/process": "dev-master"
+		"aferrandini/phpqrcode": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
