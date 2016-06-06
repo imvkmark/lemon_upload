@@ -51,6 +51,7 @@ Thumbs.db
 .sass-cache
 /vendor/**/.git
 /node_modules
+/public/thumber/*
 /storage/framework/cache/*
 !/storage/framework/cache/.gitkeep
 /bootstrap/cache/compiled.php
