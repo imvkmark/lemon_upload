@@ -7,7 +7,7 @@ return [
 	|--------------------------------------------------------------------------
 	| 定义在 filesystem.php 中 disks 部分, 默认是 public
 	*/
-	'server_disk'        => env('SL_UPLOAD_SERVER_DISK', 'public_upload'),
+	'server_disk'        => env('UPLOAD_SERVER_DISK', 'public_upload'),
 
 
 	/*

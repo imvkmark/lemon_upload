@@ -48,7 +48,7 @@ return [
 			'root'   => storage_path() . '/app',
 		],
 
-		'public'       => [
+		'public' => [
 			'driver' => 'local',
 			'root'   => public_path(),
 		],
@@ -56,6 +56,11 @@ return [
 		'public_upload' => [
 			'driver' => 'local',
 			'root'   => public_path() . '/uploads',
+		],
+
+		'local_share' => [
+			'driver' => 'local',
+			'root'   => env('UPLOAD_SHARE_DISK_PATH', storage_path() . '/app'),
 		],
 
 		's3' => [

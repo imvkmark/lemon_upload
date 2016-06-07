@@ -296,6 +296,7 @@ Html;
 		$width         = isset($options['width']) ? $options['width'] : '100%';
 		$height        = isset($options['height']) ? $options['height'] : '300px';
 		$token         = upload_token();
+		$returnUrl     = route('support_upload.return');
 		$id            = $options['id'] ?: 'ke_' . LmStr::random(4);
 		$data          = <<<KindEditor
 		<textarea name="$name" id="$id" $append>$value</textarea>
@@ -303,7 +304,8 @@ Html;
 		requirejs(['ke', 'global'], function (ke, lemon) {
 			ke.create('#{$id}',{
 				extraFileUploadParams:{
-					'upload_token': '{$token}'
+					'upload_token': '{$token}',
+					'return_url': '{$returnUrl}'
 				},
                 uploadJson : lemon.upload_url,
                 items:ke.iConfig.simple,
