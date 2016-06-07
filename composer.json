@@ -14,16 +14,14 @@
 		"intervention/image": "2.*",
 		"nesbot/carbon": "~1.14",
 		"predis/predis": "~1.1",
-		"guzzlehttp/guzzle": "6.*"
+		"guzzlehttp/guzzle": "6.*",
+		"imvkmark/l5-thumber": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"itsgoingd/clockwork": "~1.8",
-		"barryvdh/laravel-ide-helper": "master",
-		"rmccue/Requests": "dev-master",
-		"aferrandini/phpqrcode": "dev-master",
-		"imagine/imagine": "dev-master"
+		"barryvdh/laravel-ide-helper": "master"
 	},
 	"autoload": {
 		"classmap": [

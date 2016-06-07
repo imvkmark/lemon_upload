@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0598ca3f685f874c5716f5140e336b74",
-    "content-hash": "569e6c549544ca53cce44c4df9c4c121",
+    "hash": "2e10467500e603523c67d26815a5dfc0",
+    "content-hash": "b8956939adb5fdec277df011a70a3acc",
     "packages": [
+        {
+            "name": "aferrandini/phpqrcode",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aferrandini/PHPQRCode.git",
+                "reference": "919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/aferrandini/PHPQRCode/919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c.zip",
+                "reference": "919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPQRCode": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Ferrandini",
+                    "email": "arielferrandini@gmail.com",
+                    "homepage": "http://www.ferrandini.com/"
+                }
+            ],
+            "description": "PHPQRCode porting and changed for PHP 5.3 compatibility",
+            "homepage": "https://github.com/aferrandini/PHPQRCode",
+            "keywords": [
+                "barcode",
+                "php",
+                "qrcode"
+            ],
+            "time": "2014-10-25 08:51:14"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "dev-master",
@@ -389,6 +432,99 @@
             "time": "2016-06-05 19:42:18"
         },
         {
+            "name": "imagine/imagine",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "10e9522f11a6e846061226b7e54347909a849e09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/avalanche123/Imagine/10e9522f11a6e846061226b7e54347909a849e09.zip",
+                "reference": "10e9522f11a6e846061226b7e54347909a849e09",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2014-08-26 11:26:34"
+        },
+        {
+            "name": "imvkmark/l5-thumber",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imvkmark/l5-thumber.git",
+                "reference": "f83892c511fe1caf30516c4eca9af370a4e3219a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/imvkmark/l5-thumber/f83892c511fe1caf30516c4eca9af370a4e3219a.zip",
+                "reference": "f83892c511fe1caf30516c4eca9af370a4e3219a",
+                "shasum": ""
+            },
+            "require": {
+                "aferrandini/phpqrcode": "dev-master",
+                "imagine/imagine": "dev-master",
+                "php": ">=5.4.0",
+                "rmccue/requests": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imvkmark\\L5Thumber\\": "src/L5Thumber"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Mark Zhao",
+                    "email": "zhaody901@126.com"
+                }
+            ],
+            "description": "Laravel 5 启用的图片缩略图生成工具",
+            "time": "2016-06-06 09:36:23"
+        },
+        {
             "name": "intervention/image",
             "version": "dev-master",
             "source": {
@@ -601,12 +737,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "023d0a0f20835d48395c35338908e6338a8f9338"
+                "reference": "ecf782a2eef21380ae40b1462f0a792ccfaac060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/laravel/framework/023d0a0f20835d48395c35338908e6338a8f9338.zip",
-                "reference": "023d0a0f20835d48395c35338908e6338a8f9338",
+                "url": "https://packagist.phpcomposer.com/files/laravel/framework/ecf782a2eef21380ae40b1462f0a792ccfaac060.zip",
+                "reference": "ecf782a2eef21380ae40b1462f0a792ccfaac060",
                 "shasum": ""
             },
             "require": {
@@ -722,7 +858,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-06-06 07:29:00"
+            "time": "2016-06-06 15:19:14"
         },
         {
             "name": "laravelcollective/html",
@@ -780,12 +916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d94b118d3d2abf1ab182c3f4173b1720528f5dcd"
+                "reference": "e50767302a3274dba36a2db93c6081dcf4570a8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/thephpleague/flysystem/d94b118d3d2abf1ab182c3f4173b1720528f5dcd.zip",
-                "reference": "d94b118d3d2abf1ab182c3f4173b1720528f5dcd",
+                "url": "https://packagist.phpcomposer.com/files/thephpleague/flysystem/e50767302a3274dba36a2db93c6081dcf4570a8a.zip",
+                "reference": "e50767302a3274dba36a2db93c6081dcf4570a8a",
                 "shasum": ""
             },
             "require": {
@@ -798,7 +934,7 @@
                 "ext-fileinfo": "*",
                 "mockery/mockery": "~0.9",
                 "phpspec/phpspec": "^2.2",
-                "phpunit/phpunit": "~4.8 || ~5.0"
+                "phpunit/phpunit": "~4.8"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -855,7 +991,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-06-05 15:56:21"
+            "time": "2016-06-06 21:32:23"
         },
         {
             "name": "monolog/monolog",
@@ -1349,6 +1485,55 @@
             "time": "2016-03-09 05:03:14"
         },
         {
+            "name": "rmccue/requests",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmccue/Requests.git",
+                "reference": "95518ced2fc41559a75b8dd60b970e3070defb58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/rmccue/Requests/95518ced2fc41559a75b8dd60b970e3070defb58.zip",
+                "reference": "95518ced2fc41559a75b8dd60b970e3070defb58",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "requests/test-server": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Requests": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan McCue",
+                    "homepage": "http://ryanmccue.info"
+                }
+            ],
+            "description": "A HTTP library written in PHP, for human beings.",
+            "homepage": "http://github.com/rmccue/Requests",
+            "keywords": [
+                "curl",
+                "fsockopen",
+                "http",
+                "idna",
+                "ipv6",
+                "iri",
+                "sockets"
+            ],
+            "time": "2016-05-13 11:11:14"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "5.x-dev",
             "source": {
@@ -1407,12 +1592,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "5570aa654f17634e24201c5d4de69af9854b1316"
+                "reference": "1db9bfd331383f3ba0b3c2f54da418df68c867c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/console/5570aa654f17634e24201c5d4de69af9854b1316.zip",
-                "reference": "5570aa654f17634e24201c5d4de69af9854b1316",
+                "url": "https://packagist.phpcomposer.com/files/symfony/console/1db9bfd331383f3ba0b3c2f54da418df68c867c4.zip",
+                "reference": "1db9bfd331383f3ba0b3c2f54da418df68c867c4",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1643,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-01 11:20:21"
+            "time": "2016-06-06 14:41:06"
         },
         {
             "name": "symfony/css-selector",
@@ -1466,12 +1651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "b6e5e9087ed7affbd4c38948da8f93513a87de43"
+                "reference": "d255e420795234173c0b9c9dff3cde5a82b0a108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b6e5e9087ed7affbd4c38948da8f93513a87de43",
-                "reference": "b6e5e9087ed7affbd4c38948da8f93513a87de43",
+                "url": "https://packagist.phpcomposer.com/files/symfony/css-selector/d255e420795234173c0b9c9dff3cde5a82b0a108.zip",
+                "reference": "d255e420795234173c0b9c9dff3cde5a82b0a108",
                 "shasum": ""
             },
             "require": {
@@ -1511,7 +1696,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:52:28"
+            "time": "2016-06-06 11:03:51"
         },
         {
             "name": "symfony/debug",
@@ -1519,12 +1704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "dfaa39d7190f237ce7c087511261c3f2aca90f70"
+                "reference": "00f654c530e5e6f6d3d444e2a70f9cf6608edb5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/debug/dfaa39d7190f237ce7c087511261c3f2aca90f70.zip",
-                "reference": "dfaa39d7190f237ce7c087511261c3f2aca90f70",
+                "url": "https://packagist.phpcomposer.com/files/symfony/debug/00f654c530e5e6f6d3d444e2a70f9cf6608edb5f.zip",
+                "reference": "00f654c530e5e6f6d3d444e2a70f9cf6608edb5f",
                 "shasum": ""
             },
             "require": {
@@ -1568,7 +1753,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-19 13:58:47"
+            "time": "2016-06-06 11:49:15"
         },
         {
             "name": "symfony/dom-crawler",
@@ -1631,12 +1816,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8"
+                "reference": "2a6b8713f8bdb582058cfda463527f195b066110"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/event-dispatcher/a158f13992a3147d466af7a23b564ac719a4ddd8.zip",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8",
+                "url": "https://packagist.phpcomposer.com/files/symfony/event-dispatcher/2a6b8713f8bdb582058cfda463527f195b066110.zip",
+                "reference": "2a6b8713f8bdb582058cfda463527f195b066110",
                 "shasum": ""
             },
             "require": {
@@ -1683,7 +1868,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-03 18:59:18"
+            "time": "2016-06-06 11:11:27"
         },
         {
             "name": "symfony/finder",
@@ -1691,12 +1876,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "a4e452bc27047f98934680af0e0751760a202d04"
+                "reference": "5795f68a72b7c7a11cc4e6dc4214663473b44857"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/finder/a4e452bc27047f98934680af0e0751760a202d04.zip",
-                "reference": "a4e452bc27047f98934680af0e0751760a202d04",
+                "url": "https://packagist.phpcomposer.com/files/symfony/finder/5795f68a72b7c7a11cc4e6dc4214663473b44857.zip",
+                "reference": "5795f68a72b7c7a11cc4e6dc4214663473b44857",
                 "shasum": ""
             },
             "require": {
@@ -1732,7 +1917,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-13 15:28:37"
+            "time": "2016-06-06 11:03:51"
         },
         {
             "name": "symfony/http-foundation",
@@ -1740,12 +1925,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "b9b463f5386bd5f4ae2df2c6eb26682ec4354c96"
+                "reference": "5d4e7461f0856a96bdceefc311d8cb8d50740627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/http-foundation/b9b463f5386bd5f4ae2df2c6eb26682ec4354c96.zip",
-                "reference": "b9b463f5386bd5f4ae2df2c6eb26682ec4354c96",
+                "url": "https://packagist.phpcomposer.com/files/symfony/http-foundation/5d4e7461f0856a96bdceefc311d8cb8d50740627.zip",
+                "reference": "5d4e7461f0856a96bdceefc311d8cb8d50740627",
                 "shasum": ""
             },
             "require": {
@@ -1788,7 +1973,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-02 09:40:24"
+            "time": "2016-06-06 11:03:51"
         },
         {
             "name": "symfony/http-kernel",
@@ -1796,12 +1981,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "1be9fa3bfda0fdc069f818943a401f6f75f25526"
+                "reference": "62faefbea5ef45ffe0b3c8a6d7ba115045f3fbf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/http-kernel/1be9fa3bfda0fdc069f818943a401f6f75f25526.zip",
-                "reference": "1be9fa3bfda0fdc069f818943a401f6f75f25526",
+                "url": "https://packagist.phpcomposer.com/files/symfony/http-kernel/62faefbea5ef45ffe0b3c8a6d7ba115045f3fbf1.zip",
+                "reference": "62faefbea5ef45ffe0b3c8a6d7ba115045f3fbf1",
                 "shasum": ""
             },
             "require": {
@@ -1870,7 +2055,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 08:55:42"
+            "time": "2016-06-06 15:55:40"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2045,12 +2230,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "a49e4c67a6a52e9c5bce1f28d9ea8618f36a43d0"
+                "reference": "86de601a573faa104df1e0166d4afd9a7646173a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/a49e4c67a6a52e9c5bce1f28d9ea8618f36a43d0",
-                "reference": "a49e4c67a6a52e9c5bce1f28d9ea8618f36a43d0",
+                "url": "https://packagist.phpcomposer.com/files/symfony/process/86de601a573faa104df1e0166d4afd9a7646173a.zip",
+                "reference": "86de601a573faa104df1e0166d4afd9a7646173a",
                 "shasum": ""
             },
             "require": {
@@ -2086,7 +2271,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-12 11:52:58"
+            "time": "2016-06-06 11:03:51"
         },
         {
             "name": "symfony/routing",
@@ -2168,12 +2353,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "e75d88c9af3c9c06341f4dad7ce776c9bddf94de"
+                "reference": "8c8d47680768735fe7297a846cdc5d63c941130c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/e75d88c9af3c9c06341f4dad7ce776c9bddf94de",
-                "reference": "e75d88c9af3c9c06341f4dad7ce776c9bddf94de",
+                "url": "https://packagist.phpcomposer.com/files/symfony/translation/8c8d47680768735fe7297a846cdc5d63c941130c.zip",
+                "reference": "8c8d47680768735fe7297a846cdc5d63c941130c",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2408,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-24 09:06:43"
+            "time": "2016-06-06 11:03:51"
         },
         {
             "name": "symfony/var-dumper",
@@ -2332,49 +2517,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "aferrandini/phpqrcode",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aferrandini/PHPQRCode.git",
-                "reference": "919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/aferrandini/PHPQRCode/919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c.zip",
-                "reference": "919a6a0e3b29cb103ed9982eeeb5d3a4741c6a0c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PHPQRCode": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ariel Ferrandini",
-                    "email": "arielferrandini@gmail.com",
-                    "homepage": "http://www.ferrandini.com/"
-                }
-            ],
-            "description": "PHPQRCode porting and changed for PHP 5.3 compatibility",
-            "homepage": "https://github.com/aferrandini/PHPQRCode",
-            "keywords": [
-                "barcode",
-                "php",
-                "qrcode"
-            ],
-            "time": "2014-10-25 08:51:14"
-        },
         {
             "name": "barryvdh/laravel-ide-helper",
             "version": "dev-master",
@@ -2491,63 +2633,6 @@
                 "instantiate"
             ],
             "time": "2016-03-31 10:24:22"
-        },
-        {
-            "name": "imagine/imagine",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "10e9522f11a6e846061226b7e54347909a849e09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/avalanche123/Imagine/10e9522f11a6e846061226b7e54347909a849e09.zip",
-                "reference": "10e9522f11a6e846061226b7e54347909a849e09",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "sami/sami": "dev-master"
-            },
-            "suggest": {
-                "ext-gd": "to use the GD implementation",
-                "ext-gmagick": "to use the Gmagick implementation",
-                "ext-imagick": "to use the Imagick implementation"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Imagine": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bulat Shakirzyanov",
-                    "email": "mallluhuct@gmail.com",
-                    "homepage": "http://avalanche123.com"
-                }
-            ],
-            "description": "Image processing for PHP 5.3",
-            "homepage": "http://imagine.readthedocs.org/",
-            "keywords": [
-                "drawing",
-                "graphics",
-                "image manipulation",
-                "image processing"
-            ],
-            "time": "2014-08-26 11:26:34"
         },
         {
             "name": "itsgoingd/clockwork",
@@ -2765,23 +2850,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "f9a8140d6cf86514a64fb3b637e716008e1885d0"
+                "reference": "eec64c9457ef6dff4c9eface0914ec1bc0048ba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/phpspec/prophecy/f9a8140d6cf86514a64fb3b637e716008e1885d0.zip",
-                "reference": "f9a8140d6cf86514a64fb3b637e716008e1885d0",
+                "url": "https://packagist.phpcomposer.com/files/phpspec/prophecy/eec64c9457ef6dff4c9eface0914ec1bc0048ba0.zip",
+                "reference": "eec64c9457ef6dff4c9eface0914ec1bc0048ba0",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "~2.0",
-                "sebastian/comparator": "~1.1",
-                "sebastian/recursion-context": "~1.0"
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
+                "sebastian/comparator": "^1.1",
+                "sebastian/recursion-context": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "~2.0"
+                "phpspec/phpspec": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -2819,7 +2904,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-05-27 08:33:35"
+            "time": "2016-06-06 10:57:18"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3191,55 +3276,6 @@
                 "xunit"
             ],
             "time": "2015-10-02 06:51:40"
-        },
-        {
-            "name": "rmccue/requests",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rmccue/Requests.git",
-                "reference": "95518ced2fc41559a75b8dd60b970e3070defb58"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/rmccue/Requests/95518ced2fc41559a75b8dd60b970e3070defb58.zip",
-                "reference": "95518ced2fc41559a75b8dd60b970e3070defb58",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "require-dev": {
-                "requests/test-server": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Requests": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "ISC"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan McCue",
-                    "homepage": "http://ryanmccue.info"
-                }
-            ],
-            "description": "A HTTP library written in PHP, for human beings.",
-            "homepage": "http://github.com/rmccue/Requests",
-            "keywords": [
-                "curl",
-                "fsockopen",
-                "http",
-                "idna",
-                "ipv6",
-                "iri",
-                "sockets"
-            ],
-            "time": "2016-05-13 11:11:14"
         },
         {
             "name": "sebastian/comparator",
@@ -3675,12 +3711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "737c6a22a9a2f6ac3d4c62a0b97720e139c4a093"
+                "reference": "3efdbaf135e2cefe060be6cfda516964827104ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/yaml/737c6a22a9a2f6ac3d4c62a0b97720e139c4a093.zip",
-                "reference": "737c6a22a9a2f6ac3d4c62a0b97720e139c4a093",
+                "url": "https://packagist.phpcomposer.com/files/symfony/yaml/3efdbaf135e2cefe060be6cfda516964827104ac.zip",
+                "reference": "3efdbaf135e2cefe060be6cfda516964827104ac",
                 "shasum": ""
             },
             "require": {
@@ -3716,15 +3752,13 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-29 09:50:57"
+            "time": "2016-06-06 11:53:30"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rmccue/requests": 20,
-        "aferrandini/phpqrcode": 20,
-        "imagine/imagine": 20
+        "imvkmark/l5-thumber": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
