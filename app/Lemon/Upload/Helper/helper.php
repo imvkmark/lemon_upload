@@ -25,12 +25,6 @@ function js_global($url = '') {
 	$cookie_path   = config('app.cookie_path');
 	$cookie_domain = \Input::getHost();
 
-	$supportUrl     = [
-		'game_server_html' => route('support_game.server_html'),
-		'game_type_html'   => route('support_game.type_html'),
-	];
-	$supportUrlJson = json_encode($supportUrl);
-
 	$uploadUrl = route('upload.image');
 	$js        = <<<JS
 	define(function(){
@@ -41,7 +35,6 @@ function js_global($url = '') {
 		    url_site : "{$url}",
 		    url_js : "{$url_js}",
 		    url_image : "{$url_image}",
-		    support_url  :  {$supportUrlJson},
 		    upload_url  :  "{$uploadUrl}"
 		}
 	})
