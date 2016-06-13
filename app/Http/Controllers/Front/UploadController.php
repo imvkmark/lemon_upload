@@ -31,18 +31,19 @@ class UploadController extends Controller {
 	public function postImage(Request $request) {
 		$field      = $request->input('field', 'image_file');
 		$return_url = $request->input('return_url');
-		\Log::debug($_REQUEST);
-		$file       = \Input::file($field);
+		$source     = $request->input('source');
+
+		$file = \Input::file($field);
 		if (is_null($file)) {
 			$return = [
-				'status'  => 'error',
-				'msg' => '文件上传至服务器失败, 原因:网络过慢或图片超过 ' . LmUtil::formatBytes(UploadedFile::getMaxFilesize()),
+				'status' => 'error',
+				'msg'    => '文件上传至服务器失败, 原因:网络过慢或图片超过 ' . LmUtil::formatBytes(UploadedFile::getMaxFilesize()),
 			];
 		} else {
 			if (!$file->isValid()) {
 				$return = [
-					'status'  => 'error',
-					'msg' => $file->getError(),
+					'status' => 'error',
+					'msg'    => $file->getError(),
 				];
 			} else {
 				$validator = \Validator::make($request->all(), [
@@ -66,20 +67,20 @@ class UploadController extends Controller {
 				if ($Image->checkUpload($sign) && $Image->save($file)) {
 					$return = [
 						'status'      => 'success',
-						'msg'     => '图片上传成功',
+						'msg'         => '图片上传成功',
 						'success'     => true,   // 兼容 fullAvatarEditor
 						'url'         => $Image->getUrl(),
 						'destination' => $Image->getDestination(),
 					];
 				} else {
 					$return = [
-						'status'  => 'error',
-						'msg' => $Image->getError(),
+						'status' => 'error',
+						'msg'    => $Image->getError(),
 					];
 				}
 			}
 		}
-		if ($return_url && LmUtil::isUrl($return_url)) {
+		if ($return_url && LmUtil::isUrl($return_url) && (!$source || ($source && $source == 'form'))) {
 			return response()->redirectTo($return_url . '?upload_return=' . base64_encode(json_encode($return)));
 		} else {
 			return response()->json($return);
@@ -104,15 +105,15 @@ class UploadController extends Controller {
 		$sign      = $request->input('sign');
 		if (abs($timestamp - LmEnv::time()) > config('upload.expires')) {
 			return response()->json([
-				'status'  => 'error',
-				'msg' => '服务器时差差距过大, 请重新设置',
+				'status' => 'error',
+				'msg'    => '服务器时差差距过大, 请重新设置',
 			]);
 		}
 		$app_secret = PluginImageKey::getSecretByPublic($app_key);
 		if (!$app_secret) {
 			return response()->json([
-				'status'  => 'error',
-				'msg' => 'app key 不存在!',
+				'status' => 'error',
+				'msg'    => 'app key 不存在!',
 			]);
 		}
 		$key = [
@@ -125,14 +126,14 @@ class UploadController extends Controller {
 		$serverSign = SysCrypt::crypt($key);
 		if ($serverSign != $sign) {
 			return response()->json([
-				'status'  => 'error',
-				'msg' => '签名错误!',
+				'status' => 'error',
+				'msg'    => '签名错误!',
 			]);
 		}
 		return response()->json([
-			'status'  => 'success',
-			'msg' => '获取上传 token 成功',
-			'data'    => [
+			'status' => 'success',
+			'msg'    => '获取上传 token 成功',
+			'data'   => [
 				'upload_token' => SysUpload::genUploadToken($app_key),
 			],
 		]);
