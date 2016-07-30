@@ -35,7 +35,7 @@ class ActionImage {
 				'gif',
 				'jpeg',   // android default
 			];
-			if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowedExtensions)) {
+			if ($file->getClientOriginalExtension() && !in_array(strtolower($file->getClientOriginalExtension()), $allowedExtensions)) {
 				return $this->setError('你只允许上传 "' . implode(',', $allowedExtensions) . '" 格式');
 			}
 
