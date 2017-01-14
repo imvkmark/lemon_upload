@@ -27,8 +27,16 @@ class SysUpload {
 		if (LmUtil::isUrl($path)) {
 			return $path;
 		} else {
-			$subDirectory = 'thumber/config/';
-			return config('app.url') . '/' . $subDirectory . $path;
+			switch (config('upload.type')) {
+				case 'qiniu':
+					return config('upload.qiniu_url') . '/' . $path;
+					break;
+				case 'lemon':
+				default:
+					$subDirectory = 'thumber/config/';
+					return config('app.url') . '/' . $subDirectory . $path;
+					break;
+			}
 		}
 	}
 
@@ -65,7 +73,7 @@ class SysUpload {
 	public static function disk() {
 		return config('upload.server_disk');
 	}
-	
+
 
 	/**
 	 * 生成上传的token

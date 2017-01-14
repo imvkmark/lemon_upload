@@ -8,6 +8,8 @@ use App\Models\PluginImageKey;
 use App\Models\PluginImageUpload;
 use Illuminate\Support\MessageBag;
 use Intervention\Image\Constraint;
+use Qiniu\Auth;
+use Qiniu\Storage\UploadManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ActionImage {
@@ -71,7 +73,7 @@ class ActionImage {
 
 			$imageContent = file_get_contents($file);
 			$Disk->put($imageRelativePath, $imageContent);
-			
+
 			/**
 			 * 图片的实际存储地址
 			 */
@@ -80,35 +82,53 @@ class ActionImage {
 			// 缩放图片
 			if ($file->getClientOriginalExtension() != 'gif') {
 				$Image = \Image::make($imageRealPath);
-				$Image->resize(1440, null, function (Constraint $constraint) {
+				$Image->resize(1440, null, function(Constraint $constraint) {
 					$constraint->aspectRatio();
 					$constraint->upsize();
 				});
 				$Image->save();
 			}
-			// check md5
-			$md5     = md5_file($imageRealPath);
-			$hasItem = PluginImageUpload::where('md5', $md5)->first();
-			if ($hasItem) {
-				$this->destination = $hasItem->upload_path;
-				unlink($imageRealPath);
-				return true;
+
+			switch (config('upload.type')) {
+				case 'qiniu':
+					$up_file = $this->uploadQiniu($imageRealPath);
+					if ($up_file) {
+						$this->destination = $up_file;
+						unlink($imageRealPath);
+						return true;
+					} else {
+						return $this->setError('上传图片失败');
+					}
+					break;
+				case 'lemon':
+				default:
+					// check md5
+					$md5     = md5_file($imageRealPath);
+					$hasItem = PluginImageUpload::where('md5', $md5)->first();
+					if ($hasItem) {
+						$this->destination = $hasItem->upload_path;
+						unlink($imageRealPath);
+						return true;
+					}
+
+					// 保存图片
+					$imageInfo = LmImage::getImageInfo($imageRealPath);
+					PluginImageUpload::create([
+						'md5'              => $md5,
+						'upload_path'      => $imageRelativePath,
+						'upload_type'      => 'image',
+						'upload_extension' => $file->getClientOriginalExtension(),
+						'upload_filesize'  => $imageInfo['size'],
+						'upload_mime'      => $imageInfo['mime'],
+						'image_type'       => $imageInfo['type'],
+						'image_width'      => $imageInfo['width'],
+						'image_height'     => $imageInfo['height'],
+						'account_id'       => $this->accountId,
+					]);
+					break;
 			}
 
-			// 保存图片
-			$imageInfo = LmImage::getImageInfo($imageRealPath);
-			PluginImageUpload::create([
-				'md5'              => $md5,
-				'upload_path'      => $imageRelativePath,
-				'upload_type'      => 'image',
-				'upload_extension' => $file->getClientOriginalExtension(),
-				'upload_filesize'  => $imageInfo['size'],
-				'upload_mime'      => $imageInfo['mime'],
-				'image_type'       => $imageInfo['type'],
-				'image_width'      => $imageInfo['width'],
-				'image_height'     => $imageInfo['height'],
-				'account_id'       => $this->accountId,
-			]);
+
 			$this->destination = $imageRelativePath;
 			return true;
 		} else {
@@ -186,6 +206,39 @@ class ActionImage {
 		$this->accountId   = PluginImageKey::getAccountIdByPublic($public);
 		$this->isCheckSign = true;
 		return true;
+	}
+
+
+	/**
+	 * 上传文件到七牛
+	 * @param   string $image_path 文件名（包含存储目录）
+	 * @return  string $url 返回的图片url
+	 */
+	protected function uploadQiniu($image_path) {
+		$accessKey = config('upload.qiniu_access_key');
+		$secretKey = config('upload.qiniu_secret_key');
+		$bucket    = config('upload.qiniu_bucket');
+
+		// 构建鉴权对象
+		$auth = new Auth($accessKey, $secretKey);
+
+		// 生成上传 Token
+		$token = $auth->uploadToken($bucket);
+
+		// 真实的图片存储位置
+		$diskName = SysUpload::disk();
+		$filePath = disk_path($diskName) . $image_path;
+
+		// 初始化 UploadManager 对象并进行文件的上传
+		$uploadMgr = new UploadManager();
+
+		// 调用 UploadManager 的 putFile 方法进行文件的上传
+		list($ret, $err) = $uploadMgr->putFile($token, $image_path, $filePath);
+		if ($err !== null) {
+			return false;
+		} else {
+			return $ret['key'];
+		}
 	}
 
 	public function setError($error) {
