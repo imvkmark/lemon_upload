@@ -2,6 +2,7 @@
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-7 response implementation.
@@ -94,13 +95,13 @@ class Response implements ResponseInterface
     ) {
         $this->statusCode = (int) $status;
 
-        if ($body != '') {
+        if ($body !== '' && $body !== null) {
             $this->stream = stream_for($body);
         }
 
         $this->setHeaders($headers);
         if ($reason == '' && isset(self::$phrases[$this->statusCode])) {
-            $this->reasonPhrase = self::$phrases[$status];
+            $this->reasonPhrase = self::$phrases[$this->statusCode];
         } else {
             $this->reasonPhrase = (string) $reason;
         }

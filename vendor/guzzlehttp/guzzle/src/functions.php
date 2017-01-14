@@ -167,6 +167,8 @@ function default_ca_bundle()
         '/etc/ssl/certs/ca-certificates.crt',
         // FreeBSD (provided by the ca_root_nss package)
         '/usr/local/share/certs/ca-root-nss.crt',
+        // SLES 12 (provided by the ca-certificates package)
+        '/var/lib/ca-certificates/ca-bundle.pem',
         // OS X provided by homebrew (using the default path)
         '/usr/local/etc/openssl/cert.pem',
         // Google app engine
@@ -309,7 +311,7 @@ function json_decode($json, $assoc = false, $depth = 512, $options = 0)
 /**
  * Wrapper for JSON encoding that throws when an error occurs.
  *
- * @param string $value   The value being encoded
+ * @param mixed $value   The value being encoded
  * @param int    $options JSON encode option bitmask
  * @param int    $depth   Set the maximum depth. Must be greater than zero.
  *

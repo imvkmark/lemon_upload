@@ -1,8 +1,32 @@
-2.5 - Upcoming
-==============
+2.5.5 / 2016-12-04
+==================
 
-*  [fixed] Describing a class providing a namespace with leading backslash (@mheki)
-*  [fixed] Bug in DotFormatter when number of rows is multiple of column width (@bendavies)
+* [fixed] PHP 5.3 support was broken (@unfunco)
+
+2.5.4 / 2016-12-02
+==================
+
+* [fixed] Prevent deprecation warning in Symfony 3.2.0 (@veewee)
+* [performance] Reduced size of Phar (@unfunco)
+
+2.5.3 / 2016-09-26
+==================
+
+* [fixed] Accidental linebreaks in spec name are not allowed (@randompixel)
+* [fixed] Throwable can be passed as instance to shouldThrow (@jameshalsall)
+* [performance] Phar version now has an optimised autoloader
+
+2.5.2 / 2016-09-04
+==================
+
+* [fixed] Exceptions are properly highlighted in error messages (@ciaranmcnulty)
+
+2.5.1 / 2016-07-16
+==================
+
+* [fixed] Describing a class providing a namespace with leading backslash (@mheki)
+* [fixed] bug where rerun test suite was uncoloured (@ciaranmcnulty)
+* [fixed] Bug in DotFormatter when number of rows is multiple of column width (@bendavies)
 
 2.5.0 / 2016-03-20
 ==================

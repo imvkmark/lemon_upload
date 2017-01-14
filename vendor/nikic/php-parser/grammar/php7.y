@@ -150,7 +150,7 @@ inner_statement:
 ;
 
 non_empty_statement:
-      '{' inner_statement_list '}'                          { $$ = $2; }
+      '{' inner_statement_list '}'                          { $$ = $2; prependLeadingComments($$); }
     | T_IF '(' expr ')' statement elseif_list else_single
           { $$ = Stmt\If_[$3, ['stmts' => toArray($5), 'elseifs' => $6, 'else' => $7]]; }
     | T_IF '(' expr ')' ':' inner_statement_list new_elseif_list new_else_single T_ENDIF ';'
@@ -512,7 +512,6 @@ expr:
     | list_expr '=' expr                                    { $$ = Expr\Assign[$1, $3]; }
     | variable '=' expr                                     { $$ = Expr\Assign[$1, $3]; }
     | variable '=' '&' variable                             { $$ = Expr\AssignRef[$1, $4]; }
-    | variable '=' '&' new_expr                             { $$ = Expr\AssignRef[$1, $4]; }
     | new_expr                                              { $$ = $1; }
     | T_CLONE expr                                          { $$ = Expr\Clone_[$2]; }
     | variable T_PLUS_EQUAL expr                            { $$ = Expr\AssignOp\Plus      [$1, $3]; }
